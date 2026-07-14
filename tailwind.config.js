@@ -1,4 +1,4 @@
-import comicPreset from "../src/preset.ts";
+import comicPreset from "./src/preset.ts";
 
 /** @type {import('tailwindcss').Config} */
 export default {
