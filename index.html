@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comixa UI Playground</title>
+    <link rel="icon" href="/logo.ico" sizes="any" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        try {
+          var key = "comixa-playground-theme";
+          var stored = localStorage.getItem(key);
+          // Only dark when user explicitly chose dark (default = light)
+          var dark = stored === "dark";
+          document.documentElement.classList.toggle("dark", dark);
+          document.documentElement.setAttribute(
+            "data-theme",
+            dark ? "dark" : "light"
+          );
+        } catch (e) {
+          document.documentElement.classList.remove("dark");
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

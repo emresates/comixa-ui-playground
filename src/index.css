@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+:root,
+html[data-theme="light"] {
+  --pg-bg: #fffdf5;
+  --pg-bg-glow-a: rgba(255, 229, 102, 0.35);
+  --pg-bg-glow-b: rgba(77, 159, 255, 0.2);
+  --pg-chrome: #fffdf5;
+  --pg-surface: #fffdf5;
+  --pg-surface-muted: #fff3d6;
+  --pg-fg: #1a1a1a;
+  --pg-fg-muted: #5c5c5c;
+  --pg-border: #1a1a1a;
+  color-scheme: light;
+}
+
+html.dark,
+html[data-theme="dark"] {
+  --pg-bg: #141414;
+  --pg-bg-glow-a: rgba(255, 229, 102, 0.12);
+  --pg-bg-glow-b: rgba(77, 159, 255, 0.14);
+  --pg-chrome: #1a1a1a;
+  --pg-surface: #1f1f1f;
+  --pg-surface-muted: #2a2a2a;
+  --pg-fg: #fffdf5;
+  --pg-fg-muted: rgba(255, 253, 245, 0.65);
+  --pg-border: rgba(255, 253, 245, 0.25);
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 20% 10%, var(--pg-bg-glow-a), transparent 40%),
+    radial-gradient(circle at 90% 0%, var(--pg-bg-glow-b), transparent 35%),
+    var(--pg-bg);
+  color: var(--pg-fg);
+  font-family: "Comic Neue", ui-rounded, system-ui, sans-serif;
+}
+
+/* Playground chrome — always follows theme tokens */
+.pg-chrome {
+  background-color: var(--pg-chrome);
+  color: var(--pg-fg);
+  border-color: var(--pg-border);
+}
+
+.pg-surface {
+  background-color: var(--pg-surface);
+  color: var(--pg-fg);
+  border-color: var(--pg-border);
+}
+
+.pg-surface-muted {
+  background-color: var(--pg-surface-muted);
+}
+
+.pg-fg {
+  color: var(--pg-fg);
+}
+
+.pg-fg-muted {
+  color: var(--pg-fg-muted);
+}
+
+.pg-border {
+  border-color: var(--pg-border);
+}
+
+/* Hide scrollbar but keep scroll */
+.pg-hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pg-hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
