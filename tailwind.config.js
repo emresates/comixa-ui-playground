@@ -1,4 +1,4 @@
-import comicPreset from "./src/preset.ts";
+import comicPreset from "comixa-ui/preset";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -8,7 +8,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "../src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/comixa-ui/dist/**/*.{js,cjs}",
   ],
   theme: {
     extend: {},

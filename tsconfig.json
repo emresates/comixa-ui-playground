@@ -11,11 +11,7 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
-    "strict": true,
-    "paths": {
-      "comixa-ui": ["../src"],
-      "comixa-ui/*": ["../src/*"]
-    }
+    "strict": true
   },
-  "include": ["src", "../src"]
+  "include": ["src"]
 }
