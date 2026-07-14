@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Badge, Button, ToastProvider } from "comixa-ui";
 import { NAV } from "./docs/nav";
+import { NavSearch } from "./docs/NavSearch";
 import { renderDocsPage } from "./docs/pages";
 
 function applyTheme(dark: boolean) {
@@ -112,7 +113,7 @@ function Playground() {
             : "flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden"
         }
       >
-        <header className="pg-chrome pg-border flex shrink-0 items-center gap-3 border-b-2 px-4 py-3 backdrop-blur md:px-8">
+        <header className="pg-chrome pg-border flex shrink-0 items-center gap-2 border-b-2 px-4 py-3 backdrop-blur md:gap-3 md:px-8">
           <Button
             size="sm"
             variant="outline"
@@ -121,12 +122,20 @@ function Playground() {
           >
             Menu
           </Button>
-          <Badge variant="yellow">Playground</Badge>
-          <span className="pg-fg-muted font-comic text-sm uppercase tracking-wide">
+          <Badge variant="yellow" className="hidden sm:inline-flex">
+            Playground
+          </Badge>
+          <NavSearch
+            onSelect={(id) => {
+              setActive(id);
+              setMobileNav(false);
+            }}
+          />
+          <span className="pg-fg-muted hidden shrink-0 font-comic text-sm uppercase tracking-wide lg:inline">
             {NAV.flatMap((g) => g.items).find((i) => i.id === active)?.label ??
               "Overview"}
           </span>
-          <div className="ml-auto">
+          <div className="ml-auto shrink-0">
             <Button
               size="sm"
               variant="outline"
