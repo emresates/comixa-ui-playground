@@ -8,6 +8,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "../src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/comixa-ui/dist/**/*.{js,cjs}",
   ],
   theme: {

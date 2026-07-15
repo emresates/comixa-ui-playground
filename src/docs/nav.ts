@@ -9,6 +9,7 @@ export const NAV: NavGroup[] = [
     items: [
       { id: "overview", label: "Overview" },
       { id: "showcase", label: "Showcase" },
+      { id: "examples", label: "Examples" },
     ],
   },
   {
@@ -18,6 +19,7 @@ export const NAV: NavGroup[] = [
       { id: "badge", label: "Badge" },
       { id: "sound-badge", label: "SoundBadge" },
       { id: "sticker", label: "Sticker" },
+      { id: "ribbon", label: "Ribbon" },
     ],
   },
   {
@@ -44,6 +46,7 @@ export const NAV: NavGroup[] = [
       { id: "card", label: "Card" },
       { id: "divider", label: "Divider" },
       { id: "comic-page", label: "ComicPage" },
+      { id: "gallery", label: "Gallery" },
       { id: "speech-bubble", label: "SpeechBubble" },
       { id: "avatar", label: "Avatar" },
     ],
@@ -52,6 +55,7 @@ export const NAV: NavGroup[] = [
     label: "Marketing",
     items: [
       { id: "testimonials", label: "Testimonials" },
+      { id: "features", label: "Features" },
       { id: "pricing", label: "Pricing" },
       { id: "faq", label: "FAQ" },
       { id: "stats", label: "Stats" },
@@ -62,6 +66,10 @@ export const NAV: NavGroup[] = [
     items: [
       { id: "animated-text", label: "AnimatedText" },
       { id: "background", label: "Background" },
+      { id: "page-transition", label: "PageTransition" },
+      { id: "comic-loader", label: "ComicLoader" },
+      { id: "comic-reveal", label: "ComicReveal" },
+      { id: "comic-cursor", label: "ComicCursor" },
     ],
   },
 ];
@@ -71,6 +79,7 @@ export const COMPONENT_BLURBS: { id: string; label: string; blurb: string }[] = 
   { id: "badge", label: "Badge", blurb: "Compact tags for status, labels, and accents." },
   { id: "sound-badge", label: "SoundBadge", blurb: "POW / BAM action words from classic comics." },
   { id: "sticker", label: "Sticker", blurb: "Tilted promo stickers for highlights." },
+  { id: "ribbon", label: "Ribbon", blurb: "Comic ribbons for promos and feature labels." },
   { id: "input", label: "Input", blurb: "Ink-bordered text fields with validation states." },
   { id: "select", label: "Select", blurb: "Custom listbox dropdown (not the native select)." },
   { id: "checkbox", label: "Checkbox", blurb: "Checkable options with optional labels." },
@@ -82,12 +91,18 @@ export const COMPONENT_BLURBS: { id: string; label: string; blurb: string }[] = 
   { id: "card", label: "Card", blurb: "Content panels with ink borders and shadows." },
   { id: "divider", label: "Divider", blurb: "Comic rules and chapter separators." },
   { id: "comic-page", label: "ComicPage", blurb: "Strip layouts built from comic panels." },
+  { id: "gallery", label: "Gallery", blurb: "Ink-framed image galleries for covers and panels." },
   { id: "speech-bubble", label: "SpeechBubble", blurb: "Dialogue and thought bubbles with tails." },
   { id: "avatar", label: "Avatar", blurb: "Initials or image avatars, stackable in groups." },
   { id: "testimonials", label: "Testimonials", blurb: "Quote cards for social proof." },
+  { id: "features", label: "Features", blurb: "Feature grids for capabilities and highlights." },
   { id: "pricing", label: "Pricing", blurb: "Tier cards with featured plans and CTAs." },
   { id: "faq", label: "FAQ", blurb: "Accordion Q&A with comic chevrons." },
   { id: "stats", label: "Stats", blurb: "Metric tiles with optional count-up." },
   { id: "animated-text", label: "AnimatedText", blurb: "Letter reveal, typewriter, comic text, highlight." },
   { id: "background", label: "Background", blurb: "Dots, grid, lines, pattern, explosion, comic paper." },
+  { id: "page-transition", label: "PageTransition", blurb: "Route and panel enter effects in four comic styles." },
+  { id: "comic-loader", label: "ComicLoader", blurb: "Dots, burst, panel, and speech loading animations." },
+  { id: "comic-reveal", label: "ComicReveal", blurb: "Replayable section reveals in four comic styles." },
+  { id: "comic-cursor", label: "ComicCursor", blurb: "Custom comic cursor zones for interactive panels." },
 ];

@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Overview } from "./Overview";
 import { ShowcasePage } from "./ShowcasePage";
+import { ExamplesPage } from "./ExamplesPage";
 import { ButtonDocs } from "./ButtonDocs";
 import { InputDocs } from "./InputDocs";
 import { SelectDocs } from "./SelectDocs";
@@ -24,6 +25,13 @@ import { FAQDocs } from "./FAQDocs";
 import { StatsDocs } from "./StatsDocs";
 import { AnimatedTextDocs } from "./AnimatedTextDocs";
 import { BackgroundDocs } from "./BackgroundDocs";
+import { PageTransitionDocs } from "./PageTransitionDocs";
+import { ComicLoaderDocs } from "./ComicLoaderDocs";
+import { GalleryDocs } from "./GalleryDocs";
+import { RibbonDocs } from "./RibbonDocs";
+import { ComicRevealDocs } from "./ComicRevealDocs";
+import { ComicCursorDocs } from "./ComicCursorDocs";
+import { FeaturesDocs } from "./FeaturesDocs";
 
 export function renderDocsPage(
   active: string,
@@ -32,6 +40,8 @@ export function renderDocsPage(
   switch (active) {
     case "showcase":
       return <ShowcasePage />;
+    case "examples":
+      return <ExamplesPage />;
     case "button":
       return <ButtonDocs />;
     case "input":
@@ -68,6 +78,8 @@ export function renderDocsPage(
       return <AvatarDocs />;
     case "testimonials":
       return <TestimonialsDocs />;
+    case "features":
+      return <FeaturesDocs />;
     case "pricing":
       return <PricingDocs />;
     case "faq":
@@ -78,6 +90,18 @@ export function renderDocsPage(
       return <AnimatedTextDocs />;
     case "background":
       return <BackgroundDocs />;
+    case "page-transition":
+      return <PageTransitionDocs />;
+    case "comic-loader":
+      return <ComicLoaderDocs />;
+    case "gallery":
+      return <GalleryDocs />;
+    case "ribbon":
+      return <RibbonDocs />;
+    case "comic-reveal":
+      return <ComicRevealDocs />;
+    case "comic-cursor":
+      return <ComicCursorDocs />;
     case "overview":
     default:
       return <Overview onNavigate={onNavigate} />;

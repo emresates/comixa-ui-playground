@@ -153,8 +153,8 @@ function Playground() {
         <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-8 md:px-8 md:py-10">
           <div
             className={
-              active === "showcase"
-                ? "mx-auto max-w-5xl"
+              active === "showcase" || active === "examples"
+                ? "mx-auto max-w-6xl"
                 : "mx-auto max-w-3xl"
             }
           >
