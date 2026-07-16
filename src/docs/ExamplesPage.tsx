@@ -29,7 +29,8 @@ import {
   Typewriter,
   type GalleryItem,
 } from "comixa-ui";
-import { BookOpen, Headphones, LayoutDashboard } from "lucide-react";
+import { BookOpen, Code2, Headphones, LayoutDashboard } from "lucide-react";
+import { DeveloperPortfolio } from "./examples/DeveloperPortfolio";
 import { InkShiftEbookLanding } from "./examples/InkShiftEbookLanding";
 import { LaunchBoardDashboard } from "./examples/LaunchBoardDashboard";
 import { PulseOneProductShowcase } from "./examples/PulseOneProductShowcase";
@@ -225,44 +226,34 @@ function ExamplePreview({
   description,
   accent,
   icon,
-  downloadHref,
   onOpen,
 }: {
   title: string;
   description: string;
   accent: string;
   icon: ReactNode;
-  downloadHref?: string;
   onOpen: () => void;
 }) {
   return (
-    <div className="group pg-surface pg-border flex min-h-64 flex-col rounded-xl border-2 p-5 text-left shadow-comic transition hover:-translate-y-1">
-      <button type="button" onClick={onOpen} className="flex flex-1 flex-col text-left">
-        <div className="mb-5 grid h-16 w-16 place-items-center rounded-xl border-2 border-ink bg-comic-yellow text-ink shadow-comic-sm transition-transform group-hover:rotate-3 group-hover:scale-105">
-          {icon}
-        </div>
-        <div className="flex flex-1 flex-col">
-          <Badge variant="yellow">{accent}</Badge>
-          <h2 className="pg-fg mt-3 font-comic text-3xl uppercase tracking-wide">
-            {title}
-          </h2>
-          <p className="pg-fg-muted mt-1 max-w-md text-sm">{description}</p>
-          <p className="mt-auto pt-5 font-comic text-sm uppercase tracking-wide text-ink group-hover:underline">
-            Open preview
-          </p>
-        </div>
-      </button>
-      {downloadHref ? (
-        <a
-          href={downloadHref}
-          download
-          className="mt-3 inline-flex font-comic text-xs uppercase tracking-wide text-ink/70 hover:text-ink hover:underline"
-          onClick={(e) => e.stopPropagation()}
-        >
-          Download source (.zip)
-        </a>
-      ) : null}
-    </div>
+    <button
+      type="button"
+      onClick={onOpen}
+      className="group pg-surface pg-border flex min-h-64 flex-col rounded-xl border-2 p-5 text-left shadow-comic transition hover:-translate-y-1"
+    >
+      <div className="mb-5 grid h-16 w-16 place-items-center rounded-xl border-2 border-ink bg-comic-yellow text-ink shadow-comic-sm transition-transform group-hover:rotate-3 group-hover:scale-105">
+        {icon}
+      </div>
+      <div className="flex flex-1 flex-col">
+        <Badge variant="yellow">{accent}</Badge>
+        <h2 className="pg-fg mt-3 font-comic text-3xl uppercase tracking-wide">
+          {title}
+        </h2>
+        <p className="pg-fg-muted mt-1 max-w-md text-sm">{description}</p>
+        <p className="mt-auto pt-5 font-comic text-sm uppercase tracking-wide text-ink group-hover:underline">
+          Open preview
+        </p>
+      </div>
+    </button>
   );
 }
 
@@ -274,17 +265,18 @@ const EXAMPLES = {
   dashboard: {
     title: "LaunchBoard dashboard",
     content: <LaunchBoardDashboard />,
-    downloadHref: "/examples/comixa-saas-dashboard.zip",
   },
   ebook: {
     title: "InkShift ebook",
     content: <InkShiftEbookLanding />,
-    downloadHref: "/examples/comixa-ebook.zip",
   },
   showcase: {
     title: "Pulse One product",
     content: <PulseOneProductShowcase />,
-    downloadHref: "/examples/comixa-product-showcase.zip",
+  },
+  portfolio: {
+    title: "Developer portfolio",
+    content: <DeveloperPortfolio />,
   },
 } as const;
 
@@ -300,7 +292,7 @@ export function ExamplesPage() {
         <h1 className="pg-fg font-comic text-4xl uppercase tracking-wide">Examples</h1>
         <p className="pg-fg-muted max-w-3xl text-base">
           Small previews of full pages built only from Comixa components. Open
-          one to inspect it like a modal, or download the source project.
+          one to inspect it like a modal.
         </p>
       </header>
 
@@ -317,7 +309,6 @@ export function ExamplesPage() {
           description="Responsive SaaS analytics dashboard with KPIs, revenue chart, customer table, and activity feed."
           accent="Dashboard"
           icon={<LayoutDashboard className="h-8 w-8" strokeWidth={2.5} />}
-          downloadHref="/examples/comixa-saas-dashboard.zip"
           onOpen={() => setOpen("dashboard")}
         />
         <ExamplePreview
@@ -325,7 +316,6 @@ export function ExamplesPage() {
           description="eBook sales page with hero cover, chapter grid, author profile, reviews, pricing, and free chapter preview."
           accent="eBook site"
           icon={<BookOpen className="h-8 w-8" strokeWidth={2.5} />}
-          downloadHref="/examples/comixa-ebook.zip"
           onOpen={() => setOpen("ebook")}
         />
         <ExamplePreview
@@ -333,8 +323,14 @@ export function ExamplesPage() {
           description="Interactive product page with color variants, gallery, add-to-cart, compare dialog, specs, reviews, and FAQ."
           accent="Product page"
           icon={<Headphones className="h-8 w-8" strokeWidth={2.5} />}
-          downloadHref="/examples/comixa-product-showcase.zip"
           onOpen={() => setOpen("showcase")}
+        />
+        <ExamplePreview
+          title="Developer portfolio"
+          description="Frontend developer portfolio with hero, project grid, skills, experience timeline, testimonials, and contact form."
+          accent="Portfolio"
+          icon={<Code2 className="h-8 w-8" strokeWidth={2.5} />}
+          onOpen={() => setOpen("portfolio")}
         />
       </div>
 
@@ -347,15 +343,6 @@ export function ExamplesPage() {
               <p className="font-comic text-2xl uppercase tracking-wide">
                 {active.title}
               </p>
-              {"downloadHref" in active && active.downloadHref ? (
-                <a
-                  href={active.downloadHref}
-                  download
-                  className="hidden font-comic text-sm uppercase tracking-wide text-ink/70 hover:text-ink hover:underline sm:inline"
-                >
-                  Download .zip
-                </a>
-              ) : null}
               <Button
                 size="sm"
                 variant="outline"
