@@ -29,7 +29,8 @@ import {
   Typewriter,
   type GalleryItem,
 } from "comixa-ui";
-import { LayoutDashboard } from "lucide-react";
+import { BookOpen, LayoutDashboard } from "lucide-react";
+import { InkShiftEbookLanding } from "./examples/InkShiftEbookLanding";
 import { LaunchBoardDashboard } from "./examples/LaunchBoardDashboard";
 import { BoltIcon, PlusIcon } from "./shared";
 
@@ -272,6 +273,12 @@ const EXAMPLES = {
   dashboard: {
     title: "LaunchBoard dashboard",
     content: <LaunchBoardDashboard />,
+    downloadHref: "/examples/comixa-saas-dashboard.zip",
+  },
+  ebook: {
+    title: "InkShift ebook",
+    content: <InkShiftEbookLanding />,
+    downloadHref: "/examples/comixa-ebook.zip",
   },
 } as const;
 
@@ -307,6 +314,14 @@ export function ExamplesPage() {
           downloadHref="/examples/comixa-saas-dashboard.zip"
           onOpen={() => setOpen("dashboard")}
         />
+        <ExamplePreview
+          title="InkShift ebook"
+          description="eBook sales page with hero cover, chapter grid, author profile, reviews, pricing, and free chapter preview."
+          accent="eBook site"
+          icon={<BookOpen className="h-8 w-8" strokeWidth={2.5} />}
+          downloadHref="/examples/comixa-ebook.zip"
+          onOpen={() => setOpen("ebook")}
+        />
       </div>
 
       {active ? (
@@ -318,9 +333,9 @@ export function ExamplesPage() {
               <p className="font-comic text-2xl uppercase tracking-wide">
                 {active.title}
               </p>
-              {open === "dashboard" ? (
+              {"downloadHref" in active && active.downloadHref ? (
                 <a
-                  href="/examples/comixa-saas-dashboard.zip"
+                  href={active.downloadHref}
                   download
                   className="hidden font-comic text-sm uppercase tracking-wide text-ink/70 hover:text-ink hover:underline sm:inline"
                 >
