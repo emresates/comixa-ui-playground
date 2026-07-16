@@ -72,7 +72,7 @@ export function DocPage({
           </h2>
           <Button
             size="sm"
-            variant={showCode ? "pop" : "outline"}
+            variant={showCode ? "default" : "outline"}
             onClick={() => setShowCode((v) => !v)}
           >
             {showCode ? "Hide code" : "Code"}
@@ -112,16 +112,16 @@ export function DocPage({
             <tbody>
               {props.map((row) => (
                 <tr key={row.name} className="align-top">
-                  <td className="pg-fg border-b border-black/10 px-3 py-2 font-mono text-xs dark:border-white/10">
+                  <td className="pg-fg border-b border-black/10 px-3 py-2 font-mono text-xs">
                     {row.name}
                   </td>
-                  <td className="pg-fg-muted border-b border-black/10 px-3 py-2 font-mono text-xs dark:border-white/10">
+                  <td className="pg-fg-muted border-b border-black/10 px-3 py-2 font-mono text-xs">
                     {row.type}
                   </td>
-                  <td className="pg-fg border-b border-black/10 px-3 py-2 font-mono text-xs dark:border-white/10">
+                  <td className="pg-fg border-b border-black/10 px-3 py-2 font-mono text-xs">
                     {row.default ?? "—"}
                   </td>
-                  <td className="pg-fg-muted border-b border-black/10 px-3 py-2 dark:border-white/10">
+                  <td className="pg-fg-muted border-b border-black/10 px-3 py-2">
                     {row.description ?? "—"}
                   </td>
                 </tr>

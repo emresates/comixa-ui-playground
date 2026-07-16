@@ -20,21 +20,453 @@ html[data-theme="light"] {
   --pg-fg: #1a1a1a;
   --pg-fg-muted: #5c5c5c;
   --pg-border: #1a1a1a;
+  --comixa-button-font: "Bangers", "Comic Sans MS", cursive;
+  --comixa-button-radius: 0.5rem;
+  --comixa-button-border-width: 2px;
+  --comixa-button-letter-spacing: 0.025em;
+  --comixa-default-bg: #FFD84D;
+  --comixa-default-text: #111111;
+  --comixa-default-border: #1E1E1E;
+  --comixa-default-shadow: #1E1E1E;
+  --comixa-primary-bg: #4F9CF9;
+  --comixa-primary-text: #FFFFFF;
+  --comixa-primary-border: #1E1E1E;
+  --comixa-primary-shadow: #1E1E1E;
+  --comixa-success-bg: #4ADE80;
+  --comixa-success-text: #111111;
+  --comixa-success-border: #1E1E1E;
+  --comixa-success-shadow: #1E1E1E;
+  --comixa-danger-bg: #FF5757;
+  --comixa-danger-text: #FFFFFF;
+  --comixa-danger-border: #1E1E1E;
+  --comixa-danger-shadow: #1E1E1E;
+  --comixa-warning-bg: #FFD84D;
+  --comixa-warning-text: #111111;
+  --comixa-warning-border: #1E1E1E;
+  --comixa-warning-shadow: #1E1E1E;
+  --comixa-outline-bg: #FFFFFF;
+  --comixa-outline-text: #111111;
+  --comixa-outline-border: #1E1E1E;
+  --comixa-outline-shadow: #1E1E1E;
+  --comixa-ghost-bg: transparent;
+  --comixa-ghost-text: #111111;
+  --comixa-ghost-border: transparent;
+  --comixa-ghost-shadow: transparent;
+  --comixa-ribbon-font: "Bangers", "Comic Sans MS", cursive;
+  --comixa-ribbon-radius: 0.375rem;
+  --comixa-ribbon-border: #1A1A1A;
+  --comixa-ribbon-shadow: 3px 3px 0 #1A1A1A;
+  --comixa-ribbon-letter-spacing: 0.025em;
+  --comixa-ribbon-text-transform: uppercase;
+  --comixa-ribbon-banner-bg: #FFD84D;
+  --comixa-ribbon-banner-text: #111111;
+  --comixa-ribbon-corner-bg: #FF5757;
+  --comixa-ribbon-corner-text: #FFFFFF;
+  --comixa-ribbon-ticket-bg: #FFF3D6;
+  --comixa-ribbon-ticket-text: #111111;
+  --comixa-ribbon-burst-bg: #FF7AB6;
+  --comixa-ribbon-burst-text: #111111;
+  --comixa-field-bg: #FFFDF5;
+  --comixa-field-filled-bg: #FFF3D6;
+  --comixa-field-ghost-bg: transparent;
+  --comixa-field-text: #111111;
+  --comixa-field-placeholder: #5C5C5C;
+  --comixa-field-border: #1E1E1E;
+  --comixa-field-shadow: #1E1E1E;
+  --comixa-field-shadow-value: 3px 3px 0 #1E1E1E;
+  --comixa-field-focus-shadow: 4px 4px 0 #1E1E1E;
+  --comixa-field-error-border: #FF5757;
+  --comixa-field-error-shadow: 4px 4px 0 #FF5757;
+  --comixa-field-success-border: #4ADE80;
+  --comixa-field-success-shadow: 4px 4px 0 #4ADE80;
+  --comixa-field-radius-sm: 0.375rem;
+  --comixa-field-radius: 0.5rem;
+  --comixa-field-radius-lg: 0.75rem;
+  --comixa-field-font: "Comic Neue", ui-rounded, system-ui, sans-serif;
+  --comixa-field-letter-spacing: 0;
   color-scheme: light;
 }
 
-html.dark,
-html[data-theme="dark"] {
-  --pg-bg: #141414;
-  --pg-bg-glow-a: rgba(255, 229, 102, 0.12);
-  --pg-bg-glow-b: rgba(77, 159, 255, 0.14);
-  --pg-chrome: #1a1a1a;
-  --pg-surface: #1f1f1f;
-  --pg-surface-muted: #2a2a2a;
-  --pg-fg: #fffdf5;
-  --pg-fg-muted: rgba(255, 253, 245, 0.65);
-  --pg-border: rgba(255, 253, 245, 0.25);
-  color-scheme: dark;
+html[data-comixa-theme="retro"] {
+  --pg-bg: #ead0a6;
+  --pg-bg-glow-a: rgba(217, 145, 61, 0.45);
+  --pg-bg-glow-b: rgba(91, 58, 31, 0.18);
+  --pg-chrome: #f0d3a3;
+  --pg-surface: #f3dfbd;
+  --pg-surface-muted: #deb16d;
+  --pg-fg: #2b1d13;
+  --pg-fg-muted: #68472b;
+  --pg-border: #5b3a1f;
+  --pg-accent: #d9913d;
+  --pg-component-bg: #d9913d;
+  --pg-component-fg: #2b1d13;
+  --pg-component-shadow: 3px 3px 0 #7a4d24;
+  --pg-component-radius: 1rem;
+  --pg-component-font: "Lilita One", "Comic Sans MS", cursive;
+  --pg-component-pattern: radial-gradient(circle at 1px 1px, rgba(91, 58, 31, 0.38) 1px, transparent 0);
+  --pg-component-pattern-size: 9px 9px;
+  --comixa-button-font: "Lilita One", "Comic Sans MS", cursive;
+  --comixa-button-radius: 0.85rem;
+  --comixa-button-border-width: 2px;
+  --comixa-button-letter-spacing: 0;
+  --comixa-default-bg: #D9A441;
+  --comixa-default-text: #3B2B22;
+  --comixa-default-border: #3B2B22;
+  --comixa-default-shadow: #3B2B22;
+  --comixa-default-shadow-value: 2px 2px 0 #7a4d24;
+  --comixa-primary-bg: #6C8EBF;
+  --comixa-primary-text: #FFF8E8;
+  --comixa-primary-border: #3B2B22;
+  --comixa-primary-shadow: #3B2B22;
+  --comixa-primary-shadow-value: 2px 2px 0 #7a4d24;
+  --comixa-success-bg: #7A9E5F;
+  --comixa-success-text: #FFF8E8;
+  --comixa-success-border: #3B2B22;
+  --comixa-success-shadow: #3B2B22;
+  --comixa-success-shadow-value: 2px 2px 0 #7a4d24;
+  --comixa-danger-bg: #C66A4A;
+  --comixa-danger-text: #FFF8E8;
+  --comixa-danger-border: #3B2B22;
+  --comixa-danger-shadow: #3B2B22;
+  --comixa-danger-shadow-value: 2px 2px 0 #7a4d24;
+  --comixa-warning-bg: #D9A441;
+  --comixa-warning-text: #3B2B22;
+  --comixa-warning-border: #3B2B22;
+  --comixa-warning-shadow: #3B2B22;
+  --comixa-warning-shadow-value: 2px 2px 0 #7a4d24;
+  --comixa-outline-bg: #F4E2B6;
+  --comixa-outline-text: #3B2B22;
+  --comixa-outline-border: #3B2B22;
+  --comixa-outline-shadow: #3B2B22;
+  --comixa-outline-shadow-value: 1.5px 1.5px 0 #7a4d24;
+  --comixa-ghost-bg: transparent;
+  --comixa-ghost-text: #3B2B22;
+  --comixa-ghost-border: transparent;
+  --comixa-ghost-shadow: transparent;
+  --comixa-ribbon-font: "Lilita One", "Comic Sans MS", cursive;
+  --comixa-ribbon-radius: 0.85rem;
+  --comixa-ribbon-border: #5b3a1f;
+  --comixa-ribbon-shadow: 2px 2px 0 #7a4d24;
+  --comixa-ribbon-letter-spacing: 0;
+  --comixa-ribbon-banner-bg: #d9913d;
+  --comixa-ribbon-banner-text: #2b1d13;
+  --comixa-ribbon-corner-bg: #c66a4a;
+  --comixa-ribbon-corner-text: #fff8e8;
+  --comixa-ribbon-ticket-bg: #f4e2b6;
+  --comixa-ribbon-ticket-text: #3b2b22;
+  --comixa-ribbon-burst-bg: #d9a441;
+  --comixa-ribbon-burst-text: #3b2b22;
+  --comixa-field-bg: #f3dfbd;
+  --comixa-field-filled-bg: #deb16d;
+  --comixa-field-ghost-bg: rgba(244, 226, 182, 0.36);
+  --comixa-field-text: #2b1d13;
+  --comixa-field-placeholder: #68472b;
+  --comixa-field-border: #5b3a1f;
+  --comixa-field-shadow: #7a4d24;
+  --comixa-field-shadow-value: 2px 2px 0 #7a4d24;
+  --comixa-field-focus-shadow: 3px 3px 0 #5b3a1f;
+  --comixa-field-error-border: #c66a4a;
+  --comixa-field-error-shadow: 3px 3px 0 #c66a4a;
+  --comixa-field-success-border: #7a9e5f;
+  --comixa-field-success-shadow: 3px 3px 0 #7a9e5f;
+  --comixa-field-radius-sm: 0.65rem;
+  --comixa-field-radius: 0.85rem;
+  --comixa-field-radius-lg: 1rem;
+  --comixa-field-font: "Lilita One", "Comic Sans MS", cursive;
+  --comixa-field-letter-spacing: 0;
+}
+
+html[data-comixa-theme="pop-art"] {
+  --pg-bg: #ffe566;
+  --pg-bg-glow-a: rgba(255, 77, 77, 0.45);
+  --pg-bg-glow-b: rgba(77, 159, 255, 0.34);
+  --pg-chrome: #fffdf5;
+  --pg-surface: #fffdf5;
+  --pg-surface-muted: #ffe566;
+  --pg-fg: #1a1a1a;
+  --pg-fg-muted: #4a3a23;
+  --pg-border: #1a1a1a;
+  --pg-accent: #ff4d4d;
+  --pg-component-bg: #ff4d4d;
+  --pg-component-fg: #ffffff;
+  --pg-component-shadow: 7px 7px 0 #4d9fff;
+  --pg-component-radius: 0.75rem;
+  --pg-component-font: "Baloo 2", "Bangers", Impact, sans-serif;
+  --pg-component-pattern: radial-gradient(circle at 2px 2px, rgba(255, 229, 102, 0.9) 2px, transparent 0);
+  --pg-component-pattern-size: 12px 12px;
+  --comixa-button-font: "Baloo 2", "Bangers", Impact, sans-serif;
+  --comixa-button-radius: 0.55rem;
+  --comixa-button-border-width: 2px;
+  --comixa-button-letter-spacing: 0.025em;
+  --comixa-default-bg: #FFE14D;
+  --comixa-default-text: #111111;
+  --comixa-default-border: #111111;
+  --comixa-default-shadow: #FF4FA3;
+  --comixa-default-shadow-value: 6px 6px 0 #ff4fa3;
+  --comixa-primary-bg: #3B82F6;
+  --comixa-primary-text: #FFFFFF;
+  --comixa-primary-border: #111111;
+  --comixa-primary-shadow: #FFD400;
+  --comixa-primary-shadow-value: 6px 6px 0 #ffd400;
+  --comixa-success-bg: #22C55E;
+  --comixa-success-text: #111111;
+  --comixa-success-border: #111111;
+  --comixa-success-shadow: #FFD400;
+  --comixa-success-shadow-value: 6px 6px 0 #ffd400;
+  --comixa-danger-bg: #FF4B4B;
+  --comixa-danger-text: #FFFFFF;
+  --comixa-danger-border: #111111;
+  --comixa-danger-shadow: #FFD400;
+  --comixa-danger-shadow-value: 6px 6px 0 #ffd400;
+  --comixa-warning-bg: #FFE14D;
+  --comixa-warning-text: #111111;
+  --comixa-warning-border: #111111;
+  --comixa-warning-shadow: #FF4FA3;
+  --comixa-warning-shadow-value: 6px 6px 0 #ff4fa3;
+  --comixa-outline-bg: #FFFFFF;
+  --comixa-outline-text: #111111;
+  --comixa-outline-border: #111111;
+  --comixa-outline-shadow: #FFD400;
+  --comixa-outline-shadow-value: 5px 5px 0 #ffd400;
+  --comixa-ghost-bg: transparent;
+  --comixa-ghost-text: #111111;
+  --comixa-ghost-border: transparent;
+  --comixa-ghost-shadow: transparent;
+  --comixa-primary-pattern: var(--pg-component-pattern);
+  --comixa-primary-pattern-size: var(--pg-component-pattern-size);
+  --comixa-primary-pattern-opacity: 0.18;
+  --comixa-danger-pattern: var(--pg-component-pattern);
+  --comixa-danger-pattern-size: var(--pg-component-pattern-size);
+  --comixa-danger-pattern-opacity: 0.18;
+  --comixa-warning-pattern: var(--pg-component-pattern);
+  --comixa-warning-pattern-size: var(--pg-component-pattern-size);
+  --comixa-warning-pattern-opacity: 0.22;
+  --comixa-ribbon-font: "Baloo 2", "Bangers", Impact, sans-serif;
+  --comixa-ribbon-radius: 0.55rem;
+  --comixa-ribbon-border: #111111;
+  --comixa-ribbon-shadow: 6px 6px 0 #3b82f6;
+  --comixa-ribbon-letter-spacing: 0.055em;
+  --comixa-ribbon-text-transform: none;
+  --comixa-ribbon-banner-bg: #ffe14d;
+  --comixa-ribbon-banner-text: #111111;
+  --comixa-ribbon-corner-bg: #ff4b4b;
+  --comixa-ribbon-corner-text: #ffffff;
+  --comixa-ribbon-ticket-bg: #ffffff;
+  --comixa-ribbon-ticket-text: #111111;
+  --comixa-ribbon-burst-bg: #ff4fa3;
+  --comixa-ribbon-burst-text: #111111;
+  --comixa-field-bg: #fffdf5;
+  --comixa-field-filled-bg: #ffe14d;
+  --comixa-field-ghost-bg: rgba(255, 255, 255, 0.5);
+  --comixa-field-text: #111111;
+  --comixa-field-placeholder: #4a3a23;
+  --comixa-field-border: #111111;
+  --comixa-field-shadow: #ff4fa3;
+  --comixa-field-shadow-value: 6px 6px 0 #ff4fa3;
+  --comixa-field-focus-shadow: 7px 7px 0 #3b82f6;
+  --comixa-field-error-border: #ff4b4b;
+  --comixa-field-error-shadow: 6px 6px 0 #ffd400;
+  --comixa-field-success-border: #22c55e;
+  --comixa-field-success-shadow: 6px 6px 0 #ffd400;
+  --comixa-field-radius-sm: 0.45rem;
+  --comixa-field-radius: 0.55rem;
+  --comixa-field-radius-lg: 0.75rem;
+  --comixa-field-font: "Baloo 2", "Bangers", Impact, sans-serif;
+  --comixa-field-letter-spacing: 0.03em;
+}
+
+html[data-comixa-theme="manga"] {
+  --pg-bg: #f7f7f2;
+  --pg-bg-glow-a: rgba(0, 0, 0, 0.06);
+  --pg-bg-glow-b: rgba(0, 0, 0, 0.08);
+  --pg-chrome: #ffffff;
+  --pg-surface: #ffffff;
+  --pg-surface-muted: #eeeeea;
+  --pg-fg: #070707;
+  --pg-fg-muted: #555555;
+  --pg-border: #070707;
+  --pg-accent: #070707;
+  --pg-component-bg: #ffffff;
+  --pg-component-fg: #070707;
+  --pg-component-shadow: 7px 7px 0 #000000;
+  --pg-component-radius: 0.35rem;
+  --pg-component-font: "Antonio", Impact, sans-serif;
+  --pg-component-pattern: repeating-linear-gradient(-32deg, transparent 0, transparent 5px, rgba(0, 0, 0, 0.14) 5px, rgba(0, 0, 0, 0.14) 6px, transparent 6px, transparent 11px);
+  --pg-component-pattern-size: auto;
+  --comixa-button-font: "Antonio", Impact, sans-serif;
+  --comixa-button-radius: 0.2rem;
+  --comixa-button-border-width: 3px;
+  --comixa-button-letter-spacing: 0;
+  --comixa-default-bg: #F7F7F7;
+  --comixa-default-text: #111111;
+  --comixa-default-border: #111111;
+  --comixa-default-shadow: #111111;
+  --comixa-default-shadow-value: 6px 6px 0 #111111;
+  --comixa-default-pattern: repeating-linear-gradient(90deg, transparent 0, transparent 6px, rgba(0,0,0,0.34) 6px, rgba(0,0,0,0.34) 7px);
+  --comixa-default-pattern-size: 12px 100%;
+  --comixa-default-pattern-opacity: 0.42;
+  --comixa-primary-bg: #FFFFFF;
+  --comixa-primary-text: #111111;
+  --comixa-primary-border: #111111;
+  --comixa-primary-shadow: #111111;
+  --comixa-primary-shadow-value: 6px 6px 0 #111111;
+  --comixa-success-bg: #ECECEC;
+  --comixa-success-text: #111111;
+  --comixa-success-border: #111111;
+  --comixa-success-shadow: #111111;
+  --comixa-success-shadow-value: 6px 6px 0 #111111;
+  --comixa-danger-bg: #DDDDDD;
+  --comixa-danger-text: #111111;
+  --comixa-danger-border: #111111;
+  --comixa-danger-shadow: #111111;
+  --comixa-danger-shadow-value: 6px 6px 0 #111111;
+  --comixa-warning-bg: #F7F7F7;
+  --comixa-warning-text: #111111;
+  --comixa-warning-border: #111111;
+  --comixa-warning-shadow: #111111;
+  --comixa-warning-shadow-value: 6px 6px 0 #111111;
+  --comixa-outline-bg: transparent;
+  --comixa-outline-text: #111111;
+  --comixa-outline-border: #111111;
+  --comixa-outline-shadow: #111111;
+  --comixa-outline-shadow-value: 5px 5px 0 #111111;
+  --comixa-ghost-bg: transparent;
+  --comixa-ghost-text: #111111;
+  --comixa-ghost-border: transparent;
+  --comixa-ghost-shadow: transparent;
+  --comixa-primary-pattern: repeating-linear-gradient(110deg, transparent 0, transparent 8px, rgba(0,0,0,0.34) 9px, transparent 10px);
+  --comixa-primary-pattern-size: 18px 100%;
+  --comixa-primary-pattern-opacity: 0.52;
+  --comixa-success-pattern: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.42) 1.4px, transparent 0);
+  --comixa-success-pattern-size: 8px 8px;
+  --comixa-success-pattern-opacity: 0.38;
+  --comixa-danger-pattern: repeating-linear-gradient(-35deg, transparent 0, transparent 5px, rgba(0,0,0,0.26) 5px, rgba(0,0,0,0.26) 6px, transparent 6px, transparent 11px), repeating-linear-gradient(35deg, transparent 0, transparent 5px, rgba(0,0,0,0.18) 5px, rgba(0,0,0,0.18) 6px, transparent 6px, transparent 11px);
+  --comixa-danger-pattern-size: auto;
+  --comixa-danger-pattern-opacity: 0.45;
+  --comixa-warning-pattern: repeating-linear-gradient(90deg, transparent 0, transparent 6px, rgba(0,0,0,0.34) 6px, rgba(0,0,0,0.34) 7px);
+  --comixa-warning-pattern-size: 12px 100%;
+  --comixa-warning-pattern-opacity: 0.42;
+  --comixa-ribbon-font: "Antonio", Impact, sans-serif;
+  --comixa-ribbon-radius: 0.2rem;
+  --comixa-ribbon-border: #111111;
+  --comixa-ribbon-shadow: 6px 6px 0 #111111;
+  --comixa-ribbon-letter-spacing: 0;
+  --comixa-ribbon-banner-bg: #ffffff;
+  --comixa-ribbon-banner-text: #111111;
+  --comixa-ribbon-corner-bg: #111111;
+  --comixa-ribbon-corner-text: #ffffff;
+  --comixa-ribbon-ticket-bg: #f7f7f7;
+  --comixa-ribbon-ticket-text: #111111;
+  --comixa-ribbon-burst-bg: #ececec;
+  --comixa-ribbon-burst-text: #111111;
+  --comixa-field-bg: #ffffff;
+  --comixa-field-filled-bg: #ececec;
+  --comixa-field-ghost-bg: transparent;
+  --comixa-field-text: #070707;
+  --comixa-field-placeholder: #555555;
+  --comixa-field-border: #070707;
+  --comixa-field-shadow: #000000;
+  --comixa-field-shadow-value: 6px 6px 0 #000000;
+  --comixa-field-focus-shadow: 8px 8px 0 #000000;
+  --comixa-field-error-border: #111111;
+  --comixa-field-error-shadow: 6px 6px 0 #111111;
+  --comixa-field-success-border: #111111;
+  --comixa-field-success-shadow: 6px 6px 0 #111111;
+  --comixa-field-radius-sm: 0.12rem;
+  --comixa-field-radius: 0.2rem;
+  --comixa-field-radius-lg: 0.25rem;
+  --comixa-field-font: "Antonio", Impact, sans-serif;
+  --comixa-field-letter-spacing: 0;
+}
+
+html[data-comixa-theme="vintage"] {
+  --pg-bg: #ead9b8;
+  --pg-bg-glow-a: rgba(127, 29, 45, 0.18);
+  --pg-bg-glow-b: rgba(36, 48, 79, 0.15);
+  --pg-chrome: #f4dfb8;
+  --pg-surface: #f7e7c8;
+  --pg-surface-muted: #ead2a5;
+  --pg-fg: #2f2418;
+  --pg-fg-muted: #6a5541;
+  --pg-border: #24304f;
+  --pg-accent: #7f1d2d;
+  --pg-component-bg: #f4dfb8;
+  --pg-component-fg: #7f1d2d;
+  --pg-component-shadow: 2px 2px 0 #24304f;
+  --pg-component-radius: 0.4rem;
+  --pg-component-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --pg-component-pattern: radial-gradient(circle at 1px 1px, rgba(36, 48, 79, 0.18) 0.8px, transparent 0), repeating-linear-gradient(0deg, rgba(36, 48, 79, 0.07) 0, rgba(36, 48, 79, 0.07) 1px, transparent 1px, transparent 5px);
+  --pg-component-pattern-size: 8px 8px, 100% 6px;
+  --comixa-button-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --comixa-button-radius: 0.4rem;
+  --comixa-button-border-width: 1px;
+  --comixa-button-font-weight: 700;
+  --comixa-button-letter-spacing: 0.04em;
+  --comixa-default-bg: #E5C37A;
+  --comixa-default-text: #4A3A2A;
+  --comixa-default-border: #4A3A2A;
+  --comixa-default-shadow: #4A3A2A;
+  --comixa-default-shadow-value: 1.5px 1.5px 0 #4a3a2a;
+  --comixa-primary-bg: #D7C2A5;
+  --comixa-primary-text: #7B2D26;
+  --comixa-primary-border: #4A3A2A;
+  --comixa-primary-shadow: #4A3A2A;
+  --comixa-primary-shadow-value: 1.5px 1.5px 0 #4a3a2a;
+  --comixa-success-bg: #BFC8A6;
+  --comixa-success-text: #4A3A2A;
+  --comixa-success-border: #4A3A2A;
+  --comixa-success-shadow: #4A3A2A;
+  --comixa-success-shadow-value: 1.5px 1.5px 0 #4a3a2a;
+  --comixa-danger-bg: #C9997B;
+  --comixa-danger-text: #4A3A2A;
+  --comixa-danger-border: #4A3A2A;
+  --comixa-danger-shadow: #4A3A2A;
+  --comixa-danger-shadow-value: 1.5px 1.5px 0 #4a3a2a;
+  --comixa-warning-bg: #E5C37A;
+  --comixa-warning-text: #4A3A2A;
+  --comixa-warning-border: #4A3A2A;
+  --comixa-warning-shadow: #4A3A2A;
+  --comixa-warning-shadow-value: 1.5px 1.5px 0 #4a3a2a;
+  --comixa-outline-bg: #F7EED8;
+  --comixa-outline-text: #7B2D26;
+  --comixa-outline-border: #4A3A2A;
+  --comixa-outline-shadow: #4A3A2A;
+  --comixa-outline-shadow-value: 1px 1px 0 #4a3a2a;
+  --comixa-ghost-bg: transparent;
+  --comixa-ghost-text: #7B2D26;
+  --comixa-ghost-border: transparent;
+  --comixa-ghost-shadow: transparent;
+  --comixa-ribbon-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --comixa-ribbon-radius: 0.35rem;
+  --comixa-ribbon-border: #4a3a2a;
+  --comixa-ribbon-shadow: 1px 1px 0 #4a3a2a;
+  --comixa-ribbon-letter-spacing: 0.06em;
+  --comixa-ribbon-banner-bg: #e5c37a;
+  --comixa-ribbon-banner-text: #4a3a2a;
+  --comixa-ribbon-corner-bg: #7b2d26;
+  --comixa-ribbon-corner-text: #f7eed8;
+  --comixa-ribbon-ticket-bg: #f7eed8;
+  --comixa-ribbon-ticket-text: #7b2d26;
+  --comixa-ribbon-burst-bg: #d7c2a5;
+  --comixa-ribbon-burst-text: #7b2d26;
+  --comixa-field-bg: #f7eed8;
+  --comixa-field-filled-bg: #ead2a5;
+  --comixa-field-ghost-bg: rgba(247, 238, 216, 0.45);
+  --comixa-field-text: #4a3a2a;
+  --comixa-field-placeholder: #7b6651;
+  --comixa-field-border: #4a3a2a;
+  --comixa-field-shadow: #4a3a2a;
+  --comixa-field-shadow-value: 1px 1px 0 #4a3a2a;
+  --comixa-field-focus-shadow: 2px 2px 0 #24304f;
+  --comixa-field-error-border: #7b2d26;
+  --comixa-field-error-shadow: 2px 2px 0 #7b2d26;
+  --comixa-field-success-border: #5b6a42;
+  --comixa-field-success-shadow: 2px 2px 0 #5b6a42;
+  --comixa-field-radius-sm: 0.25rem;
+  --comixa-field-radius: 0.35rem;
+  --comixa-field-radius-lg: 0.45rem;
+  --comixa-field-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --comixa-field-letter-spacing: 0.035em;
 }
 
 body {
@@ -74,6 +506,157 @@ body {
 
 .pg-border {
   border-color: var(--pg-border);
+}
+
+.pg-theme-picker {
+  gap: 0.55rem;
+}
+
+.theme-option {
+  min-width: 4.2rem;
+  height: 2.45rem;
+  border-width: 2px;
+  border-radius: 0.55rem;
+  font-size: 0.82rem;
+  line-height: 1;
+  letter-spacing: 0;
+  transform: rotate(var(--theme-option-tilt, 0deg));
+  --comixa-button-bg: #ffd84d;
+  --comixa-button-text: #111111;
+  --comixa-button-border: #1e1e1e;
+  --comixa-button-shadow-value: 3px 3px 0 #1e1e1e;
+  --comixa-button-pattern: none;
+  --comixa-button-pattern-size: auto;
+  --comixa-button-pattern-opacity: 0;
+}
+
+.theme-option:hover {
+  filter: saturate(1.08);
+  transform: rotate(var(--theme-option-tilt, 0deg)) translateY(-2px);
+}
+
+.theme-option[aria-pressed="true"] {
+  outline: 2px solid var(--pg-fg);
+  outline-offset: 2px;
+}
+
+.theme-option[data-theme-option="light"] {
+  --comixa-button-bg: #ffd84d;
+  --comixa-button-text: #111111;
+  --comixa-button-border: #1e1e1e;
+  --comixa-button-shadow-value: 4px 4px 0 #1e1e1e;
+  --comixa-button-pattern: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.5) 1.5px, transparent 0);
+  --comixa-button-pattern-size: 10px 10px;
+  --comixa-button-pattern-opacity: 0.35;
+  --theme-option-tilt: -1deg;
+}
+
+.theme-option[data-theme-option="retro"] {
+  font-family: "Lilita One", "Comic Sans MS", cursive;
+  --comixa-button-bg: #d9913d;
+  --comixa-button-text: #2b1d13;
+  --comixa-button-border: #5b3a1f;
+  --comixa-button-shadow-value: 2px 2px 0 #7a4d24;
+  --comixa-button-pattern: radial-gradient(circle at 1px 1px, rgba(91,58,31,0.42) 1px, transparent 0);
+  --comixa-button-pattern-size: 8px 8px;
+  --comixa-button-pattern-opacity: 0.32;
+  --theme-option-tilt: 0deg;
+}
+
+.theme-option[data-theme-option="pop-art"] {
+  font-family: "Baloo 2", "Bangers", Impact, sans-serif;
+  --comixa-button-bg: #ff4b4b;
+  --comixa-button-text: #ffffff;
+  --comixa-button-border: #111111;
+  --comixa-button-shadow-value: 4px 4px 0 #ffe14d;
+  --comixa-button-pattern: radial-gradient(circle at 2px 2px, rgba(255,225,77,0.95) 1.8px, transparent 0);
+  --comixa-button-pattern-size: 10px 10px;
+  --comixa-button-pattern-opacity: 0.34;
+  --theme-option-tilt: -1deg;
+}
+
+.theme-option[data-theme-option="manga"] {
+  font-family: "Antonio", Impact, sans-serif;
+  letter-spacing: 0;
+  --comixa-button-bg: #ffffff;
+  --comixa-button-text: #111111;
+  --comixa-button-border: #111111;
+  --comixa-button-shadow-value: 4px 4px 0 #111111;
+  --comixa-button-pattern: repeating-linear-gradient(-32deg, transparent 0, transparent 5px, rgba(0,0,0,0.26) 5px, rgba(0,0,0,0.26) 6px, transparent 6px, transparent 11px);
+  --comixa-button-pattern-size: auto;
+  --comixa-button-pattern-opacity: 0.42;
+  --theme-option-tilt: -1deg;
+}
+
+.theme-option[data-theme-option="vintage"] {
+  --comixa-button-bg: #f7eed8;
+  --comixa-button-text: #7b2d26;
+  --comixa-button-border: #4a3a2a;
+  --comixa-button-shadow-value: 1.5px 1.5px 0 #4a3a2a;
+  --comixa-button-pattern: radial-gradient(circle at 1px 1px, rgba(36,48,79,0.2) 0.75px, transparent 0), repeating-linear-gradient(0deg, rgba(36,48,79,0.07) 0, rgba(36,48,79,0.07) 1px, transparent 1px, transparent 5px);
+  --comixa-button-pattern-size: 8px 8px, 100% 6px;
+  --comixa-button-pattern-opacity: 0.32;
+  min-width: 5.8rem;
+  border-width: 1px;
+  border-radius: 0.45rem;
+  font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  font-weight: 900;
+  font-size: 0.95rem;
+}
+
+html[data-comixa-theme]:not([data-comixa-theme="light"]) .pg-surface,
+html[data-comixa-theme]:not([data-comixa-theme="light"]) .pg-chrome {
+  background-image: var(--pg-component-pattern);
+  background-size: var(--pg-component-pattern-size);
+}
+
+html[data-comixa-theme]:not([data-comixa-theme="light"]) .pg-nav-item-active {
+  background: var(--pg-component-bg);
+  color: var(--pg-component-fg);
+  border-color: var(--pg-border);
+  box-shadow: var(--pg-component-shadow);
+  border-radius: var(--pg-component-radius);
+}
+
+html[data-comixa-theme]:not([data-comixa-theme="light"]) main select:not(.theme-option) {
+  background-color: var(--pg-component-bg);
+  color: var(--pg-component-fg);
+  border-color: var(--pg-border);
+  box-shadow: var(--pg-component-shadow);
+  border-radius: var(--pg-component-radius);
+  font-family: var(--pg-component-font);
+}
+
+html[data-comixa-theme]:not([data-comixa-theme="light"]) main select:not(.theme-option)::before {
+  background-image: var(--pg-component-pattern);
+  background-size: var(--pg-component-pattern-size);
+}
+
+html[data-comixa-theme]:not([data-comixa-theme="light"]) main :is(article, section, div, li)[class*="border-ink"] {
+  border-color: var(--pg-border);
+  box-shadow: var(--pg-component-shadow);
+}
+
+html[data-comixa-theme]:not([data-comixa-theme="light"]) main :is(h1, h2, h3, h4, .font-comic) {
+  color: var(--pg-fg);
+}
+
+html[data-comixa-theme="manga"] main :is([data-comixa-input], [data-comixa-textarea], select):not(.theme-option) {
+  border-width: 4px;
+}
+
+html[data-comixa-theme="pop-art"] main :is(button, [data-comixa-input], [data-comixa-textarea], select):not(.theme-option) {
+  text-shadow: 1px 1px 0 #1a1a1a;
+}
+
+html[data-comixa-theme="pop-art"] main :is(
+  [data-comixa-badge],
+  [data-comixa-sticker],
+  [data-comixa-sound-badge],
+  [data-comixa-ribbon]
+) {
+  letter-spacing: 0.055em;
+  text-transform: none;
 }
 
 /* Hide scrollbar but keep scroll */

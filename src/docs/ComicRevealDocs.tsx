@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, ComicReveal } from "comixa-ui";
+import { Button, Card, CardContent, CardHeader, CardTitle, ComicReveal } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
 import { DemoLabel } from "./shared";
 
@@ -10,11 +10,15 @@ export function ComicRevealDocs() {
 
   return (
     <DocPage
-      title="ComicReveal"
-      description="Replayable comic reveal animations for cards, sections, and route content."
+      title="Reveal Animation"
+      description="Replayable comic reveal animations for cards, sections, and route content. Reveals can also start when they enter the viewport."
       importCode={`import { ComicReveal } from "comixa-ui";`}
       exampleCode={`<ComicReveal variant="pop" revealKey={id}>
   <Card>Fresh panel</Card>
+</ComicReveal>
+
+<ComicReveal variant="panel-wipe" triggerOnView>
+  <Card>Reveals when visible</Card>
 </ComicReveal>`}
       props={
         [
@@ -41,6 +45,18 @@ export function ComicRevealDocs() {
             default: "520",
             description: "Animation duration in ms",
           },
+          {
+            name: "triggerOnView",
+            type: "boolean",
+            default: "false",
+            description: "Start reveal when the element enters the viewport",
+          },
+          {
+            name: "once",
+            type: "boolean",
+            default: "true",
+            description: "With triggerOnView, reveal only the first time it enters view",
+          },
         ] satisfies PropRow[]
       }
     >
@@ -55,17 +71,53 @@ export function ComicRevealDocs() {
               <ComicReveal
                 variant={variant}
                 revealKey={`${variant}-${replay}`}
-                className="rounded-xl border-2 border-ink bg-comic-yellow p-5 shadow-comic"
+                triggerOnView
               >
-                <h3 className="font-comic text-3xl uppercase tracking-wide">
-                  Zap panel
-                </h3>
-                <p className="mt-2 text-sm text-ink-muted">
-                  This block replays with the selected reveal style.
-                </p>
+                <Card variant={variant === "spotlight" ? "panel" : "pop"}>
+                  <CardHeader>
+                    <CardTitle>Zap panel</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm opacity-80">
+                      This block replays with the selected reveal style.
+                    </p>
+                  </CardContent>
+                </Card>
               </ComicReveal>
             </div>
           ))}
+        </div>
+        <div>
+          <DemoLabel>Scroll trigger</DemoLabel>
+          <div
+            className="h-64 overflow-y-auto rounded-xl border-2 border-dashed border-ink bg-paper-cream p-5 shadow-comic-sm"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(26,26,26,.18) 1px, transparent 0)",
+              backgroundSize: "18px 18px",
+            }}
+          >
+            <div className="flex h-[30rem] items-start">
+              <span className="rounded-full border-2 border-ink bg-paper px-3 py-1 font-comic text-sm uppercase shadow-comic-sm">
+                Scroll to reveal
+              </span>
+            </div>
+            <ComicReveal
+              variant="panel-wipe"
+              triggerOnView
+            >
+              <Card variant="speech">
+                <CardHeader>
+                  <CardTitle>Revealed down here</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm opacity-80">
+                    This panel starts its reveal when it enters this scroll area.
+                  </p>
+                </CardContent>
+              </Card>
+            </ComicReveal>
+          </div>
         </div>
       </div>
     </DocPage>

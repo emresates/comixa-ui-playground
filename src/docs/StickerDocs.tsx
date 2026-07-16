@@ -1,7 +1,4 @@
-import {
-  Background,
-  Sticker,
-} from "comixa-ui";
+import { Sticker } from "comixa-ui";
 import { DocPage } from "./DocPage";
 
 export function StickerDocs() {
@@ -10,7 +7,14 @@ export function StickerDocs() {
       title="Sticker"
       description='Tilted promo stickers for "New", "Hot", limited drops, and other accents.'
       importCode={`import { Sticker } from "comixa-ui";`}
-      exampleCode={`<Sticker variant="yellow" tilt="left">New!</Sticker>\n<Sticker variant="red" shape="circle" tilt="right">Hot</Sticker>`}
+      exampleCode={`<Sticker variant="default">Default</Sticker>
+<Sticker variant="yellow">Yellow</Sticker>
+<Sticker variant="red">Red</Sticker>
+<Sticker variant="blue">Blue</Sticker>
+<Sticker variant="green">Green</Sticker>
+<Sticker variant="pink">Pink</Sticker>
+<Sticker variant="orange">Orange</Sticker>
+<Sticker variant="ink">Ink</Sticker>`}
       props={[
         {
           name: "variant",
@@ -39,6 +43,9 @@ export function StickerDocs() {
       ]}
     >
       <div className="flex flex-wrap items-center gap-4">
+        <Sticker variant="default" tilt="none">
+          Default
+        </Sticker>
         <Sticker variant="yellow">New!</Sticker>
         <Sticker variant="red" tilt="right" shape="circle">
           Hot
@@ -46,7 +53,17 @@ export function StickerDocs() {
         <Sticker variant="blue" tilt="wild" size="lg">
           Limited
         </Sticker>
+        <Sticker variant="green" tilt="right">
+          Green
+        </Sticker>
+        <Sticker variant="pink">Pink</Sticker>
+        <Sticker variant="orange" tilt="none">
+          Orange
+        </Sticker>
         <Sticker variant="ink" size="sm">
+          Ink
+        </Sticker>
+        <Sticker variant="ink" size="sm" shape="circle" tilt="right">
           #1
         </Sticker>
       </div>

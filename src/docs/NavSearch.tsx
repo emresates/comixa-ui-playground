@@ -87,7 +87,7 @@ export function NavSearch({ onSelect }: NavSearchProps) {
         aria-controls={listId}
         aria-autocomplete="list"
         role="combobox"
-        className="w-full bg-paper pr-14 dark:bg-paper-cream/10"
+        className="w-full bg-paper pr-14"
         onFocus={() => setOpen(true)}
         onChange={(event) => {
           setQuery(event.target.value);
@@ -139,7 +139,7 @@ export function NavSearch({ onSelect }: NavSearchProps) {
                     className={
                       selected
                         ? "flex w-full items-center justify-between gap-3 bg-comic-yellow px-3 py-2.5 text-left text-ink"
-                        : "pg-fg flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left hover:bg-black/5 dark:hover:bg-white/10"
+                        : "pg-fg flex w-full items-center justify-between gap-3 px-3 py-2.5 text-left hover:bg-black/5"
                     }
                     onMouseEnter={() => setHighlight(index)}
                     onClick={() => pick(item.id)}

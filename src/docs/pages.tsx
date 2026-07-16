@@ -1,9 +1,9 @@
 import type { ReactNode } from "react";
 import { Overview } from "./Overview";
-import { ShowcasePage } from "./ShowcasePage";
 import { ExamplesPage } from "./ExamplesPage";
 import { ButtonDocs } from "./ButtonDocs";
 import { InputDocs } from "./InputDocs";
+import { TextareaDocs } from "./TextareaDocs";
 import { SelectDocs } from "./SelectDocs";
 import { CheckboxDocs } from "./CheckboxDocs";
 import { RadioDocs } from "./RadioDocs";
@@ -28,6 +28,7 @@ import { BackgroundDocs } from "./BackgroundDocs";
 import { PageTransitionDocs } from "./PageTransitionDocs";
 import { ComicLoaderDocs } from "./ComicLoaderDocs";
 import { GalleryDocs } from "./GalleryDocs";
+import { TimelineDocs } from "./TimelineDocs";
 import { RibbonDocs } from "./RibbonDocs";
 import { ComicRevealDocs } from "./ComicRevealDocs";
 import { ComicCursorDocs } from "./ComicCursorDocs";
@@ -38,14 +39,14 @@ export function renderDocsPage(
   onNavigate: (id: string) => void
 ): ReactNode {
   switch (active) {
-    case "showcase":
-      return <ShowcasePage />;
     case "examples":
       return <ExamplesPage />;
     case "button":
       return <ButtonDocs />;
     case "input":
       return <InputDocs />;
+    case "textarea":
+      return <TextareaDocs />;
     case "select":
       return <SelectDocs />;
     case "checkbox":
@@ -96,6 +97,8 @@ export function renderDocsPage(
       return <ComicLoaderDocs />;
     case "gallery":
       return <GalleryDocs />;
+    case "timeline":
+      return <TimelineDocs />;
     case "ribbon":
       return <RibbonDocs />;
     case "comic-reveal":

@@ -29,13 +29,12 @@ import {
   Typewriter,
   type GalleryItem,
 } from "comixa-ui";
-import { BookOpen, Code2, Headphones, LayoutDashboard, Newspaper, Rocket } from "lucide-react";
+import { BookOpen, Code2, LayoutDashboard, Newspaper, Rocket } from "lucide-react";
 import { DeveloperPortfolio } from "./examples/DeveloperPortfolio";
 import { InkShiftEbookLanding } from "./examples/InkShiftEbookLanding";
 import { LaunchBoardDashboard } from "./examples/LaunchBoardDashboard";
 import { LaunchZapLanding } from "./examples/LaunchZapLanding";
 import { PanelPressBlog } from "./examples/PanelPressBlog";
-import { PulseOneProductShowcase } from "./examples/PulseOneProductShowcase";
 import { BoltIcon, PlusIcon } from "./shared";
 
 const galleryItems: GalleryItem[] = [
@@ -272,10 +271,6 @@ const EXAMPLES = {
     title: "InkShift ebook",
     content: <InkShiftEbookLanding />,
   },
-  showcase: {
-    title: "Pulse One product",
-    content: <PulseOneProductShowcase />,
-  },
   portfolio: {
     title: "Developer portfolio",
     content: <DeveloperPortfolio />,
@@ -327,13 +322,6 @@ export function ExamplesPage() {
           accent="eBook site"
           icon={<BookOpen className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("ebook")}
-        />
-        <ExamplePreview
-          title="Pulse One product"
-          description="Interactive product page with color variants, gallery, add-to-cart, compare dialog, specs, reviews, and FAQ."
-          accent="Product page"
-          icon={<Headphones className="h-8 w-8" strokeWidth={2.5} />}
-          onOpen={() => setOpen("showcase")}
         />
         <ExamplePreview
           title="Developer portfolio"

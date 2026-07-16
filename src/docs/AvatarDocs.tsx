@@ -1,16 +1,11 @@
-import { type ReactNode } from "react";
-import {
-  Avatar,
-  AvatarGroup,
-  Background,
-} from "comixa-ui";
+import { Avatar, AvatarGroup } from "comixa-ui";
 import { DocPage } from "./DocPage";
 
 export function AvatarDocs() {
   return (
     <DocPage
       title="Avatar"
-      description="Character face from initials or image, with comic borders. Stack several with AvatarGroup."
+      description="Theme-aware character avatars from initials or images. Stack several with AvatarGroup."
       importCode={`import { Avatar, AvatarGroup } from "comixa-ui";`}
       exampleCode={`<Avatar name="Captain Zap" variant="yellow" />\n<AvatarGroup>\n  <Avatar name="A B" shape="circle" />\n  <Avatar name="C D" shape="circle" />\n</AvatarGroup>`}
       props={[
@@ -18,7 +13,7 @@ export function AvatarDocs() {
           name: "variant",
           type: `"default" | "yellow" | "blue" | "red" | "green" | "pink" | "ink"`,
           default: `"default"`,
-          description: "Background accent",
+          description: "Semantic theme accent",
         },
         {
           name: "size",
@@ -53,6 +48,9 @@ export function AvatarDocs() {
         <Avatar name="Captain Zap" variant="yellow" />
         <Avatar name="Boom Knight" variant="red" size="lg" />
         <Avatar name="Ink Mage" variant="blue" shape="circle" />
+        <Avatar name="Green Signal" variant="green" />
+        <Avatar name="Panel Pop" variant="pink" />
+        <Avatar name="Ink Core" variant="ink" />
         <AvatarGroup>
           <Avatar name="A B" variant="yellow" shape="circle" />
           <Avatar name="C D" variant="blue" shape="circle" />

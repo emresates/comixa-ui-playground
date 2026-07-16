@@ -25,7 +25,7 @@ const TOAST_DURATIONS = [
 
 const TOAST_VARIANTS = [
   { id: "default", label: "Default", button: "outline" as const },
-  { id: "pop", label: "Pop", button: "pop" as const },
+  { id: "pop", label: "Pop", button: "default" as const },
   { id: "success", label: "Success", button: "success" as const },
   { id: "danger", label: "Danger", button: "danger" as const },
   { id: "info", label: "Info", button: "primary" as const },
@@ -110,7 +110,7 @@ export function ToastDocs() {
               <Button
                 key={item.label}
                 size="sm"
-                variant={duration === item.value ? "pop" : "outline"}
+                variant={duration === item.value ? "default" : "outline"}
                 onClick={() => setDuration(item.value)}
               >
                 {item.label}

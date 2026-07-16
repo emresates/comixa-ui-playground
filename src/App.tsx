@@ -1,41 +1,58 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Badge, Button, ToastProvider } from "comixa-ui";
 import { NAV } from "./docs/nav";
 import { NavSearch } from "./docs/NavSearch";
 import { renderDocsPage } from "./docs/pages";
 
-function applyTheme(dark: boolean) {
+const PLAYGROUND_THEMES = [
+  { id: "light", label: "Comic" },
+  { id: "retro", label: "Retro" },
+  { id: "pop-art", label: "Pop Art" },
+  { id: "manga", label: "Manga" },
+  { id: "vintage", label: "Vintage" },
+] as const;
+
+type PlaygroundTheme = (typeof PLAYGROUND_THEMES)[number]["id"];
+
+function isPlaygroundTheme(value: string | null): value is PlaygroundTheme {
+  return PLAYGROUND_THEMES.some((theme) => theme.id === value);
+}
+
+function applyTheme(theme: PlaygroundTheme) {
   const root = document.documentElement;
-  root.classList.toggle("dark", dark);
-  root.setAttribute("data-theme", dark ? "dark" : "light");
+  root.setAttribute("data-theme", "light");
+  root.setAttribute("data-comixa-theme", theme);
   try {
-    localStorage.setItem("comixa-playground-theme", dark ? "dark" : "light");
+    localStorage.setItem("comixa-playground-theme", theme);
   } catch {
     /* ignore */
   }
 }
 
 function useTheme() {
-  const [dark, setDark] = useState(() => {
-    if (typeof document === "undefined") return false;
-    return document.documentElement.getAttribute("data-theme") === "dark";
+  const [theme, setTheme] = useState<PlaygroundTheme>(() => {
+    if (typeof document === "undefined") return "light";
+    try {
+      const stored = localStorage.getItem("comixa-playground-theme");
+      if (isPlaygroundTheme(stored)) return stored;
+    } catch {
+      /* ignore */
+    }
+    const current = document.documentElement.getAttribute("data-comixa-theme");
+    return isPlaygroundTheme(current) ? current : "light";
   });
 
-  const toggle = () => {
-    setDark((prev) => {
-      const next = !prev;
-      applyTheme(next);
-      return next;
-    });
-  };
+  useEffect(() => {
+    applyTheme(theme);
+  }, [theme]);
 
-  return { dark, toggle };
+  return { theme, setTheme };
 }
 
 function Playground() {
   const [active, setActive] = useState("overview");
   const [mobileNav, setMobileNav] = useState(false);
-  const { dark, toggle } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   const page = useMemo(() => renderDocsPage(active, setActive), [active]);
 
@@ -88,8 +105,8 @@ function Playground() {
                         }}
                         className={
                           selected
-                            ? "w-full rounded-lg border-2 border-ink bg-comic-yellow px-3 py-2 text-left font-comic text-sm uppercase tracking-wide text-ink shadow-comic-sm"
-                            : "pg-fg w-full rounded-lg px-3 py-2 text-left font-body text-sm hover:bg-black/5 dark:hover:bg-white/10"
+                            ? "pg-nav-item-active w-full rounded-lg border-2 border-ink bg-comic-yellow px-3 py-2 text-left font-comic text-sm uppercase tracking-wide text-ink shadow-comic-sm"
+                            : "pg-nav-item pg-fg w-full rounded-lg px-3 py-2 text-left font-body text-sm hover:bg-black/5"
                         }
                       >
                         {item.label}
@@ -132,25 +149,27 @@ function Playground() {
             {NAV.flatMap((g) => g.items).find((i) => i.id === active)?.label ??
               "Overview"}
           </span>
-          <div className="ml-auto shrink-0">
-            <Button
-              size="sm"
-              variant="outline"
-              icon
-              aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-              onClick={toggle}
-            >
-              <span className="text-sm leading-none" aria-hidden="true">
-                {dark ? "☀" : "☾"}
-              </span>
-            </Button>
+          <div className="pg-theme-picker ml-auto flex shrink-0 items-center gap-1 pg-hide-scrollbar">
+            {PLAYGROUND_THEMES.map((item) => (
+              <Button
+                key={item.id}
+                size="sm"
+                variant="default"
+                className="theme-option shrink-0"
+                data-theme-option={item.id}
+                aria-pressed={theme === item.id}
+                onClick={() => setTheme(item.id)}
+              >
+                {item.label}
+              </Button>
+            ))}
           </div>
         </header>
 
         <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-8 md:px-8 md:py-10">
           <div
             className={
-              active === "showcase" || active === "examples"
+              active === "examples"
                 ? "mx-auto max-w-6xl"
                 : "mx-auto max-w-3xl"
             }

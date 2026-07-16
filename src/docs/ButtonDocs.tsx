@@ -1,6 +1,4 @@
-import {
-  Button,
-} from "comixa-ui";
+import { Button } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
 import { DemoLabel, BoltIcon, PlusIcon } from "./shared";
 
@@ -8,16 +6,21 @@ export function ButtonDocs() {
   return (
     <DocPage
       title="Button"
-      description="Chunky comic CTA for actions. Use variants for intent, sizes for hierarchy, loading for async work, and icon for square icon-only buttons."
+      description="Chunky comic CTA for actions. Variants stay semantic; the playground theme picker changes how those variants look."
       importCode={`import { Button } from "comixa-ui";`}
-      exampleCode={`<Button variant="pop">Pow!</Button>\n<Button loading>Saving…</Button>\n<Button icon aria-label="Add">\n  <PlusIcon />\n</Button>`}
+      exampleCode={`<Button>Default</Button>
+<Button variant="primary">Primary</Button>
+<Button variant="danger">Danger</Button>
+<Button variant="warning">Warning</Button>
+<Button loading>Saving...</Button>`}
       props={
         [
           {
             name: "variant",
-            type: `"pop" | "primary" | "danger" | "success" | "outline" | "ghost"`,
-            default: `"pop"`,
-            description: "Visual style / intent",
+            type: `"default" | "primary" | "danger" | "success" | "warning" | "outline" | "ghost"`,
+            default: `"default"`,
+            description:
+              "Semantic intent. The active theme controls colors, shadows, and patterns.",
           },
           {
             name: "size",
@@ -38,12 +41,6 @@ export function ButtonDocs() {
             description: "Square icon-only button",
           },
           {
-            name: "effect",
-            type: `"none" | "pop" | "shake" | "wiggle"`,
-            default: `"none"`,
-            description: "Motion on hover / press",
-          },
-          {
             name: "className",
             type: "string",
             description: "Extra Tailwind classes",
@@ -55,14 +52,16 @@ export function ButtonDocs() {
         <div>
           <DemoLabel>Variants</DemoLabel>
           <div className="flex flex-wrap gap-3">
-            <Button variant="pop">Pop</Button>
+            <Button>Default</Button>
             <Button variant="primary">Primary</Button>
             <Button variant="danger">Danger</Button>
             <Button variant="success">Success</Button>
+            <Button variant="warning">Warning</Button>
             <Button variant="outline">Outline</Button>
             <Button variant="ghost">Ghost</Button>
           </div>
         </div>
+
         <div>
           <DemoLabel>Loading</DemoLabel>
           <div className="flex flex-wrap items-center gap-3">
@@ -71,13 +70,14 @@ export function ButtonDocs() {
               Loading
             </Button>
             <Button variant="danger" loading>
-              Boom…
+              Boom...
             </Button>
             <Button variant="outline" loading>
               Wait
             </Button>
           </div>
         </div>
+
         <div>
           <DemoLabel>Icon buttons</DemoLabel>
           <div className="flex flex-wrap items-center gap-3">
@@ -96,6 +96,7 @@ export function ButtonDocs() {
             <Button icon variant="outline" loading aria-label="Loading icon" />
           </div>
         </div>
+
         <div>
           <DemoLabel>With icon + label</DemoLabel>
           <div className="flex flex-wrap gap-3">
@@ -109,24 +110,13 @@ export function ButtonDocs() {
             </Button>
           </div>
         </div>
+
         <div>
           <DemoLabel>Sizes</DemoLabel>
           <div className="flex flex-wrap items-center gap-3">
             <Button size="sm">Small</Button>
             <Button size="md">Medium</Button>
             <Button size="lg">Large</Button>
-          </div>
-        </div>
-        <div>
-          <DemoLabel>Effects</DemoLabel>
-          <div className="flex flex-wrap gap-3">
-            <Button effect="pop">Pop</Button>
-            <Button variant="danger" effect="shake">
-              Shake
-            </Button>
-            <Button variant="primary" effect="wiggle">
-              Wiggle
-            </Button>
           </div>
         </div>
       </div>

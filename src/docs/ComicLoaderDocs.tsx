@@ -5,8 +5,8 @@ import { DemoLabel } from "./shared";
 export function ComicLoaderDocs() {
   return (
     <DocPage
-      title="ComicLoader"
-      description="Small loading indicators with comic motion: dots, burst, panel slide, and speech bubble."
+      title="Loader Animation"
+      description="Small loading indicators with theme-aware comic motion: dots, burst, panel slide, and speech bubble."
       importCode={`import { ComicLoader } from "comixa-ui";`}
       exampleCode={`<ComicLoader variant="dots" />\n<ComicLoader variant="burst" label="Zap" tone="red" />`}
       props={
@@ -38,20 +38,20 @@ export function ComicLoaderDocs() {
         ] satisfies PropRow[]
       }
     >
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div className="rounded-xl border-2 border-ink bg-paper p-5 shadow-comic-sm">
           <DemoLabel>Dots</DemoLabel>
           <ComicLoader variant="dots" tone="blue" label="Loading" />
         </div>
-        <div>
+        <div className="rounded-xl border-2 border-ink bg-paper p-5 shadow-comic-sm">
           <DemoLabel>Burst</DemoLabel>
           <ComicLoader variant="burst" tone="red" label="Zap" size="sm" />
         </div>
-        <div>
+        <div className="rounded-xl border-2 border-ink bg-paper p-5 shadow-comic-sm">
           <DemoLabel>Panel</DemoLabel>
           <ComicLoader variant="panel" tone="green" label="Loading panels" />
         </div>
-        <div>
+        <div className="rounded-xl border-2 border-ink bg-paper p-5 shadow-comic-sm">
           <DemoLabel>Speech</DemoLabel>
           <ComicLoader variant="speech" tone="pink" label="Hold on" />
         </div>

@@ -1,24 +1,31 @@
 import { useState } from "react";
-import { Button, ComicCursor } from "comixa-ui";
+import { Button, Card, CardContent, CardHeader, CardTitle, CursorFollow } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
 import { DemoLabel } from "./shared";
 
-const variants = ["dot", "ring", "spark"] as const;
+const variants = [
+  "auto",
+  "comic",
+  "retro",
+  "pop-art",
+  "manga",
+  "vintage",
+] as const;
 type CursorVariant = (typeof variants)[number];
 
 export function ComicCursorDocs() {
   const [enabled, setEnabled] = useState(true);
-  const [variant, setVariant] = useState<CursorVariant>("dot");
+  const [variant, setVariant] = useState<CursorVariant>("auto");
 
   return (
     <DocPage
-      title="ComicCursor"
-      description="A global comic cursor follower with soft trailing dots behind the pointer."
-      importCode={`import { ComicCursor } from "comixa-ui";`}
+      title="Cursor"
+      description="Theme-ready cursor followers: Comic dot, Retro sticker, Pop Art burst, Manga speed lines, and Vintage stamp."
+      importCode={`import { CursorFollow } from "comixa-ui";`}
       exampleCode={`function Page() {
   return (
     <>
-      <ComicCursor variant="dot" trailCount={5} />
+      <CursorFollow enabled animated showLabel />
       <button data-comixa-cursor-zone>Hover target</button>
     </>
   );
@@ -27,9 +34,21 @@ export function ComicCursorDocs() {
         [
           {
             name: "variant",
-            type: `"dot" | "ring" | "spark"`,
-            default: `"dot"`,
-            description: "Follower visual style",
+            type: `"auto" | "comic" | "retro" | "pop-art" | "manga" | "vintage" | "dot" | "ring" | "spark"`,
+            default: `"auto"`,
+            description: "Follower visual style. Auto follows data-comixa-theme",
+          },
+          {
+            name: "animated",
+            type: "boolean",
+            default: "true",
+            description: "Smoothly follows the pointer with theme-specific easing",
+          },
+          {
+            name: "showLabel",
+            type: "boolean",
+            default: "true",
+            description: "Shows CLICK / POW / !!! / STAMP labels near hover zones",
           },
           {
             name: "enabled",
@@ -59,12 +78,18 @@ export function ComicCursorDocs() {
             name: "data-comixa-cursor-zone",
             type: "attribute",
             description:
-              "Add this to an element so the follower grows slightly and fades on hover",
+              "Add this to an element so the follower shows its theme label on hover",
           },
         ] satisfies PropRow[]
       }
     >
-      <ComicCursor enabled={enabled} variant={variant} trailCount={6} />
+      <CursorFollow
+        enabled={enabled}
+        animated
+        showLabel
+        variant={variant}
+        trailCount={6}
+      />
       <div className="flex flex-col gap-5">
         <div>
           <DemoLabel>Controls</DemoLabel>
@@ -73,7 +98,7 @@ export function ComicCursorDocs() {
               <Button
                 key={item}
                 size="sm"
-                variant={variant === item ? "pop" : "outline"}
+                variant={variant === item ? "default" : "outline"}
                 onClick={() => setVariant(item)}
               >
                 {item}
@@ -88,53 +113,62 @@ export function ComicCursorDocs() {
             </Button>
           </div>
         </div>
-        <div
+        <Card
           data-comixa-cursor-zone
-          className="rounded-xl border-2 border-ink bg-comic-yellow p-8 shadow-comic"
+          variant="pop"
+          padding="lg"
         >
-          <h3 className="font-comic text-4xl uppercase tracking-wide">
-            Move your mouse
-          </h3>
-          <p className="mt-2 max-w-xl text-ink-muted">
-            The cursor follower starts when this page mounts and leaves a soft
-            low-opacity trail behind it. Hover this panel to see it grow and
-            fade.
-          </p>
-        </div>
+          <CardHeader>
+            <CardTitle>Move your mouse</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="max-w-xl text-sm opacity-80">
+              The cursor follower starts when this page mounts and leaves a soft
+              low-opacity trail behind it. Hover this panel to see the theme
+              label.
+            </p>
+          </CardContent>
+        </Card>
         <div className="grid gap-4 md:grid-cols-3">
-          <div
+          <Card
             data-comixa-cursor-zone
-            className="min-h-32 rounded-xl border-2 border-ink bg-comic-pink p-5 shadow-comic"
+            variant="danger"
           >
-            <h3 className="font-comic text-2xl uppercase tracking-wide">
-              Trail
-            </h3>
-            <p className="mt-2 text-sm text-ink-muted">
-              Dots follow the pointer with staggered easing.
-            </p>
-          </div>
-          <div
+            <CardHeader>
+              <CardTitle>Trail</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm opacity-80">
+                Dots follow the pointer with staggered easing.
+              </p>
+            </CardContent>
+          </Card>
+          <Card
             data-comixa-cursor-zone
-            className="min-h-32 rounded-xl border-2 border-ink bg-comic-blue p-5 text-white shadow-comic"
+            variant="panel"
           >
-            <h3 className="font-comic text-2xl uppercase tracking-wide">
-              Smooth
-            </h3>
-            <p className="mt-2 text-sm opacity-75">
-              The main dot eases toward the mouse position.
-            </p>
-          </div>
-          <div
+            <CardHeader>
+              <CardTitle>Smooth</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm opacity-80">
+                The main dot eases toward the mouse position.
+              </p>
+            </CardContent>
+          </Card>
+          <Card
             data-comixa-cursor-zone
-            className="min-h-32 rounded-xl border-2 border-ink bg-paper p-5 shadow-comic"
+            variant="default"
           >
-            <h3 className="font-comic text-2xl uppercase tracking-wide">
-              Hover zone
-            </h3>
-            <p className="mt-2 text-sm text-ink-muted">
-              Zone elements trigger the grow and opacity response.
-            </p>
-          </div>
+            <CardHeader>
+              <CardTitle>Hover zone</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm opacity-80">
+                Zone elements trigger the grow and opacity response.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </DocPage>
