@@ -37,10 +37,7 @@ function Playground() {
   const [mobileNav, setMobileNav] = useState(false);
   const { dark, toggle } = useTheme();
 
-  const page = useMemo(
-    () => renderDocsPage(active, setActive),
-    [active]
-  );
+  const page = useMemo(() => renderDocsPage(active, setActive), [active]);
 
   return (
     <div className="flex h-full min-h-0 overflow-hidden">
