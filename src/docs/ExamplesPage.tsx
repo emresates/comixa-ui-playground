@@ -29,6 +29,8 @@ import {
   Typewriter,
   type GalleryItem,
 } from "comixa-ui";
+import { LayoutDashboard } from "lucide-react";
+import { LaunchBoardDashboard } from "./examples/LaunchBoardDashboard";
 import { BoltIcon, PlusIcon } from "./shared";
 
 const galleryItems: GalleryItem[] = [
@@ -221,39 +223,63 @@ function ExamplePreview({
   description,
   accent,
   icon,
+  downloadHref,
   onOpen,
 }: {
   title: string;
   description: string;
   accent: string;
   icon: ReactNode;
+  downloadHref?: string;
   onOpen: () => void;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onOpen}
-      className="group pg-surface pg-border flex min-h-64 flex-col rounded-xl border-2 p-5 text-left shadow-comic transition hover:-translate-y-1"
-    >
-      <div className="mb-5 grid h-16 w-16 place-items-center rounded-xl border-2 border-ink bg-comic-yellow text-ink shadow-comic-sm transition-transform group-hover:rotate-3 group-hover:scale-105">
-        {icon}
-      </div>
-      <div className="flex flex-1 flex-col">
-        <Badge variant="yellow">{accent}</Badge>
-        <h2 className="pg-fg mt-3 font-comic text-3xl uppercase tracking-wide">
-          {title}
-        </h2>
-        <p className="pg-fg-muted mt-1 max-w-md text-sm">{description}</p>
-        <p className="mt-auto pt-5 font-comic text-sm uppercase tracking-wide text-ink group-hover:underline">
-          Open preview
-        </p>
-      </div>
-    </button>
+    <div className="group pg-surface pg-border flex min-h-64 flex-col rounded-xl border-2 p-5 text-left shadow-comic transition hover:-translate-y-1">
+      <button type="button" onClick={onOpen} className="flex flex-1 flex-col text-left">
+        <div className="mb-5 grid h-16 w-16 place-items-center rounded-xl border-2 border-ink bg-comic-yellow text-ink shadow-comic-sm transition-transform group-hover:rotate-3 group-hover:scale-105">
+          {icon}
+        </div>
+        <div className="flex flex-1 flex-col">
+          <Badge variant="yellow">{accent}</Badge>
+          <h2 className="pg-fg mt-3 font-comic text-3xl uppercase tracking-wide">
+            {title}
+          </h2>
+          <p className="pg-fg-muted mt-1 max-w-md text-sm">{description}</p>
+          <p className="mt-auto pt-5 font-comic text-sm uppercase tracking-wide text-ink group-hover:underline">
+            Open preview
+          </p>
+        </div>
+      </button>
+      {downloadHref ? (
+        <a
+          href={downloadHref}
+          download
+          className="mt-3 inline-flex font-comic text-xs uppercase tracking-wide text-ink/70 hover:text-ink hover:underline"
+          onClick={(e) => e.stopPropagation()}
+        >
+          Download source (.zip)
+        </a>
+      ) : null}
+    </div>
   );
 }
 
+const EXAMPLES = {
+  landing: {
+    title: "CoverForge landing",
+    content: <LandingExample />,
+  },
+  dashboard: {
+    title: "LaunchBoard dashboard",
+    content: <LaunchBoardDashboard />,
+  },
+} as const;
+
+type ExampleId = keyof typeof EXAMPLES;
+
 export function ExamplesPage() {
-  const [open, setOpen] = useState<"landing" | null>(null);
+  const [open, setOpen] = useState<ExampleId | null>(null);
+  const active = open ? EXAMPLES[open] : null;
 
   return (
     <article className="flex flex-col gap-6">
@@ -261,7 +287,7 @@ export function ExamplesPage() {
         <h1 className="pg-fg font-comic text-4xl uppercase tracking-wide">Examples</h1>
         <p className="pg-fg-muted max-w-3xl text-base">
           Small previews of full pages built only from Comixa components. Open
-          one to inspect it like a modal.
+          one to inspect it like a modal, or download the source project.
         </p>
       </header>
 
@@ -273,17 +299,34 @@ export function ExamplesPage() {
           icon={<BoltIcon className="h-8 w-8" />}
           onOpen={() => setOpen("landing")}
         />
+        <ExamplePreview
+          title="LaunchBoard dashboard"
+          description="Responsive SaaS analytics dashboard with KPIs, revenue chart, customer table, and activity feed."
+          accent="Dashboard"
+          icon={<LayoutDashboard className="h-8 w-8" strokeWidth={2.5} />}
+          downloadHref="/examples/comixa-saas-dashboard.zip"
+          onOpen={() => setOpen("dashboard")}
+        />
       </div>
 
-      {open ? (
+      {active ? (
         <div className="fixed inset-0 z-50 bg-ink/80 p-3 md:p-6">
           <div
             className="mx-auto flex h-full max-w-7xl flex-col overflow-hidden rounded-xl border-4 border-ink bg-paper shadow-[12px_12px_0_0_#1A1A1A]"
           >
             <div className="flex shrink-0 items-center gap-3 border-b-4 border-ink bg-comic-yellow px-4 py-3">
               <p className="font-comic text-2xl uppercase tracking-wide">
-                CoverForge landing
+                {active.title}
               </p>
+              {open === "dashboard" ? (
+                <a
+                  href="/examples/comixa-saas-dashboard.zip"
+                  download
+                  className="hidden font-comic text-sm uppercase tracking-wide text-ink/70 hover:text-ink hover:underline sm:inline"
+                >
+                  Download .zip
+                </a>
+              ) : null}
               <Button
                 size="sm"
                 variant="outline"
@@ -293,8 +336,8 @@ export function ExamplesPage() {
                 Close
               </Button>
             </div>
-            <div className="min-h-0 flex-1 overflow-y-auto bg-paper-cream p-4 md:p-6">
-              <LandingExample />
+            <div className="min-h-0 flex-1 overflow-y-auto bg-paper-cream p-0 md:p-0">
+              {active.content}
             </div>
           </div>
         </div>

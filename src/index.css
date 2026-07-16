@@ -77,6 +77,32 @@ body {
 }
 
 /* Hide scrollbar but keep scroll */
+.grid-paper {
+  background-image:
+    linear-gradient(rgba(23, 23, 23, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 23, 23, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.chart-line {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation: chart-draw 1.4s ease forwards;
+}
+
+@keyframes chart-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chart-line {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
 .pg-hide-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;

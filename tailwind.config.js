@@ -12,7 +12,11 @@ export default {
     "./node_modules/comixa-ui/dist/**/*.{js,cjs}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        display: ["Bangers", "cursive"],
+      },
+    },
   },
   plugins: [],
 };
