@@ -29,9 +29,10 @@ import {
   Typewriter,
   type GalleryItem,
 } from "comixa-ui";
-import { BookOpen, LayoutDashboard } from "lucide-react";
+import { BookOpen, Headphones, LayoutDashboard } from "lucide-react";
 import { InkShiftEbookLanding } from "./examples/InkShiftEbookLanding";
 import { LaunchBoardDashboard } from "./examples/LaunchBoardDashboard";
+import { PulseOneProductShowcase } from "./examples/PulseOneProductShowcase";
 import { BoltIcon, PlusIcon } from "./shared";
 
 const galleryItems: GalleryItem[] = [
@@ -280,6 +281,11 @@ const EXAMPLES = {
     content: <InkShiftEbookLanding />,
     downloadHref: "/examples/comixa-ebook.zip",
   },
+  showcase: {
+    title: "Pulse One product",
+    content: <PulseOneProductShowcase />,
+    downloadHref: "/examples/comixa-product-showcase.zip",
+  },
 } as const;
 
 type ExampleId = keyof typeof EXAMPLES;
@@ -321,6 +327,14 @@ export function ExamplesPage() {
           icon={<BookOpen className="h-8 w-8" strokeWidth={2.5} />}
           downloadHref="/examples/comixa-ebook.zip"
           onOpen={() => setOpen("ebook")}
+        />
+        <ExamplePreview
+          title="Pulse One product"
+          description="Interactive product page with color variants, gallery, add-to-cart, compare dialog, specs, reviews, and FAQ."
+          accent="Product page"
+          icon={<Headphones className="h-8 w-8" strokeWidth={2.5} />}
+          downloadHref="/examples/comixa-product-showcase.zip"
+          onOpen={() => setOpen("showcase")}
         />
       </div>
 

@@ -138,6 +138,156 @@ body {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation: none;
+  }
+}
+
+.ink-shadow {
+  box-shadow: 8px 8px 0 #111;
+}
+
+.product-stage {
+  background: linear-gradient(135deg, #ffd539 0 50%, #ff4f8b 50% 100%);
+}
+
+.headphones {
+  position: relative;
+  width: min(330px, 70vw);
+  height: 310px;
+  margin: auto;
+}
+
+.headband {
+  position: absolute;
+  left: 52px;
+  top: 16px;
+  width: 226px;
+  height: 205px;
+  border: 26px solid #171717;
+  border-bottom: 0;
+  border-radius: 120px 120px 0 0;
+}
+
+.headband::after {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 8px solid #fff;
+  border-bottom: 0;
+  border-radius: 100px 100px 0 0;
+}
+
+.cup {
+  position: absolute;
+  top: 160px;
+  width: 105px;
+  height: 125px;
+  border: 8px solid #171717;
+  border-radius: 38px;
+  background: #4d7cff;
+  box-shadow: 7px 7px 0 #171717;
+}
+
+.cup.left {
+  left: 20px;
+  transform: rotate(7deg);
+}
+
+.cup.right {
+  right: 20px;
+  transform: rotate(-7deg);
+}
+
+.cup::before {
+  content: "";
+  position: absolute;
+  inset: 19px;
+  border: 5px solid #171717;
+  border-radius: 24px;
+  background: #ff4f8b;
+}
+
+.cup::after {
+  content: "P";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 48px Bangers, Impact, sans-serif;
+  color: white;
+  -webkit-text-stroke: 2px #111;
+}
+
+.burst {
+  clip-path: polygon(
+    50% 0,
+    60% 30%,
+    82% 8%,
+    76% 37%,
+    100% 31%,
+    80% 51%,
+    100% 70%,
+    73% 64%,
+    80% 96%,
+    59% 73%,
+    50% 100%,
+    40% 73%,
+    18% 95%,
+    26% 64%,
+    0 70%,
+    21% 50%,
+    0 30%,
+    27% 37%,
+    19% 7%,
+    41% 30%
+  );
+}
+
+.swatch {
+  width: 42px;
+  height: 42px;
+  border: 3px solid #111;
+  box-shadow: 3px 3px 0 #111;
+  transition: 0.15s;
+}
+
+.swatch[data-active="true"] {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #111;
+  outline: 4px solid white;
+  outline-offset: -7px;
+}
+
+.thumb {
+  min-height: 92px;
+  border: 3px solid #111;
+  box-shadow: 4px 4px 0 #111;
+  transition: 0.15s;
+}
+
+.thumb:hover,
+.thumb.active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #111;
+}
+
+.review-stars {
+  letter-spacing: 0.18em;
+  color: #ffb300;
+}
+
+@media (max-width: 640px) {
+  .ink-shadow {
+    box-shadow: 5px 5px 0 #111;
+  }
+
+  .headphones {
+    transform: scale(0.82);
+  }
+}
+
 .pg-hide-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
