@@ -29,10 +29,12 @@ import {
   Typewriter,
   type GalleryItem,
 } from "comixa-ui";
-import { BookOpen, Code2, Headphones, LayoutDashboard } from "lucide-react";
+import { BookOpen, Code2, Headphones, LayoutDashboard, Newspaper, Rocket } from "lucide-react";
 import { DeveloperPortfolio } from "./examples/DeveloperPortfolio";
 import { InkShiftEbookLanding } from "./examples/InkShiftEbookLanding";
 import { LaunchBoardDashboard } from "./examples/LaunchBoardDashboard";
+import { LaunchZapLanding } from "./examples/LaunchZapLanding";
+import { PanelPressBlog } from "./examples/PanelPressBlog";
 import { PulseOneProductShowcase } from "./examples/PulseOneProductShowcase";
 import { BoltIcon, PlusIcon } from "./shared";
 
@@ -278,6 +280,14 @@ const EXAMPLES = {
     title: "Developer portfolio",
     content: <DeveloperPortfolio />,
   },
+  blog: {
+    title: "Panel Press blog",
+    content: <PanelPressBlog />,
+  },
+  launchzap: {
+    title: "LaunchZap landing",
+    content: <LaunchZapLanding />,
+  },
 } as const;
 
 type ExampleId = keyof typeof EXAMPLES;
@@ -331,6 +341,20 @@ export function ExamplesPage() {
           accent="Portfolio"
           icon={<Code2 className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("portfolio")}
+        />
+        <ExamplePreview
+          title="Panel Press blog"
+          description="Comic-inspired developer blog with featured story, category filters, search, newsletter signup, and article pages."
+          accent="Blog"
+          icon={<Newspaper className="h-8 w-8" strokeWidth={2.5} />}
+          onOpen={() => setOpen("blog")}
+        />
+        <ExamplePreview
+          title="LaunchZap landing"
+          description="SaaS launch workspace landing page with hero, features, workflow, pricing, FAQ, and demo dialog."
+          accent="SaaS landing"
+          icon={<Rocket className="h-8 w-8" strokeWidth={2.5} />}
+          onOpen={() => setOpen("launchzap")}
         />
       </div>
 

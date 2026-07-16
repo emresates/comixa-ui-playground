@@ -16,6 +16,18 @@ export default {
       fontFamily: {
         display: ["Bangers", "cursive"],
       },
+      maxWidth: {
+        "8xl": "90rem",
+      },
+      animation: {
+        float: "float 4s ease-in-out infinite",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0) rotate(-2deg)" },
+          "50%": { transform: "translateY(-12px) rotate(2deg)" },
+        },
+      },
     },
   },
   plugins: [],
