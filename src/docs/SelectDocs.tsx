@@ -16,7 +16,7 @@ export function SelectDocs() {
       title="Select"
       description="Custom listbox dropdown (not the native select). Options open in a comic panel; chevron stays on the right."
       importCode={`import { Select } from "comixa-ui";`}
-      exampleCode={`<Select\n  variant="pop"\n  defaultValue="zap"\n  options={[\n    { value: "zap", label: "Captain Zap" },\n    { value: "boom", label: "Boom Knight" },\n  ]}\n/>`}
+      exampleCode={`<Select\n  variant="filled"\n  defaultValue="zap"\n  options={[\n    { value: "zap", label: "Captain Zap" },\n    { value: "boom", label: "Boom Knight" },\n  ]}\n/>`}
       props={[
         {
           name: "options",
@@ -35,7 +35,7 @@ export function SelectDocs() {
         },
         {
           name: "variant",
-          type: `"default" | "ghost" | "filled" | "pop"`,
+          type: `"default" | "ghost" | "filled"`,
           default: `"default"`,
           description: "Trigger surface style",
         },
@@ -84,12 +84,6 @@ export function SelectDocs() {
               variant="filled"
               defaultValue="zap"
               placeholder="Filled"
-              options={options}
-            />
-            <Select
-              variant="pop"
-              defaultValue="zap"
-              placeholder="Pop"
               options={options}
             />
           </div>

@@ -84,6 +84,14 @@ html[data-theme="light"] {
   --comixa-field-radius-lg: 0.75rem;
   --comixa-field-font: "Comic Neue", ui-rounded, system-ui, sans-serif;
   --comixa-field-letter-spacing: 0;
+  --comixa-select-error-bg: #fff3d6;
+  --comixa-select-error-text: #111111;
+  --comixa-select-error-border: #FF5757;
+  --comixa-select-error-shadow: 4px 4px 0 #FF5757;
+  --comixa-select-success-bg: #f1fff6;
+  --comixa-select-success-text: #111111;
+  --comixa-select-success-border: #4ADE80;
+  --comixa-select-success-shadow: 4px 4px 0 #4ADE80;
   color-scheme: light;
 }
 
@@ -174,6 +182,14 @@ html[data-comixa-theme="retro"] {
   --comixa-field-radius-lg: 1rem;
   --comixa-field-font: "Lilita One", "Comic Sans MS", cursive;
   --comixa-field-letter-spacing: 0;
+  --comixa-select-error-bg: #c66a4a;
+  --comixa-select-error-text: #fff8e8;
+  --comixa-select-error-border: #3b2b22;
+  --comixa-select-error-shadow: 2px 2px 0 #7a4d24;
+  --comixa-select-success-bg: #7a9e5f;
+  --comixa-select-success-text: #fff8e8;
+  --comixa-select-success-border: #3b2b22;
+  --comixa-select-success-shadow: 2px 2px 0 #7a4d24;
 }
 
 html[data-comixa-theme="pop-art"] {
@@ -246,7 +262,7 @@ html[data-comixa-theme="pop-art"] {
   --comixa-ribbon-border: #111111;
   --comixa-ribbon-shadow: 6px 6px 0 #3b82f6;
   --comixa-ribbon-letter-spacing: 0.055em;
-  --comixa-ribbon-text-transform: none;
+  --comixa-ribbon-text-transform: uppercase;
   --comixa-ribbon-banner-bg: #ffe14d;
   --comixa-ribbon-banner-text: #111111;
   --comixa-ribbon-corner-bg: #ff4b4b;
@@ -273,6 +289,14 @@ html[data-comixa-theme="pop-art"] {
   --comixa-field-radius-lg: 0.75rem;
   --comixa-field-font: "Baloo 2", "Bangers", Impact, sans-serif;
   --comixa-field-letter-spacing: 0.03em;
+  --comixa-select-error-bg: #ff4b4b;
+  --comixa-select-error-text: #ffffff;
+  --comixa-select-error-border: #111111;
+  --comixa-select-error-shadow: 6px 6px 0 #ffd400;
+  --comixa-select-success-bg: #22c55e;
+  --comixa-select-success-text: #111111;
+  --comixa-select-success-border: #111111;
+  --comixa-select-success-shadow: 6px 6px 0 #ffd400;
 }
 
 html[data-comixa-theme="manga"] {
@@ -330,6 +354,12 @@ html[data-comixa-theme="manga"] {
   --comixa-outline-border: #111111;
   --comixa-outline-shadow: #111111;
   --comixa-outline-shadow-value: 5px 5px 0 #111111;
+  --comixa-select-bg: #ffffff;
+  --comixa-select-filled-bg: #ececec;
+  --comixa-select-ghost-bg: #f7f7f7;
+  --comixa-select-menu-bg: #ffffff;
+  --comixa-select-menu-border: #111111;
+  --comixa-select-menu-shadow: 6px 6px 0 #111111;
   --comixa-ghost-bg: transparent;
   --comixa-ghost-text: #111111;
   --comixa-ghost-border: transparent;
@@ -377,6 +407,14 @@ html[data-comixa-theme="manga"] {
   --comixa-field-radius-lg: 0.25rem;
   --comixa-field-font: "Antonio", Impact, sans-serif;
   --comixa-field-letter-spacing: 0;
+  --comixa-select-error-bg: #dddddd;
+  --comixa-select-error-text: #111111;
+  --comixa-select-error-border: #111111;
+  --comixa-select-error-shadow: 6px 6px 0 #111111;
+  --comixa-select-success-bg: #ececec;
+  --comixa-select-success-text: #111111;
+  --comixa-select-success-border: #111111;
+  --comixa-select-success-shadow: 6px 6px 0 #111111;
 }
 
 html[data-comixa-theme="vintage"] {
@@ -467,6 +505,14 @@ html[data-comixa-theme="vintage"] {
   --comixa-field-radius-lg: 0.45rem;
   --comixa-field-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --comixa-field-letter-spacing: 0.035em;
+  --comixa-select-error-bg: #c9997b;
+  --comixa-select-error-text: #4a3a2a;
+  --comixa-select-error-border: #7b2d26;
+  --comixa-select-error-shadow: 2px 2px 0 #7b2d26;
+  --comixa-select-success-bg: #bfc8a6;
+  --comixa-select-success-text: #4a3a2a;
+  --comixa-select-success-border: #4a3a2a;
+  --comixa-select-success-shadow: 2px 2px 0 #4a3a2a;
 }
 
 body {
@@ -641,8 +687,125 @@ html[data-comixa-theme]:not([data-comixa-theme="light"]) main :is(h1, h2, h3, h4
   color: var(--pg-fg);
 }
 
+html[data-comixa-theme] main [data-comixa-badge] {
+  color: var(--comixa-badge-text);
+}
+
+html[data-comixa-theme] main [data-comixa-sound-badge] {
+  color: var(--comixa-sound-text);
+}
+
+html[data-comixa-theme] main [data-comixa-sticker] {
+  color: var(--comixa-sticker-text);
+}
+
+html[data-comixa-theme] main [data-comixa-badge-variant="ink"],
+html[data-comixa-theme] main [data-comixa-sticker-variant="ink"],
+html[data-comixa-theme] main [data-comixa-sound-badge-variant="boom"] {
+  color: #ffffff !important;
+}
+
 html[data-comixa-theme="manga"] main :is([data-comixa-input], [data-comixa-textarea], select):not(.theme-option) {
   border-width: 4px;
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-ribbon-variant="corner"] {
+  color: #ffffff !important;
+}
+
+html[data-comixa-theme="manga"] main :is(
+  [data-comixa-button-variant="success"],
+  [data-comixa-button-variant="danger"],
+  [data-comixa-button-variant="warning"]
+)::after {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.05rem;
+  line-height: 1;
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-button-variant="success"]::after {
+  content: "✨";
+  font-size: 0.92em;
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-button-variant="danger"]::after {
+  content: "💢";
+  font-size: 0.95em;
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-button-variant="warning"]::after {
+  content: "!!!";
+  font-family: "Antonio", Impact, sans-serif;
+  font-size: 0.9em;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  transform: rotate(-4deg);
+}
+
+html[data-comixa-theme="manga"] main :is([data-comixa-input], [data-comixa-textarea]) {
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25rem 1.25rem;
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-input][data-comixa-field-state="success"],
+html[data-comixa-theme="manga"] main [data-comixa-textarea][data-comixa-field-state="success"] {
+  padding-right: 2.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='19'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E");
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-input][data-comixa-field-state="error"],
+html[data-comixa-theme="manga"] main [data-comixa-textarea][data-comixa-field-state="error"] {
+  padding-right: 2.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='19'%3E%F0%9F%92%A2%3C/text%3E%3C/svg%3E");
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-select-trigger]::after,
+html[data-comixa-theme="manga"] main [data-comixa-switch][data-state="checked"]::after {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.15rem;
+  line-height: 1;
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-select-trigger][data-comixa-select-state="success"]::after {
+  content: "✨";
+  font-size: 0.92em;
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-select-trigger][data-comixa-select-state="error"]::after {
+  content: "💢";
+  font-size: 0.95em;
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-checkbox-variant="success"]:checked,
+html[data-comixa-theme="manga"] main [data-comixa-switch-variant="success"][data-state="checked"] {
+  background:
+    radial-gradient(circle at 2px 2px, rgba(0, 0, 0, 0.45) 1.4px, transparent 0),
+    #ececec !important;
+  background-size: 8px 8px, auto !important;
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-checkbox-variant="danger"]:checked,
+html[data-comixa-theme="manga"] main [data-comixa-switch-variant="danger"][data-state="checked"] {
+  background:
+    repeating-linear-gradient(-35deg, transparent 0, transparent 5px, rgba(0, 0, 0, 0.28) 5px, rgba(0, 0, 0, 0.28) 6px, transparent 6px, transparent 11px),
+    #dddddd !important;
+}
+
+html[data-comixa-theme="manga"] main [data-comixa-checkbox-variant="default"]:checked,
+html[data-comixa-theme="manga"] main [data-comixa-switch-variant="default"][data-state="checked"] {
+  background:
+    repeating-linear-gradient(90deg, transparent 0, transparent 6px, rgba(0, 0, 0, 0.34) 6px, rgba(0, 0, 0, 0.34) 7px),
+    #f7f7f7 !important;
+  background-size: 12px 100%, auto !important;
 }
 
 html[data-comixa-theme="pop-art"] main :is(button, [data-comixa-input], [data-comixa-textarea], select):not(.theme-option) {
@@ -652,11 +815,15 @@ html[data-comixa-theme="pop-art"] main :is(button, [data-comixa-input], [data-co
 html[data-comixa-theme="pop-art"] main :is(
   [data-comixa-badge],
   [data-comixa-sticker],
-  [data-comixa-sound-badge],
-  [data-comixa-ribbon]
+  [data-comixa-sound-badge]
 ) {
   letter-spacing: 0.055em;
   text-transform: none;
+}
+
+html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
 }
 
 /* Hide scrollbar but keep scroll */
