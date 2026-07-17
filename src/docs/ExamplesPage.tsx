@@ -5,6 +5,7 @@ import {
   Button,
   ComicPanel,
   ComicReveal,
+  ComixaProvider,
   FAQ,
   FAQItem,
   Feature,
@@ -29,7 +30,19 @@ import {
   Typewriter,
   type GalleryItem,
 } from "comixa-ui";
-import { BookOpen, Code2, LayoutDashboard, Newspaper, Rocket } from "lucide-react";
+import {
+  BookOpen,
+  Code2,
+  Gem,
+  LayoutDashboard,
+  Newspaper,
+  Palette,
+  RadioTower,
+  Rocket,
+} from "lucide-react";
+import { ComixaPopArtExperience } from "./examples/ComixaPopArtExperience";
+import { ComixaRetroFM79 } from "./examples/ComixaRetroFM79";
+import { ComixaVintageGildedLedger } from "./examples/ComixaVintageGildedLedger";
 import { DeveloperPortfolio } from "./examples/DeveloperPortfolio";
 import { InkShiftEbookLanding } from "./examples/InkShiftEbookLanding";
 import { LaunchBoardDashboard } from "./examples/LaunchBoardDashboard";
@@ -68,7 +81,12 @@ const galleryItems: GalleryItem[] = [
 
 function CrownIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
       <path d="M3 8l5 4 4-8 4 8 5-4-2 11H5L3 8zm3.4 9h11.2l.8-4.5-3.3 2.7L12 8.9l-3.1 6.3-3.3-2.7.8 4.5z" />
     </svg>
   );
@@ -79,7 +97,9 @@ function CoverHero() {
     <div className="grid min-h-[25rem] items-end gap-6 md:grid-cols-[1.05fr_0.72fr]">
       <div className="flex min-h-[21rem] flex-col justify-between">
         <div className="flex flex-wrap items-center gap-3">
-          <Ribbon variant="corner" tilt="right">Issue #7</Ribbon>
+          <Ribbon variant="corner" tilt="right">
+            Issue #7
+          </Ribbon>
           <Badge variant="ink">Landing kit</Badge>
         </div>
         <div>
@@ -91,8 +111,12 @@ function CoverHero() {
             sections composed into one polished landing page.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Button variant="pop" size="lg">Start building</Button>
-            <Button variant="outline" size="lg" className="bg-paper">View components</Button>
+            <Button variant="default" size="lg">
+              Start building
+            </Button>
+            <Button variant="outline" size="lg" className="bg-paper">
+              View components
+            </Button>
           </div>
         </div>
       </div>
@@ -104,8 +128,12 @@ function CoverHero() {
         <div className="absolute inset-4 rotate-3 border-4 border-ink bg-paper shadow-[8px_8px_0_0_#1A1A1A]">
           <div className="h-2/3 border-b-4 border-ink bg-[radial-gradient(circle_at_70%_22%,#FF4D4D_0_3.2rem,transparent_3.3rem),linear-gradient(135deg,#4D9FFF,#FFE566_58%,#FF7AB6)]" />
           <div className="p-4">
-            <p className="font-comic text-3xl uppercase leading-none tracking-wide">CoverForge</p>
-            <p className="mt-1 text-sm font-bold text-ink-muted">Visual landing system</p>
+            <p className="font-comic text-3xl uppercase leading-none tracking-wide">
+              CoverForge
+            </p>
+            <p className="mt-1 text-sm font-bold text-ink-muted">
+              Visual landing system
+            </p>
           </div>
         </div>
         <div className="absolute bottom-5 left-1 border-2 border-ink bg-comic-blue px-3 py-2 font-comic text-sm uppercase tracking-wide text-white shadow-comic-sm">
@@ -118,107 +146,188 @@ function CoverHero() {
 
 function LandingExample() {
   return (
-    <section className="overflow-hidden rounded-xl border-4 border-ink bg-paper shadow-comic-lg">
-      <Navbar variant="pop" className="rounded-none border-0 border-b-4 shadow-none">
-        <NavbarBrand href="#hero">
-          <img src="/logo.png" alt="" className="h-9 w-9 rounded-md border-2 border-ink bg-paper object-cover" />
-          CoverForge
-        </NavbarBrand>
-        <NavbarContent>
-          <NavbarMenu>
-            <NavbarLink href="#hero" active>Home</NavbarLink>
-            <NavbarLink href="#features">Features</NavbarLink>
-            <NavbarLink href="#work">Work</NavbarLink>
-            <NavbarLink href="#pricing">Pricing</NavbarLink>
-          </NavbarMenu>
-          <NavbarActions>
-            <Button size="sm" variant="outline" className="hidden bg-paper sm:inline-flex">Login</Button>
-            <Button size="sm" variant="primary">Join beta</Button>
-          </NavbarActions>
-        </NavbarContent>
-      </Navbar>
-
-      <div id="hero" className="grid gap-6 bg-paper-cream p-5 lg:grid-cols-[1.18fr_0.82fr] lg:p-8">
-        <ComicReveal variant="panel-wipe">
-          <ComicPanel variant="hero" shadow="xl" halftone hover>
-            <CoverHero />
-          </ComicPanel>
-        </ComicReveal>
-        <aside className="flex flex-col gap-4">
-          <SpeechBubble tone="cream" tail="bottomLeft" className="text-lg">
-            <Typewriter start="immediate" repeat={Infinity}>
-              Your landing page should feel like opening night.
-            </Typewriter>
-          </SpeechBubble>
-          <Stats columns={2}>
-            <Stat value="12k+" label="Panels shipped" tone="yellow" animate />
-            <Stat value="98%" label="Reader hype" tone="blue" animate />
-          </Stats>
-          <Testimonials columns={1}>
-            <Testimonial
-              variant="speech"
-              quote="The first draft already felt like a campaign universe."
-              author="Mina Ink"
-              role="Launch director"
-              rating={5}
-              avatar={<Avatar name="MI" size="sm" shape="circle" variant="pink" />}
+    <ComixaProvider theme="default">
+      <section className="overflow-hidden rounded-xl border-4 border-ink bg-paper shadow-comic-lg">
+        <Navbar
+          variant="pop"
+          className="rounded-none border-0 border-b-4 shadow-none"
+        >
+          <NavbarBrand href="#hero">
+            <img
+              src="/logo.png"
+              alt=""
+              className="h-9 w-9 rounded-md border-2 border-ink bg-paper object-cover"
             />
-          </Testimonials>
-        </aside>
-      </div>
+            CoverForge
+          </NavbarBrand>
+          <NavbarContent>
+            <NavbarMenu>
+              <NavbarLink href="#hero" active>
+                Home
+              </NavbarLink>
+              <NavbarLink href="#features">Features</NavbarLink>
+              <NavbarLink href="#work">Work</NavbarLink>
+              <NavbarLink href="#pricing">Pricing</NavbarLink>
+            </NavbarMenu>
+            <NavbarActions>
+              <Button
+                size="sm"
+                variant="outline"
+                className="hidden bg-paper sm:inline-flex"
+              >
+                Login
+              </Button>
+              <Button size="sm" variant="primary">
+                Join beta
+              </Button>
+            </NavbarActions>
+          </NavbarContent>
+        </Navbar>
 
-      <div id="features" className="border-t-4 border-ink bg-paper p-5 lg:p-8">
-        <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+        <div
+          id="hero"
+          className="grid gap-6 bg-paper-cream p-5 lg:grid-cols-[1.18fr_0.82fr] lg:p-8"
+        >
+          <ComicReveal variant="panel-wipe">
+            <ComicPanel variant="hero" shadow="xl" halftone hover>
+              <CoverHero />
+            </ComicPanel>
+          </ComicReveal>
+          <aside className="flex flex-col gap-4">
+            <SpeechBubble tone="cream" tail="bottomLeft" className="text-lg">
+              <Typewriter start="immediate" repeat={Infinity}>
+                Your landing page should feel like opening night.
+              </Typewriter>
+            </SpeechBubble>
+            <Stats columns={2}>
+              <Stat value="12k+" label="Panels shipped" tone="yellow" animate />
+              <Stat value="98%" label="Reader hype" tone="blue" animate />
+            </Stats>
+            <Testimonials columns={1}>
+              <Testimonial
+                variant="speech"
+                quote="The first draft already felt like a campaign universe."
+                author="Mina Ink"
+                role="Launch director"
+                rating={5}
+                avatar={
+                  <Avatar name="MI" size="sm" shape="circle" variant="pink" />
+                }
+              />
+            </Testimonials>
+          </aside>
+        </div>
+
+        <div
+          id="features"
+          className="border-t-4 border-ink bg-paper p-5 lg:p-8"
+        >
+          <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <Badge variant="yellow">Production kit</Badge>
+              <h2 className="mt-2 font-comic text-4xl uppercase tracking-wide">
+                Everything reads like a{" "}
+                <Highlight start="immediate">cover reveal</Highlight>
+              </h2>
+            </div>
+            <SoundBadge variant="bam" size="sm" />
+          </div>
+          <Features columns={3}>
+            <Feature
+              variant="yellow"
+              icon={<BoltIcon className="h-6 w-6" />}
+              title="Hero panels"
+              description="Use ComicPanel with hero, halftone, hover, and xl shadow for instant cover energy."
+            />
+            <Feature
+              variant="blue"
+              icon={<PlusIcon className="h-6 w-6" />}
+              title="Composable sections"
+              description="Stack proof, pricing, FAQ, galleries, and speech moments without style drift."
+            />
+            <Feature
+              variant="burst"
+              icon={<CrownIcon className="h-6 w-6" />}
+              title="Motion polish"
+              description="Reveal animations, typewriter copy, stats, cursor trails, and badges add movement."
+            />
+          </Features>
+        </div>
+
+        <div
+          id="work"
+          className="border-t-4 border-ink bg-comic-blue p-5 text-white lg:p-8"
+        >
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <Ribbon variant="ticket">Recent covers</Ribbon>
+              <p className="mt-2 max-w-2xl text-white/75">
+                A horizontal strip for campaign art, product shots, creator
+                drops, and visual proof.
+              </p>
+            </div>
+            <Button variant="outline" className="bg-paper text-ink">
+              Browse archive
+            </Button>
+          </div>
+          <Gallery variant="strip" items={galleryItems} className="text-ink" />
+        </div>
+
+        <div
+          id="pricing"
+          className="grid gap-6 border-t-4 border-ink bg-paper-cream p-5 lg:grid-cols-[0.9fr_1.1fr] lg:p-8"
+        >
           <div>
-            <Badge variant="yellow">Production kit</Badge>
-            <h2 className="mt-2 font-comic text-4xl uppercase tracking-wide">
-              Everything reads like a <Highlight start="immediate">cover reveal</Highlight>
+            <Badge variant="red">Beta pricing</Badge>
+            <h2 className="mt-3 font-comic text-5xl uppercase leading-none tracking-wide">
+              Build the whole issue
             </h2>
-          </div>
-          <SoundBadge variant="bam" size="sm" />
-        </div>
-        <Features columns={3}>
-          <Feature variant="yellow" icon={<BoltIcon className="h-6 w-6" />} title="Hero panels" description="Use ComicPanel with hero, halftone, hover, and xl shadow for instant cover energy." />
-          <Feature variant="blue" icon={<PlusIcon className="h-6 w-6" />} title="Composable sections" description="Stack proof, pricing, FAQ, galleries, and speech moments without style drift." />
-          <Feature variant="burst" icon={<CrownIcon className="h-6 w-6" />} title="Motion polish" description="Reveal animations, typewriter copy, stats, cursor trails, and badges add movement." />
-        </Features>
-      </div>
-
-      <div id="work" className="border-t-4 border-ink bg-comic-blue p-5 text-white lg:p-8">
-        <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <Ribbon variant="ticket">Recent covers</Ribbon>
-            <p className="mt-2 max-w-2xl text-white/75">
-              A horizontal strip for campaign art, product shots, creator drops, and visual proof.
+            <p className="mt-3 max-w-lg text-ink-muted">
+              Pick a plan, assemble the page, and publish a launch that feels
+              designed rather than templated.
             </p>
+            <FAQ className="mt-5" defaultValue="a" type="single">
+              <FAQItem value="a" title="Can I use these components in my app?">
+                Yes. The example is assembled from exported Comixa components.
+              </FAQItem>
+              <FAQItem value="b" title="Is the style customizable?">
+                Every section accepts className, variants, and composable slots.
+              </FAQItem>
+            </FAQ>
           </div>
-          <Button variant="outline" className="bg-paper text-ink">Browse archive</Button>
+          <Pricing columns={2}>
+            <PricingTier
+              name="Sidekick"
+              price="$0"
+              period="mo"
+              features={[
+                "Core components",
+                "Basic landing sections",
+                "Community releases",
+              ]}
+              cta={
+                <Button variant="outline" className="w-full">
+                  Try free
+                </Button>
+              }
+            />
+            <PricingTier
+              name="Hero"
+              price="$19"
+              period="mo"
+              badge="Popular"
+              featured
+              features={[
+                "Everything in Sidekick",
+                "Premium examples",
+                "Launch-ready sections",
+              ]}
+              cta={<Button className="w-full">Start hero plan</Button>}
+            />
+          </Pricing>
         </div>
-        <Gallery variant="strip" items={galleryItems} className="text-ink" />
-      </div>
-
-      <div id="pricing" className="grid gap-6 border-t-4 border-ink bg-paper-cream p-5 lg:grid-cols-[0.9fr_1.1fr] lg:p-8">
-        <div>
-          <Badge variant="red">Beta pricing</Badge>
-          <h2 className="mt-3 font-comic text-5xl uppercase leading-none tracking-wide">Build the whole issue</h2>
-          <p className="mt-3 max-w-lg text-ink-muted">
-            Pick a plan, assemble the page, and publish a launch that feels designed rather than templated.
-          </p>
-          <FAQ className="mt-5" defaultValue="a" type="single">
-            <FAQItem value="a" title="Can I use these components in my app?">
-              Yes. The example is assembled from exported Comixa components.
-            </FAQItem>
-            <FAQItem value="b" title="Is the style customizable?">
-              Every section accepts className, variants, and composable slots.
-            </FAQItem>
-          </FAQ>
-        </div>
-        <Pricing columns={2}>
-          <PricingTier name="Sidekick" price="$0" period="mo" features={["Core components", "Basic landing sections", "Community releases"]} cta={<Button variant="outline" className="w-full">Try free</Button>} />
-          <PricingTier name="Hero" price="$19" period="mo" badge="Popular" featured features={["Everything in Sidekick", "Premium examples", "Launch-ready sections"]} cta={<Button className="w-full">Start hero plan</Button>} />
-        </Pricing>
-      </div>
-    </section>
+      </section>
+    </ComixaProvider>
   );
 }
 
@@ -283,6 +392,18 @@ const EXAMPLES = {
     title: "LaunchZap landing",
     content: <LaunchZapLanding />,
   },
+  retrofm: {
+    title: "FM 79 retro radio",
+    content: <ComixaRetroFM79 />,
+  },
+  popart: {
+    title: "POP//DROP experience",
+    content: <ComixaPopArtExperience />,
+  },
+  ledger: {
+    title: "The Gilded Ledger",
+    content: <ComixaVintageGildedLedger />,
+  },
 } as const;
 
 type ExampleId = keyof typeof EXAMPLES;
@@ -294,7 +415,9 @@ export function ExamplesPage() {
   return (
     <article className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
-        <h1 className="pg-fg font-comic text-4xl uppercase tracking-wide">Examples</h1>
+        <h1 className="pg-fg font-comic text-4xl uppercase tracking-wide">
+          Examples
+        </h1>
         <p className="pg-fg-muted max-w-3xl text-base">
           Small previews of full pages built only from Comixa components. Open
           one to inspect it like a modal.
@@ -344,13 +467,32 @@ export function ExamplesPage() {
           icon={<Rocket className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("launchzap")}
         />
+        <ExamplePreview
+          title="FM 79 retro radio"
+          description="Retro radio landing page with schedule cards, dusty record archive, tape club CTA, and live toast actions."
+          accent="Retro project"
+          icon={<RadioTower className="h-8 w-8" strokeWidth={2.5} />}
+          onOpen={() => setOpen("retrofm")}
+        />
+        <ExamplePreview
+          title="POP//DROP experience"
+          description="Pop art culture magazine and print drop page with loud panels, kinetic cards, cursor modes, and shop section."
+          accent="Pop Art project"
+          icon={<Palette className="h-8 w-8" strokeWidth={2.5} />}
+          onOpen={() => setOpen("popart")}
+        />
+        <ExamplePreview
+          title="The Gilded Ledger"
+          description="Vintage collection landing page with artifact illustrations, selected lots, journal cards, and salon invitation CTA."
+          accent="Vintage project"
+          icon={<Gem className="h-8 w-8" strokeWidth={2.5} />}
+          onOpen={() => setOpen("ledger")}
+        />
       </div>
 
       {active ? (
         <div className="fixed inset-0 z-50 bg-ink/80 p-3 md:p-6">
-          <div
-            className="mx-auto flex h-full max-w-7xl flex-col overflow-hidden rounded-xl border-4 border-ink bg-paper shadow-[12px_12px_0_0_#1A1A1A]"
-          >
+          <div className="mx-auto flex h-full max-w-7xl flex-col overflow-hidden rounded-xl border-4 border-ink bg-paper shadow-[12px_12px_0_0_#1A1A1A]">
             <div className="flex shrink-0 items-center gap-3 border-b-4 border-ink bg-comic-yellow px-4 py-3">
               <p className="font-comic text-2xl uppercase tracking-wide">
                 {active.title}

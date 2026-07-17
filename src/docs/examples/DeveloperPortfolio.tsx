@@ -206,7 +206,7 @@ export function DeveloperPortfolio() {
 
           <section
             id="home"
-            className="relative min-h-[calc(100vh-72px)] overflow-hidden px-5 py-14 md:px-8 lg:py-20"
+            className="relative min-h-[calc(70vh-72px)] overflow-hidden px-5 py-14 md:px-8 lg:py-20"
           >
             <Background
               variant="dots"
@@ -231,7 +231,7 @@ export function DeveloperPortfolio() {
                   ISSUE #01 — THE FRONTEND HERO
                 </Badge>
                 <h1 className="hero-title">
-                  <LetterReveal as="span" once start="immediate">
+                  <LetterReveal as="span" once triggerOnView repeat={1}>
                     [YOUR NAME]
                   </LetterReveal>
                   <span className="mt-3 block text-blue ink-outline">
@@ -795,7 +795,7 @@ export function DeveloperPortfolio() {
               <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <Button
                   size="lg"
-                  variant="pop"
+                  variant="default"
                   effect="pop"
                   onClick={() => setContactOpen(true)}
                 >

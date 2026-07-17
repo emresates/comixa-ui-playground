@@ -10,6 +10,7 @@ import {
   ComicCursor,
   ComicPanel,
   ComicReveal,
+  ComixaProvider,
   Dialog,
   DialogContent,
   DialogDescription,
@@ -125,455 +126,467 @@ export function LaunchBoardDashboard() {
   const notify = (message: string) =>
     toast({ title: "ZAP!", description: message, variant: "success" });
   return (
-    <ToastProvider position="top-right">
-      <ComicCursor variant="dot" trailCount={3} />
-      <div className="grid-paper min-h-full lg:grid lg:grid-cols-[270px_1fr]">
-        <aside className="hidden min-h-screen border-r-[4px] border-ink bg-ink text-white lg:flex lg:flex-col">
-          <Sidebar notify={notify} />
-        </aside>
-        {mobile && (
-          <div
-            className="fixed inset-0 z-50 bg-black/60 lg:hidden"
-            onClick={() => setMobile(false)}
-          >
-            <aside
-              className="h-full w-[86%] max-w-xs bg-ink text-white"
-              onClick={(e) => e.stopPropagation()}
+    <ComixaProvider theme="vintage">
+      <ToastProvider position="top-right">
+        <ComicCursor variant="dot" trailCount={3} />
+        <div className="grid-paper min-h-full lg:grid lg:grid-cols-[270px_1fr]">
+          <aside className="hidden min-h-screen border-r-[4px] border-ink bg-ink text-white lg:flex lg:flex-col">
+            <Sidebar notify={notify} />
+          </aside>
+          {mobile && (
+            <div
+              className="fixed inset-0 z-50 bg-black/60 lg:hidden"
+              onClick={() => setMobile(false)}
             >
-              <div className="flex justify-end p-3">
-                <Button
-                  icon
-                  variant="danger"
-                  onClick={() => setMobile(false)}
-                  aria-label="Close"
-                >
-                  <X size={18} />
-                </Button>
-              </div>
-              <Sidebar notify={notify} />
-            </aside>
-          </div>
-        )}
-
-        <main className="min-w-0">
-          <header className="sticky top-0 z-30 border-b-[4px] border-ink bg-paper/95 px-4 py-3 backdrop-blur md:px-7">
-            <div className="flex items-center gap-3">
-              <Button
-                icon
-                variant="outline"
-                className="lg:hidden"
-                onClick={() => setMobile(true)}
-                aria-label="Open menu"
+              <aside
+                className="h-full w-[86%] max-w-xs bg-ink text-white"
+                onClick={(e) => e.stopPropagation()}
               >
-                <Menu size={18} />
-              </Button>
-              <div className="relative hidden max-w-md flex-1 md:block">
-                <Search
-                  className="absolute left-3 top-1/2 -translate-y-1/2"
-                  size={18}
-                />
-                <Input className="pl-10" placeholder="Search anything..." />
-              </div>
-              <div className="ml-auto flex items-center gap-2">
-                <Tooltip content="Command palette">
-                  <Button icon variant="ghost" aria-label="Commands">
-                    <Command size={18} />
-                  </Button>
-                </Tooltip>
-                <Tooltip content="Notifications">
+                <div className="flex justify-end p-3">
                   <Button
                     icon
-                    variant="outline"
-                    aria-label="Notifications"
-                    onClick={() => notify("You have 4 unread notifications.")}
+                    variant="danger"
+                    onClick={() => setMobile(false)}
+                    aria-label="Close"
                   >
-                    <Bell size={18} />
+                    <X size={18} />
                   </Button>
-                </Tooltip>
-                <Avatar fallback="YN" name="Your Name" variant="yellow" />
-              </div>
+                </div>
+                <Sidebar notify={notify} />
+              </aside>
             </div>
-          </header>
+          )}
 
-          <div className="mx-auto max-w-[1500px] space-y-7 p-4 md:p-7">
-            <section className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
-              <div>
-                <div className="mb-3 flex flex-wrap items-center gap-3">
-                  <SoundBadge variant="pow" size="sm" />
-                  <Badge variant="green">All systems operational</Badge>
-                </div>
-                <h1 className="font-display text-5xl uppercase leading-none md:text-7xl">
-                  Your SaaS <span className="text-pink">command center.</span>
-                </h1>
-                <p className="mt-3 max-w-2xl text-lg font-bold text-ink/70">
-                  Track revenue, customers, subscriptions and automations
-                  without losing the plot.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Select
-                  value={period}
-                  onValueChange={setPeriod}
-                  variant="pop"
-                  options={[
-                    { value: "7d", label: "Last 7 days" },
-                    { value: "30d", label: "Last 30 days" },
-                    { value: "90d", label: "Last 90 days" },
-                  ]}
-                />
+          <main className="min-w-0">
+            <header className="sticky top-0 z-30 border-b-[4px] border-ink bg-paper/95 px-4 py-3 backdrop-blur md:px-7">
+              <div className="flex items-center gap-3">
                 <Button
+                  icon
                   variant="outline"
-                  onClick={() => notify("Dashboard report downloaded.")}
+                  className="lg:hidden"
+                  onClick={() => setMobile(true)}
+                  aria-label="Open menu"
                 >
-                  <Download size={17} /> Export
+                  <Menu size={18} />
                 </Button>
-                <Button onClick={() => setDialog(true)}>
-                  <Plus size={17} /> New customer
-                </Button>
-              </div>
-            </section>
-
-            <ComicReveal variant="slide-up">
-              <Stats columns={4}>
-                <Stat
-                  value="$84,240"
-                  label="Monthly revenue"
-                  hint="↑ 18.4% this month"
-                  tone="yellow"
-                  animate
-                />
-                <Stat
-                  value="2,418"
-                  label="Active customers"
-                  hint="+142 this period"
-                  tone="pink"
-                  animate
-                />
-                <Stat
-                  value="6.2%"
-                  label="Churn rate"
-                  hint="↓ 1.1% improvement"
-                  tone="blue"
-                  animate
-                />
-                <Stat
-                  value="94.8%"
-                  label="Automation success"
-                  hint="12.4k tasks run"
-                  tone="green"
-                  animate
-                />
-              </Stats>
-            </ComicReveal>
-
-            <section className="grid gap-6 xl:grid-cols-[1.65fr_.9fr]">
-              <ComicPanel
-                variant="cream"
-                shadow="lg"
-                className="overflow-hidden p-0"
-              >
-                <div className="flex flex-wrap items-start justify-between gap-3 border-b-[3px] border-ink p-5">
-                  <div>
-                    <Badge variant="yellow">Revenue</Badge>
-                    <h2 className="mt-2 font-display text-4xl">MRR GROWTH</h2>
-                    <p className="font-bold text-ink/60">
-                      Recurring revenue across {period}.
-                    </p>
-                  </div>
-                  <Sticker variant="green" tilt="right">
-                    +18.4%
-                  </Sticker>
+                <div className="relative hidden max-w-md flex-1 md:block">
+                  <Search
+                    className="absolute left-3 top-1/2 -translate-y-1/2"
+                    size={18}
+                  />
+                  <Input className="pl-10" placeholder="Search anything..." />
                 </div>
-                <div className="p-4 md:p-6">
-                  <div className="mb-5 flex flex-wrap gap-5">
-                    <div>
-                      <p className="text-sm font-bold uppercase text-ink/55">
-                        Current MRR
-                      </p>
-                      <p className="font-display text-4xl">$84.2K</p>
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold uppercase text-ink/55">
-                        Forecast
-                      </p>
-                      <p className="font-display text-4xl">$96.8K</p>
-                    </div>
-                  </div>
-                  <RevenueChart />
-                </div>
-              </ComicPanel>
-
-              <div className="space-y-6">
-                <ComicPanel
-                  variant="hero"
-                  shadow="lg"
-                  className="p-5 text-white"
-                >
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <Badge variant="yellow">Goal</Badge>
-                      <h2 className="mt-2 font-display text-4xl">$100K MRR</h2>
-                    </div>
-                    <Gauge size={34} />
-                  </div>
-                  <div className="mt-8 h-5 overflow-hidden border-[3px] border-white bg-black/30">
-                    <div className="h-full w-[84%] bg-yellow" />
-                  </div>
-                  <div className="mt-3 flex justify-between font-bold">
-                    <span>$84,240</span>
-                    <span>84%</span>
-                  </div>
-                  <p className="mt-4 font-bold text-white/75">
-                    Only $15,760 to unlock the next milestone.
-                  </p>
-                </ComicPanel>
-                <Card variant="panel">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <CardTitle className="font-display text-3xl">
-                        LIVE MODE
-                      </CardTitle>
-                      <Switch
-                        checked={live}
-                        onCheckedChange={setLive}
-                        variant="success"
-                      />
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <SpeechBubble
-                      tone={live ? "blue" : "cream"}
-                      tail="bottomLeft"
-                      size="sm"
+                <div className="ml-auto flex items-center gap-2">
+                  <Tooltip content="Command palette">
+                    <Button icon variant="ghost" aria-label="Commands">
+                      <Command size={18} />
+                    </Button>
+                  </Tooltip>
+                  <Tooltip content="Notifications">
+                    <Button
+                      icon
+                      variant="outline"
+                      aria-label="Notifications"
+                      onClick={() => notify("You have 4 unread notifications.")}
                     >
-                      <strong>
-                        {live
-                          ? "Real-time updates are on."
-                          : "Updates are paused."}
-                      </strong>
-                    </SpeechBubble>
-                  </CardContent>
-                </Card>
+                      <Bell size={18} />
+                    </Button>
+                  </Tooltip>
+                  <Avatar fallback="YN" name="Your Name" variant="yellow" />
+                </div>
               </div>
-            </section>
+            </header>
 
-            <section className="grid gap-6 xl:grid-cols-[1.35fr_.65fr]">
-              <ComicPanel
-                variant="default"
-                shadow="lg"
-                className="overflow-hidden p-0"
-              >
-                <div className="flex flex-col gap-3 border-b-[3px] border-ink p-5 md:flex-row md:items-center">
-                  <div>
-                    <Badge variant="blue">Customers</Badge>
-                    <h2 className="mt-2 font-display text-4xl">
-                      LATEST SIGNUPS
-                    </h2>
+            <div className="mx-auto max-w-[1500px] space-y-7 p-4 md:p-7">
+              <section className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
+                <div>
+                  <div className="mb-3 flex flex-wrap items-center gap-3">
+                    <SoundBadge variant="pow" size="sm" />
+                    <Badge variant="green">All systems operational</Badge>
                   </div>
-                  <div className="relative ml-auto w-full md:max-w-xs">
-                    <Search
-                      className="absolute left-3 top-1/2 -translate-y-1/2"
-                      size={17}
-                    />
-                    <Input
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                      className="pl-10"
-                      placeholder="Search customers..."
-                    />
-                  </div>
+                  <h1 className="font-display text-5xl uppercase leading-none md:text-7xl">
+                    Your SaaS <span className="text-pink">command center.</span>
+                  </h1>
+                  <p className="mt-3 max-w-2xl text-lg font-bold text-ink/70">
+                    Track revenue, customers, subscriptions and automations
+                    without losing the plot.
+                  </p>
                 </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full min-w-[760px] text-left">
-                    <thead className="bg-yellow">
-                      <tr>
-                        {["Customer", "Plan", "Status", "MRR", ""].map((h) => (
-                          <th
-                            key={h}
-                            className="border-b-[3px] border-ink px-5 py-3 text-sm font-black uppercase"
-                          >
-                            {h}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filtered.map((c, i) => (
-                        <tr
-                          key={c.email}
-                          className="border-b-2 border-ink/15 hover:bg-yellow/20"
-                        >
-                          <td className="px-5 py-4">
-                            <div className="flex items-center gap-3">
-                              <Avatar
-                                fallback={c.avatar}
-                                variant={i % 2 ? "blue" : "pink"}
-                              />
-                              <div>
-                                <p className="font-black">{c.name}</p>
-                                <p className="text-sm text-ink/55">{c.email}</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td className="px-5 py-4">
-                            <Badge
-                              variant={
-                                c.plan === "Team"
-                                  ? "pink"
-                                  : c.plan === "Pro"
-                                    ? "blue"
-                                    : "outline"
-                              }
-                            >
-                              {c.plan}
-                            </Badge>
-                          </td>
-                          <td className="px-5 py-4">
-                            <Badge
-                              variant={
-                                c.status === "Active"
-                                  ? "green"
-                                  : c.status === "Trial"
-                                    ? "yellow"
-                                    : "red"
-                              }
-                            >
-                              {c.status}
-                            </Badge>
-                          </td>
-                          <td className="px-5 py-4 font-black">{c.mrr}</td>
-                          <td className="px-5 py-4">
-                            <Button icon variant="ghost" aria-label="More">
-                              <MoreHorizontal size={18} />
-                            </Button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                <div className="flex flex-wrap gap-3">
+                  <Select
+                    value={period}
+                    onValueChange={setPeriod}
+                    variant="default"
+                    options={[
+                      { value: "7d", label: "Last 7 days" },
+                      { value: "30d", label: "Last 30 days" },
+                      { value: "90d", label: "Last 90 days" },
+                    ]}
+                  />
+                  <Button
+                    variant="outline"
+                    onClick={() => notify("Dashboard report downloaded.")}
+                  >
+                    <Download size={17} /> Export
+                  </Button>
+                  <Button onClick={() => setDialog(true)}>
+                    <Plus size={17} /> New customer
+                  </Button>
                 </div>
-              </ComicPanel>
+              </section>
 
-              <ComicPanel variant="sky" shadow="lg" className="p-5">
-                <div className="flex items-start justify-between">
-                  <div>
-                    <Badge variant="ink">Activity</Badge>
-                    <h2 className="mt-2 font-display text-4xl">WHAT'S NEW?</h2>
+              <ComicReveal variant="slide-up">
+                <Stats columns={4}>
+                  <Stat
+                    value="$84,240"
+                    label="Monthly revenue"
+                    hint="↑ 18.4% this month"
+                    tone="yellow"
+                    animate
+                  />
+                  <Stat
+                    value="2,418"
+                    label="Active customers"
+                    hint="+142 this period"
+                    tone="pink"
+                    animate
+                  />
+                  <Stat
+                    value="6.2%"
+                    label="Churn rate"
+                    hint="↓ 1.1% improvement"
+                    tone="blue"
+                    animate
+                  />
+                  <Stat
+                    value="94.8%"
+                    label="Automation success"
+                    hint="12.4k tasks run"
+                    tone="green"
+                    animate
+                  />
+                </Stats>
+              </ComicReveal>
+
+              <section className="grid gap-6 xl:grid-cols-[1.65fr_.9fr]">
+                <ComicPanel
+                  variant="cream"
+                  shadow="lg"
+                  className="overflow-hidden p-0"
+                >
+                  <div className="flex flex-wrap items-start justify-between gap-3 border-b-[3px] border-ink p-5">
+                    <div>
+                      <Badge variant="yellow">Revenue</Badge>
+                      <h2 className="mt-2 font-display text-4xl">MRR GROWTH</h2>
+                      <p className="font-bold text-ink/60">
+                        Recurring revenue across {period}.
+                      </p>
+                    </div>
+                    <Sticker variant="green" tilt="right">
+                      +18.4%
+                    </Sticker>
                   </div>
-                  <Activity />
-                </div>
-                <Divider variant="zigzag" tone="ink" className="my-5" />
-                <div className="space-y-4">
-                  {activities.map(([title, desc, color]) => (
-                    <div key={title} className="flex gap-3">
-                      <span
-                        className={`mt-1 h-4 w-4 shrink-0 rounded-full border-2 border-ink ${color === "green" ? "bg-green" : color === "blue" ? "bg-blue" : color === "yellow" ? "bg-yellow" : "bg-pink"}`}
-                      />
+                  <div className="p-4 md:p-6">
+                    <div className="mb-5 flex flex-wrap gap-5">
                       <div>
-                        <p className="font-black">{title}</p>
-                        <p className="text-sm font-bold text-ink/60">{desc}</p>
+                        <p className="text-sm font-bold uppercase text-ink/55">
+                          Current MRR
+                        </p>
+                        <p className="font-display text-4xl">$84.2K</p>
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold uppercase text-ink/55">
+                          Forecast
+                        </p>
+                        <p className="font-display text-4xl">$96.8K</p>
                       </div>
                     </div>
-                  ))}
-                </div>
-                <Button
-                  variant="outline"
-                  className="mt-6 w-full"
-                  onClick={() => notify("Activity center opened.")}
-                >
-                  View all activity
-                </Button>
-              </ComicPanel>
-            </section>
+                    <RevenueChart />
+                  </div>
+                </ComicPanel>
 
-            <section className="grid gap-5 md:grid-cols-3">
-              {[
-                {
-                  icon: CircleDollarSign,
-                  title: "Recover revenue",
-                  text: "12 failed payments need attention.",
-                  badge: "$1,842",
-                },
-                {
-                  icon: Users,
-                  title: "Invite your team",
-                  text: "Collaborate with role-based access.",
-                  badge: "3 seats",
-                },
-                {
-                  icon: Sparkles,
-                  title: "Create automation",
-                  text: "Turn repetitive work into workflows.",
-                  badge: "New",
-                },
-              ].map(({ icon: Icon, title, text, badge }, i) => (
-                <Card key={title} variant="pop" effect="pop">
-                  <CardContent className="p-5">
+                <div className="space-y-6">
+                  <ComicPanel
+                    variant="hero"
+                    shadow="lg"
+                    className="p-5 text-white"
+                  >
                     <div className="flex items-start justify-between">
-                      <span className="grid h-12 w-12 place-items-center border-[3px] border-ink bg-yellow shadow-[4px_4px_0_#171717]">
-                        <Icon />
-                      </span>
-                      <Badge
-                        variant={i === 0 ? "red" : i === 1 ? "blue" : "pink"}
-                      >
-                        {badge}
-                      </Badge>
+                      <div>
+                        <Badge variant="yellow">Goal</Badge>
+                        <h2 className="mt-2 font-display text-4xl">
+                          $100K MRR
+                        </h2>
+                      </div>
+                      <Gauge size={34} />
                     </div>
-                    <h3 className="mt-5 font-display text-3xl">{title}</h3>
-                    <p className="mt-2 font-bold text-ink/65">{text}</p>
-                    <Button
-                      className="mt-5"
-                      variant="outline"
-                      onClick={() => notify(`${title} action started.`)}
-                    >
-                      Take action
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </section>
-          </div>
-        </main>
-      </div>
+                    <div className="mt-8 h-5 overflow-hidden border-[3px] border-white bg-black/30">
+                      <div className="h-full w-[84%] bg-yellow" />
+                    </div>
+                    <div className="mt-3 flex justify-between font-bold">
+                      <span>$84,240</span>
+                      <span>84%</span>
+                    </div>
+                    <p className="mt-4 font-bold text-white/75">
+                      Only $15,760 to unlock the next milestone.
+                    </p>
+                  </ComicPanel>
+                  <Card variant="panel">
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="font-display text-3xl">
+                          LIVE MODE
+                        </CardTitle>
+                        <Switch
+                          checked={live}
+                          onCheckedChange={setLive}
+                          variant="success"
+                        />
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <SpeechBubble
+                        tone={live ? "blue" : "cream"}
+                        tail="bottomLeft"
+                        size="sm"
+                      >
+                        <strong>
+                          {live
+                            ? "Real-time updates are on."
+                            : "Updates are paused."}
+                        </strong>
+                      </SpeechBubble>
+                    </CardContent>
+                  </Card>
+                </div>
+              </section>
 
-      <Dialog open={dialog} onOpenChange={setDialog}>
-        <DialogContent variant="panel">
-          <DialogHeader>
-            <DialogTitle className="font-display text-4xl">
-              ADD A NEW CUSTOMER
-            </DialogTitle>
-            <DialogDescription>
-              Create a customer record and assign a subscription plan.
-            </DialogDescription>
-          </DialogHeader>
-          <div className="space-y-4 py-4">
-            <Input placeholder="Customer name" />
-            <Input type="email" placeholder="Email address" />
-            <Select
-              placeholder="Choose a plan"
-              options={[
-                { value: "starter", label: "Starter — $39" },
-                { value: "pro", label: "Pro — $129" },
-                { value: "team", label: "Team — $249" },
-              ]}
-            />
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setDialog(false)}>
-              Cancel
-            </Button>
-            <Button
-              onClick={() => {
-                setDialog(false);
-                notify("Customer added successfully.");
-              }}
-            >
-              Create customer
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </ToastProvider>
+              <section className="grid gap-6 xl:grid-cols-[1.35fr_.65fr]">
+                <ComicPanel
+                  variant="default"
+                  shadow="lg"
+                  className="overflow-hidden p-0"
+                >
+                  <div className="flex flex-col gap-3 border-b-[3px] border-ink p-5 md:flex-row md:items-center">
+                    <div>
+                      <Badge variant="blue">Customers</Badge>
+                      <h2 className="mt-2 font-display text-4xl">
+                        LATEST SIGNUPS
+                      </h2>
+                    </div>
+                    <div className="relative ml-auto w-full md:max-w-xs">
+                      <Search
+                        className="absolute left-3 top-1/2 -translate-y-1/2"
+                        size={17}
+                      />
+                      <Input
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        className="pl-10"
+                        placeholder="Search customers..."
+                      />
+                    </div>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full min-w-[760px] text-left">
+                      <thead className="bg-yellow">
+                        <tr>
+                          {["Customer", "Plan", "Status", "MRR", ""].map(
+                            (h) => (
+                              <th
+                                key={h}
+                                className="border-b-[3px] border-ink px-5 py-3 text-sm font-black uppercase"
+                              >
+                                {h}
+                              </th>
+                            ),
+                          )}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {filtered.map((c, i) => (
+                          <tr
+                            key={c.email}
+                            className="border-b-2 border-ink/15 hover:bg-yellow/20"
+                          >
+                            <td className="px-5 py-4">
+                              <div className="flex items-center gap-3">
+                                <Avatar
+                                  fallback={c.avatar}
+                                  variant={i % 2 ? "blue" : "pink"}
+                                />
+                                <div>
+                                  <p className="font-black">{c.name}</p>
+                                  <p className="text-sm text-ink/55">
+                                    {c.email}
+                                  </p>
+                                </div>
+                              </div>
+                            </td>
+                            <td className="px-5 py-4">
+                              <Badge
+                                variant={
+                                  c.plan === "Team"
+                                    ? "pink"
+                                    : c.plan === "Pro"
+                                      ? "blue"
+                                      : "outline"
+                                }
+                              >
+                                {c.plan}
+                              </Badge>
+                            </td>
+                            <td className="px-5 py-4">
+                              <Badge
+                                variant={
+                                  c.status === "Active"
+                                    ? "green"
+                                    : c.status === "Trial"
+                                      ? "yellow"
+                                      : "red"
+                                }
+                              >
+                                {c.status}
+                              </Badge>
+                            </td>
+                            <td className="px-5 py-4 font-black">{c.mrr}</td>
+                            <td className="px-5 py-4">
+                              <Button icon variant="ghost" aria-label="More">
+                                <MoreHorizontal size={18} />
+                              </Button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </ComicPanel>
+
+                <ComicPanel variant="sky" shadow="lg" className="p-5">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <Badge variant="ink">Activity</Badge>
+                      <h2 className="mt-2 font-display text-4xl">
+                        WHAT'S NEW?
+                      </h2>
+                    </div>
+                    <Activity />
+                  </div>
+                  <Divider variant="zigzag" tone="ink" className="my-5" />
+                  <div className="space-y-4">
+                    {activities.map(([title, desc, color]) => (
+                      <div key={title} className="flex gap-3">
+                        <span
+                          className={`mt-1 h-4 w-4 shrink-0 rounded-full border-2 border-ink ${color === "green" ? "bg-green" : color === "blue" ? "bg-blue" : color === "yellow" ? "bg-yellow" : "bg-pink"}`}
+                        />
+                        <div>
+                          <p className="font-black">{title}</p>
+                          <p className="text-sm font-bold text-ink/60">
+                            {desc}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <Button
+                    variant="outline"
+                    className="mt-6 w-full"
+                    onClick={() => notify("Activity center opened.")}
+                  >
+                    View all activity
+                  </Button>
+                </ComicPanel>
+              </section>
+
+              <section className="grid gap-5 md:grid-cols-3">
+                {[
+                  {
+                    icon: CircleDollarSign,
+                    title: "Recover revenue",
+                    text: "12 failed payments need attention.",
+                    badge: "$1,842",
+                  },
+                  {
+                    icon: Users,
+                    title: "Invite your team",
+                    text: "Collaborate with role-based access.",
+                    badge: "3 seats",
+                  },
+                  {
+                    icon: Sparkles,
+                    title: "Create automation",
+                    text: "Turn repetitive work into workflows.",
+                    badge: "New",
+                  },
+                ].map(({ icon: Icon, title, text, badge }, i) => (
+                  <Card key={title} variant="pop" effect="pop">
+                    <CardContent className="p-5">
+                      <div className="flex items-start justify-between">
+                        <span className="grid h-12 w-12 place-items-center border-[3px] border-ink bg-yellow shadow-[4px_4px_0_#171717]">
+                          <Icon />
+                        </span>
+                        <Badge
+                          variant={i === 0 ? "red" : i === 1 ? "blue" : "pink"}
+                        >
+                          {badge}
+                        </Badge>
+                      </div>
+                      <h3 className="mt-5 font-display text-3xl">{title}</h3>
+                      <p className="mt-2 font-bold text-ink/65">{text}</p>
+                      <Button
+                        className="mt-5"
+                        variant="outline"
+                        onClick={() => notify(`${title} action started.`)}
+                      >
+                        Take action
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </section>
+            </div>
+          </main>
+        </div>
+
+        <Dialog open={dialog} onOpenChange={setDialog}>
+          <DialogContent variant="panel">
+            <DialogHeader>
+              <DialogTitle className="font-display text-4xl">
+                ADD A NEW CUSTOMER
+              </DialogTitle>
+              <DialogDescription>
+                Create a customer record and assign a subscription plan.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4 py-4">
+              <Input placeholder="Customer name" />
+              <Input type="email" placeholder="Email address" />
+              <Select
+                placeholder="Choose a plan"
+                options={[
+                  { value: "starter", label: "Starter — $39" },
+                  { value: "pro", label: "Pro — $129" },
+                  { value: "team", label: "Team — $249" },
+                ]}
+              />
+            </div>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setDialog(false)}>
+                Cancel
+              </Button>
+              <Button
+                onClick={() => {
+                  setDialog(false);
+                  notify("Customer added successfully.");
+                }}
+              >
+                Create customer
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      </ToastProvider>
+    </ComixaProvider>
   );
 }
 
