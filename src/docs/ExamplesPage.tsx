@@ -335,12 +335,14 @@ function ExamplePreview({
   title,
   description,
   accent,
+  theme,
   icon,
   onOpen,
 }: {
   title: string;
   description: string;
   accent: string;
+  theme: string;
   icon: ReactNode;
   onOpen: () => void;
 }) {
@@ -350,6 +352,9 @@ function ExamplePreview({
       onClick={onOpen}
       className="group pg-surface pg-border flex min-h-64 flex-col rounded-xl border-2 p-5 text-left shadow-comic transition hover:-translate-y-1"
     >
+      <p className="pg-fg-muted mb-3 font-comic text-xs uppercase tracking-widest">
+        Theme: {theme}
+      </p>
       <div className="mb-5 grid h-16 w-16 place-items-center rounded-xl border-2 border-ink bg-comic-yellow text-ink shadow-comic-sm transition-transform group-hover:rotate-3 group-hover:scale-105">
         {icon}
       </div>
@@ -424,11 +429,12 @@ export function ExamplesPage() {
         </p>
       </header>
 
-      <div className="grid gap-5 lg:grid-cols-2">
+      <div className="grid gap-5 lg:grid-cols-3">
         <ExamplePreview
           title="CoverForge landing"
           description="A full SaaS-style landing page with hero, proof, gallery, pricing, and FAQ."
           accent="Landing page"
+          theme="Comic"
           icon={<BoltIcon className="h-8 w-8" />}
           onOpen={() => setOpen("landing")}
         />
@@ -436,6 +442,7 @@ export function ExamplesPage() {
           title="LaunchBoard dashboard"
           description="Responsive SaaS analytics dashboard with KPIs, revenue chart, customer table, and activity feed."
           accent="Dashboard"
+          theme="Vintage"
           icon={<LayoutDashboard className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("dashboard")}
         />
@@ -443,6 +450,7 @@ export function ExamplesPage() {
           title="InkShift ebook"
           description="eBook sales page with hero cover, chapter grid, author profile, reviews, pricing, and free chapter preview."
           accent="eBook site"
+          theme="Pop Art"
           icon={<BookOpen className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("ebook")}
         />
@@ -450,6 +458,7 @@ export function ExamplesPage() {
           title="Developer portfolio"
           description="Frontend developer portfolio with hero, project grid, skills, experience timeline, testimonials, and contact form."
           accent="Portfolio"
+          theme="Comic"
           icon={<Code2 className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("portfolio")}
         />
@@ -457,6 +466,7 @@ export function ExamplesPage() {
           title="Panel Press blog"
           description="Comic-inspired developer blog with featured story, category filters, search, newsletter signup, and article pages."
           accent="Blog"
+          theme="Manga"
           icon={<Newspaper className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("blog")}
         />
@@ -464,6 +474,7 @@ export function ExamplesPage() {
           title="LaunchZap landing"
           description="SaaS launch workspace landing page with hero, features, workflow, pricing, FAQ, and demo dialog."
           accent="SaaS landing"
+          theme="Manga"
           icon={<Rocket className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("launchzap")}
         />
@@ -471,6 +482,7 @@ export function ExamplesPage() {
           title="FM 79 retro radio"
           description="Retro radio landing page with schedule cards, dusty record archive, tape club CTA, and live toast actions."
           accent="Retro project"
+          theme="Retro"
           icon={<RadioTower className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("retrofm")}
         />
@@ -478,6 +490,7 @@ export function ExamplesPage() {
           title="POP//DROP experience"
           description="Pop art culture magazine and print drop page with loud panels, kinetic cards, cursor modes, and shop section."
           accent="Pop Art project"
+          theme="Pop Art"
           icon={<Palette className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("popart")}
         />
@@ -485,6 +498,7 @@ export function ExamplesPage() {
           title="The Gilded Ledger"
           description="Vintage collection landing page with artifact illustrations, selected lots, journal cards, and salon invitation CTA."
           accent="Vintage project"
+          theme="Vintage"
           icon={<Gem className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("ledger")}
         />

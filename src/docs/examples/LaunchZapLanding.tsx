@@ -396,11 +396,11 @@ export function LaunchZapLanding() {
 
           <section
             id="features"
-            className="border-y-4 border-ink bg-black px-5 py-24 md:px-8"
+            className="border-y-4 border-ink bg-gray-300 px-5 py-24 md:px-8"
           >
             <div className="mx-auto max-w-8xl">
               <Badge variant="yellow">Your launch superpowers</Badge>
-              <h2 className="display section-title mt-5 text-white text-outline">
+              <h2 className="display section-title mt-5 text-white text-outline outline-white">
                 EVERYTHING YOU NEED TO MAKE NOISE.
               </h2>
               <Features className="mt-12">
@@ -610,7 +610,7 @@ export function LaunchZapLanding() {
             </div>
           </section>
 
-          <section className="border-t-4 border-ink bg-black px-5 py-20 text-center md:px-8">
+          <section className="border-t-4 border-ink bg-gray-300 px-5 py-20 text-center md:px-8">
             <div className="mx-auto max-w-4xl">
               <SoundBadge word="READY?" variant="boom" />
               <h2 className="display section-title mt-5 text-white text-outline">

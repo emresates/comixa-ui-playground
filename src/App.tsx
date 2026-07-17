@@ -148,10 +148,6 @@ function Playground() {
                 setMobileNav(false);
               }}
             />
-            <span className="pg-fg-muted hidden shrink-0 font-comic text-sm uppercase tracking-wide lg:inline">
-              {NAV.flatMap((g) => g.items).find((i) => i.id === active)
-                ?.label ?? "Overview"}
-            </span>
             <div className="pg-theme-picker ml-auto flex shrink-0 items-center gap-1 pg-hide-scrollbar">
               {PLAYGROUND_THEMES.map((item) => (
                 <Button
