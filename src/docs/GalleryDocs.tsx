@@ -1,6 +1,6 @@
 import { Gallery, type GalleryItem } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 const items: GalleryItem[] = [
   {
@@ -62,6 +62,7 @@ export function GalleryDocs() {
 
 <Gallery variant="featured" items={items} />
 <Gallery variant="strip" items={items} />`}
+      customExamples
       props={
         [
           {
@@ -91,14 +92,12 @@ export function GalleryDocs() {
       }
     >
       <div className="flex flex-col gap-6">
-        <div>
-          <DemoLabel>Featured</DemoLabel>
+        <ComponentDemoCard title="Featured" code={`<Gallery variant="featured" items={items} />`}>
           <Gallery variant="featured" items={items} />
-        </div>
-        <div>
-          <DemoLabel>Horizontal strip</DemoLabel>
+        </ComponentDemoCard>
+        <ComponentDemoCard title="Horizontal strip" code={`<Gallery variant="strip" items={items} className="pg-hide-scrollbar" />`}>
           <Gallery variant="strip" items={items} className="pg-hide-scrollbar" />
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

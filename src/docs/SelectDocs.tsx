@@ -1,9 +1,12 @@
-import {
-  Select,
-  type SelectOption,
-} from "comixa-ui";
+import { Select, type SelectOption } from "comixa-ui";
 import { DocPage } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
+
+const options: SelectOption[] = [
+  { value: "zap", label: "Captain Zap" },
+  { value: "boom", label: "Boom Knight" },
+  { value: "ink", label: "Ink Mage" },
+];
 
 const groupedOptions: SelectOption[] = [
   {
@@ -46,12 +49,6 @@ const loadingOptions: SelectOption[] = [
 ];
 
 export function SelectDocs() {
-  const options = [
-    { value: "zap", label: "Captain Zap" },
-    { value: "boom", label: "Boom Knight" },
-    { value: "ink", label: "Ink Mage" },
-  ];
-
   return (
     <DocPage
       title="Select"
@@ -71,6 +68,7 @@ export function SelectDocs() {
 
 {/* Disabled */}
 <Select disabled defaultValue="zap" options={options} />`}
+      customExamples
       props={[
         {
           name: "options",
@@ -124,10 +122,14 @@ export function SelectDocs() {
         },
       ]}
     >
-      <div className="flex flex-col gap-5">
-        <div>
-          <DemoLabel>Variants</DemoLabel>
-          <div className="grid max-w-xl gap-3 sm:grid-cols-2">
+      <div className="grid gap-5">
+        <ComponentDemoCard
+          title="Variants"
+          code={`<Select variant="default" defaultValue="zap" options={options} />
+<Select variant="ghost" defaultValue="zap" options={options} />
+<Select variant="filled" defaultValue="zap" options={options} />`}
+        >
+          <div className="grid gap-3 sm:grid-cols-2">
             <Select
               variant="default"
               defaultValue="zap"
@@ -147,10 +149,14 @@ export function SelectDocs() {
               options={options}
             />
           </div>
-        </div>
-        <div>
-          <DemoLabel>States</DemoLabel>
-          <div className="grid max-w-xl gap-3 sm:grid-cols-2">
+        </ComponentDemoCard>
+
+        <ComponentDemoCard
+          title="States"
+          code={`<Select state="error" defaultValue="boom" options={options} />
+<Select state="success" defaultValue="ink" options={options} />`}
+        >
+          <div className="grid gap-3 sm:grid-cols-2">
             <Select
               variant="default"
               state="error"
@@ -164,56 +170,85 @@ export function SelectDocs() {
               options={options}
             />
           </div>
-        </div>
-        <div>
-          <DemoLabel>Sizes</DemoLabel>
-          <div className="grid max-w-md gap-3">
+        </ComponentDemoCard>
+
+        <ComponentDemoCard
+          title="Sizes"
+          code={`<Select selectSize="sm" defaultValue="zap" options={options} />
+<Select selectSize="md" defaultValue="zap" options={options} />
+<Select selectSize="lg" defaultValue="zap" options={options} />`}
+        >
+          <div className="grid gap-3">
             <Select selectSize="sm" defaultValue="zap" options={options} />
             <Select selectSize="md" defaultValue="zap" options={options} />
             <Select selectSize="lg" defaultValue="zap" options={options} />
           </div>
-        </div>
-        <div>
-          <DemoLabel>Loading</DemoLabel>
-          <div className="max-w-md">
-            <Select
-              disabled
-              defaultValue="loading"
-              options={loadingOptions}
-              classNames={{ value: "opacity-80" }}
-            />
-          </div>
-        </div>
-        <div>
-          <DemoLabel>Grouped options</DemoLabel>
-          <div className="max-w-md">
-            <Select
-              placeholder="Choose a character"
-              options={groupedOptions}
-              classNames={{
-                list: "divide-y-2 divide-ink/10",
-                option: "disabled:cursor-default disabled:opacity-70",
-              }}
-            />
-          </div>
-        </div>
-        <div>
-          <DemoLabel>Scrollable</DemoLabel>
-          <div className="max-w-md">
-            <Select
-              placeholder="Choose an issue"
-              options={scrollableOptions}
-              classNames={{ list: "max-h-40 overflow-y-auto overscroll-contain" }}
-            />
-          </div>
-        </div>
-        <div>
-          <DemoLabel>Disabled</DemoLabel>
-          <div className="grid max-w-xl gap-3 sm:grid-cols-2">
+        </ComponentDemoCard>
+
+        <ComponentDemoCard
+          title="Loading"
+          code={`<Select
+  disabled
+  defaultValue="loading"
+  options={loadingOptions}
+  classNames={{ value: "opacity-80" }}
+/>`}
+        >
+          <Select
+            disabled
+            defaultValue="loading"
+            options={loadingOptions}
+            classNames={{ value: "opacity-80" }}
+          />
+        </ComponentDemoCard>
+
+        <ComponentDemoCard
+          title="Grouped options"
+          code={`const groupedOptions = [
+  { value: "group-heroes", label: "Heroes", disabled: true },
+  { value: "captain-zap", label: "Captain Zap" },
+  { value: "nova-girl", label: "Nova Girl" },
+  { value: "group-villains", label: "Villains", disabled: true },
+  { value: "shadow-king", label: "Shadow King" },
+];
+
+<Select placeholder="Choose a character" options={groupedOptions} />`}
+        >
+          <Select
+            placeholder="Choose a character"
+            options={groupedOptions}
+            classNames={{
+              list: "divide-y-2 divide-ink/10",
+              option: "disabled:cursor-default disabled:opacity-70",
+            }}
+          />
+        </ComponentDemoCard>
+
+        <ComponentDemoCard
+          title="Scrollable"
+          code={`<Select
+  placeholder="Choose an issue"
+  options={scrollableOptions}
+  classNames={{ list: "max-h-40 overflow-y-auto overscroll-contain" }}
+/>`}
+        >
+          <Select
+            placeholder="Choose an issue"
+            options={scrollableOptions}
+            classNames={{ list: "max-h-40 overflow-y-auto overscroll-contain" }}
+          />
+        </ComponentDemoCard>
+
+        <ComponentDemoCard
+          title="Disabled"
+          code={`<Select disabled defaultValue="zap" options={options} />
+<Select disabled placeholder="Unavailable" options={options} />`}
+        >
+          <div className="grid gap-3 sm:grid-cols-2">
             <Select disabled defaultValue="zap" options={options} />
             <Select disabled placeholder="Unavailable" options={options} />
           </div>
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

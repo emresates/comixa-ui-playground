@@ -1,6 +1,6 @@
 import { ComicLoader } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 export function ComicLoaderDocs() {
   return (
@@ -9,6 +9,7 @@ export function ComicLoaderDocs() {
       description="Small loading indicators with theme-aware comic motion: dots, burst, panel slide, and speech bubble."
       importCode={`import { ComicLoader } from "comixa-ui";`}
       exampleCode={`<ComicLoader variant="dots" />\n<ComicLoader variant="burst" label="Zap" tone="red" />`}
+      customExamples
       props={
         [
           {
@@ -39,22 +40,18 @@ export function ComicLoaderDocs() {
       }
     >
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-xl border-2 border-ink bg-paper p-5 shadow-comic-sm">
-          <DemoLabel>Dots</DemoLabel>
+        <ComponentDemoCard title="Dots" code={`<ComicLoader variant="dots" tone="blue" label="Loading" />`}>
           <ComicLoader variant="dots" tone="blue" label="Loading" />
-        </div>
-        <div className="rounded-xl border-2 border-ink bg-paper p-5 shadow-comic-sm">
-          <DemoLabel>Burst</DemoLabel>
+        </ComponentDemoCard>
+        <ComponentDemoCard title="Burst" code={`<ComicLoader variant="burst" tone="red" label="Zap" size="sm" />`}>
           <ComicLoader variant="burst" tone="red" label="Zap" size="sm" />
-        </div>
-        <div className="rounded-xl border-2 border-ink bg-paper p-5 shadow-comic-sm">
-          <DemoLabel>Panel</DemoLabel>
+        </ComponentDemoCard>
+        <ComponentDemoCard title="Panel" code={`<ComicLoader variant="panel" tone="green" label="Loading panels" />`}>
           <ComicLoader variant="panel" tone="green" label="Loading panels" />
-        </div>
-        <div className="rounded-xl border-2 border-ink bg-paper p-5 shadow-comic-sm">
-          <DemoLabel>Speech</DemoLabel>
+        </ComponentDemoCard>
+        <ComponentDemoCard title="Speech" code={`<ComicLoader variant="speech" tone="pink" label="Hold on" />`}>
           <ComicLoader variant="speech" tone="pink" label="Hold on" />
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

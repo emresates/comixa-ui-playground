@@ -1,6 +1,6 @@
 import { Feature, Features } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
-import { BoltIcon, DemoLabel, PlusIcon } from "./shared";
+import { BoltIcon, ComponentDemoCard, PlusIcon } from "./shared";
 
 function StarIcon({ className }: { className?: string }) {
   return (
@@ -29,6 +29,7 @@ export function FeaturesDocs() {
     description="Choose 1-4 responsive columns."
   />
 </Features>`}
+      customExamples
       props={
         [
           {
@@ -60,8 +61,11 @@ export function FeaturesDocs() {
       }
     >
       <div className="flex flex-col gap-6">
-        <div>
-          <DemoLabel>Variants</DemoLabel>
+        <ComponentDemoCard title="Variants" code={`<Features columns={3}>
+  <Feature variant="yellow" icon={<BoltIcon />} title="Fast setup" description="Bold ink borders." />
+  <Feature variant="blue" icon={<PlusIcon />} title="Composable" description="Flexible slots." />
+  <Feature variant="burst" title="Visual punch" description="Extra energy." />
+</Features>`}>
           <Features columns={3}>
             <Feature
               variant="yellow"
@@ -98,7 +102,7 @@ export function FeaturesDocs() {
               description="Use align=center for compact marketing sections."
             />
           </Features>
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

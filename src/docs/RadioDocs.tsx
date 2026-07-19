@@ -9,7 +9,7 @@ import {
   RadioGroup,
 } from "comixa-ui";
 import { DocPage } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 const exampleCode = `import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, Radio, RadioGroup } from "comixa-ui";
@@ -88,6 +88,7 @@ export function RadioDocs() {
       description="Single-choice control with theme-aware styling. Use it alone or compose it inside Card layouts."
       importCode={`import { Radio, RadioGroup } from "comixa-ui";`}
       exampleCode={exampleCode}
+      customExamples
       props={[
         {
           name: "radioSize",
@@ -121,8 +122,11 @@ export function RadioDocs() {
       ]}
     >
       <div className="flex flex-col gap-6">
-        <div>
-          <DemoLabel>Card options</DemoLabel>
+        <ComponentDemoCard title="Card options" code={`<RadioGroup orientation="horizontal">
+  {plans.map((item) => (
+    <Card key={item.value}><Radio name="plan" value={item.value} /></Card>
+  ))}
+</RadioGroup>`}>
           <RadioGroup
             orientation="horizontal"
             className="grid gap-3 sm:grid-cols-3"
@@ -159,10 +163,11 @@ export function RadioDocs() {
               );
             })}
           </RadioGroup>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Disabled and invalid</DemoLabel>
+        <ComponentDemoCard title="Disabled and invalid" code={`<Radio name="format" value="print" label="Print edition" />
+<Radio name="format" value="deluxe" label="Deluxe edition" disabled />
+<Radio name="format" value="digital" label="Digital edition required" invalid />`}>
           <Card variant="outline" padding="md">
             <CardHeader>
               <CardTitle>Delivery format</CardTitle>
@@ -196,7 +201,7 @@ export function RadioDocs() {
               </RadioGroup>
             </CardContent>
           </Card>
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

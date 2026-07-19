@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+export { ComponentDemoCard } from "./DocPage";
+
 export function DemoLabel({ children }: { children: ReactNode }) {
   return (
     <p className="pg-fg-muted mb-2 font-comic text-xs uppercase tracking-wide">

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Card, CardContent, CardHeader, CardTitle, ComicReveal } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 const variants = ["pop", "slide-up", "panel-wipe", "spotlight"] as const;
 
@@ -20,6 +20,7 @@ export function ComicRevealDocs() {
 <ComicReveal variant="panel-wipe" triggerOnView>
   <Card>Reveals when visible</Card>
 </ComicReveal>`}
+      customExamples
       props={
         [
           {
@@ -66,8 +67,13 @@ export function ComicRevealDocs() {
         </Button>
         <div className="grid gap-4 md:grid-cols-2">
           {variants.map((variant) => (
-            <div key={variant}>
-              <DemoLabel>{variant}</DemoLabel>
+            <ComponentDemoCard
+              key={variant}
+              title={variant}
+              code={`<ComicReveal variant="${variant}" revealKey={replay} triggerOnView>
+  <Card>Zap panel</Card>
+</ComicReveal>`}
+            >
               <ComicReveal
                 variant={variant}
                 revealKey={`${variant}-${replay}`}
@@ -84,11 +90,12 @@ export function ComicRevealDocs() {
                   </CardContent>
                 </Card>
               </ComicReveal>
-            </div>
+            </ComponentDemoCard>
           ))}
         </div>
-        <div>
-          <DemoLabel>Scroll trigger</DemoLabel>
+        <ComponentDemoCard title="Scroll trigger" code={`<ComicReveal variant="panel-wipe" triggerOnView>
+  <Card>Revealed down here</Card>
+</ComicReveal>`}>
           <div
             className="h-64 overflow-y-auto rounded-xl border-2 border-dashed border-ink bg-paper-cream p-5 shadow-comic-sm"
             style={{
@@ -118,7 +125,7 @@ export function ComicRevealDocs() {
               </Card>
             </ComicReveal>
           </div>
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

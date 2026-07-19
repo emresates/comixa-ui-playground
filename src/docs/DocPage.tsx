@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { Button } from "comixa-ui";
+import { Button, Card, CardContent, CardHeader, CardTitle } from "comixa-ui";
 
 export type PropRow = {
   name: string;
@@ -32,6 +32,40 @@ export function CodeBlock({ code }: { code: string }) {
   );
 }
 
+export function ComponentDemoCard({
+  title,
+  code,
+  children,
+  className,
+}: {
+  title: ReactNode;
+  code: string;
+  children: ReactNode;
+  className?: string;
+}) {
+  const [showCode, setShowCode] = useState(false);
+
+  return (
+    <Card variant="default" padding="none" className={className}>
+      <CardHeader className="flex-row items-center justify-between gap-3 border-b-2 border-ink px-5 py-4">
+        <CardTitle>{title}</CardTitle>
+        <Button
+          size="sm"
+          variant={showCode ? "default" : "outline"}
+          aria-expanded={showCode}
+          onClick={() => setShowCode((visible) => !visible)}
+        >
+          {showCode ? "Hide code" : "Show code"}
+        </Button>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4 p-5">
+        {children}
+        {showCode ? <CodeBlock code={code} /> : null}
+      </CardContent>
+    </Card>
+  );
+}
+
 export function DocPage({
   title,
   description,
@@ -39,6 +73,7 @@ export function DocPage({
   exampleCode,
   props,
   children,
+  customExamples = false,
 }: {
   title: string;
   description: string;
@@ -46,9 +81,8 @@ export function DocPage({
   exampleCode: string;
   props: PropRow[];
   children: ReactNode;
+  customExamples?: boolean;
 }) {
-  const [showCode, setShowCode] = useState(false);
-
   return (
     <article className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
@@ -66,31 +100,17 @@ export function DocPage({
       </section>
 
       <section className="flex flex-col gap-3">
-        <div className="flex items-center justify-between gap-3">
-          <h2 className="pg-fg font-comic text-lg uppercase tracking-wide">
-            Examples
-          </h2>
-          <Button
-            size="sm"
-            variant={showCode ? "default" : "outline"}
-            onClick={() => setShowCode((v) => !v)}
-          >
-            {showCode ? "Hide code" : "Code"}
-          </Button>
-        </div>
+        <h2 className="pg-fg font-comic text-lg uppercase tracking-wide">
+          Examples
+        </h2>
 
-        <div className="pg-surface pg-border rounded-xl border-2 p-5 shadow-comic">
-          {children}
-        </div>
-
-        {showCode ? (
-          <div className="flex flex-col gap-2">
-            <h3 className="pg-fg-muted font-comic text-sm uppercase tracking-wide">
-              Usage
-            </h3>
-            <CodeBlock code={exampleCode} />
-          </div>
-        ) : null}
+        {customExamples ? (
+          children
+        ) : (
+          <ComponentDemoCard title={`${title} examples`} code={exampleCode}>
+            {children}
+          </ComponentDemoCard>
+        )}
       </section>
 
       <section className="flex flex-col gap-3">

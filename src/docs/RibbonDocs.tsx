@@ -1,6 +1,6 @@
 import { Ribbon } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 export function RibbonDocs() {
   return (
@@ -12,6 +12,7 @@ export function RibbonDocs() {
 <Ribbon variant="corner" tilt="right">Hot</Ribbon>
 <Ribbon variant="ticket">Limited</Ribbon>
 <Ribbon variant="burst">Pow</Ribbon>`}
+      customExamples
       props={
         [
           {
@@ -36,8 +37,10 @@ export function RibbonDocs() {
       }
     >
       <div className="flex flex-col gap-5">
-        <div>
-          <DemoLabel>Variants</DemoLabel>
+        <ComponentDemoCard title="Variants" code={`<Ribbon variant="banner">New issue</Ribbon>
+<Ribbon variant="corner" tilt="right">Hot</Ribbon>
+<Ribbon variant="ticket">Limited</Ribbon>
+<Ribbon variant="burst">Pow</Ribbon>`}>
           <div className="flex flex-wrap items-center gap-4">
             <Ribbon variant="banner">New issue</Ribbon>
             <Ribbon variant="corner" tilt="right">
@@ -46,15 +49,16 @@ export function RibbonDocs() {
             <Ribbon variant="ticket">Limited</Ribbon>
             <Ribbon variant="burst">Pow</Ribbon>
           </div>
-        </div>
-        <div>
-          <DemoLabel>Sizes</DemoLabel>
+        </ComponentDemoCard>
+        <ComponentDemoCard title="Sizes" code={`<Ribbon size="sm">Small</Ribbon>
+<Ribbon size="md">Medium</Ribbon>
+<Ribbon size="lg">Large</Ribbon>`}>
           <div className="flex flex-wrap items-center gap-4">
             <Ribbon size="sm">Small</Ribbon>
             <Ribbon size="md">Medium</Ribbon>
             <Ribbon size="lg">Large</Ribbon>
           </div>
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

@@ -1,6 +1,6 @@
 import { Button } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
-import { DemoLabel, BoltIcon, PlusIcon } from "./shared";
+import { BoltIcon, ComponentDemoCard, PlusIcon } from "./shared";
 
 export function ButtonDocs() {
   return (
@@ -13,6 +13,7 @@ export function ButtonDocs() {
 <Button variant="danger">Danger</Button>
 <Button variant="warning">Warning</Button>
 <Button loading>Saving...</Button>`}
+      customExamples
       props={
         [
           {
@@ -49,8 +50,16 @@ export function ButtonDocs() {
       }
     >
       <div className="flex flex-col gap-5">
-        <div>
-          <DemoLabel>Variants</DemoLabel>
+        <ComponentDemoCard
+          title="Variants"
+          code={`<Button>Default</Button>
+<Button variant="primary">Primary</Button>
+<Button variant="danger">Danger</Button>
+<Button variant="success">Success</Button>
+<Button variant="warning">Warning</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>`}
+        >
           <div className="flex flex-wrap gap-3">
             <Button>Default</Button>
             <Button variant="primary">Primary</Button>
@@ -60,10 +69,15 @@ export function ButtonDocs() {
             <Button variant="outline">Outline</Button>
             <Button variant="ghost">Ghost</Button>
           </div>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Loading</DemoLabel>
+        <ComponentDemoCard
+          title="Loading"
+          code={`<Button loading>Saving</Button>
+<Button variant="primary" loading>Loading</Button>
+<Button variant="danger" loading>Boom...</Button>
+<Button variant="outline" loading>Wait</Button>`}
+        >
           <div className="flex flex-wrap items-center gap-3">
             <Button loading>Saving</Button>
             <Button variant="primary" loading>
@@ -76,10 +90,15 @@ export function ButtonDocs() {
               Wait
             </Button>
           </div>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Icon buttons</DemoLabel>
+        <ComponentDemoCard
+          title="Icon buttons"
+          code={`<Button icon size="sm" aria-label="Add"><PlusIcon /></Button>
+<Button icon aria-label="Zap"><BoltIcon /></Button>
+<Button icon size="lg" variant="primary" aria-label="Zap large"><BoltIcon /></Button>
+<Button icon variant="outline" loading aria-label="Loading icon" />`}
+        >
           <div className="flex flex-wrap items-center gap-3">
             <Button icon size="sm" aria-label="Add">
               <PlusIcon className="h-4 w-4" />
@@ -95,10 +114,13 @@ export function ButtonDocs() {
             </Button>
             <Button icon variant="outline" loading aria-label="Loading icon" />
           </div>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>With icon + label</DemoLabel>
+        <ComponentDemoCard
+          title="With icon + label"
+          code={`<Button><BoltIcon />Zap</Button>
+<Button variant="primary"><PlusIcon />Add hero</Button>`}
+        >
           <div className="flex flex-wrap gap-3">
             <Button>
               <BoltIcon className="h-4 w-4" />
@@ -109,16 +131,20 @@ export function ButtonDocs() {
               Add hero
             </Button>
           </div>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Sizes</DemoLabel>
+        <ComponentDemoCard
+          title="Sizes"
+          code={`<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>`}
+        >
           <div className="flex flex-wrap items-center gap-3">
             <Button size="sm">Small</Button>
             <Button size="md">Medium</Button>
             <Button size="lg">Large</Button>
           </div>
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

@@ -3,7 +3,7 @@ import {
   Switch,
 } from "comixa-ui";
 import { DocPage } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 export function SwitchDocs() {
   return (
@@ -12,6 +12,7 @@ export function SwitchDocs() {
       description="On/off toggle with a comic thumb and ink border. Good for settings and binary choices."
       importCode={`import { Switch } from "comixa-ui";`}
       exampleCode={`<Switch label="Primary" variant="primary" defaultChecked />\n<Switch label="Danger" variant="danger" />`}
+      customExamples
       props={[
         {
           name: "variant",
@@ -43,8 +44,11 @@ export function SwitchDocs() {
       ]}
     >
       <div className="flex flex-col gap-5">
-        <div>
-          <DemoLabel>Variants</DemoLabel>
+        <ComponentDemoCard title="Variants" code={`<Switch label="Default" variant="default" defaultChecked />
+<Switch label="Primary" variant="primary" defaultChecked />
+<Switch label="Danger" variant="danger" defaultChecked />
+<Switch label="Success" variant="success" defaultChecked />
+<Switch label="Pink" variant="pink" defaultChecked />`}>
           <div className="flex flex-wrap gap-4">
             <Switch label="Default" variant="default" defaultChecked />
             <Switch label="Primary" variant="primary" defaultChecked />
@@ -52,15 +56,16 @@ export function SwitchDocs() {
             <Switch label="Success" variant="success" defaultChecked />
             <Switch label="Pink" variant="pink" defaultChecked />
           </div>
-        </div>
-        <div>
-          <DemoLabel>Sizes</DemoLabel>
+        </ComponentDemoCard>
+        <ComponentDemoCard title="Sizes" code={`<Switch label="Small" switchSize="sm" defaultChecked />
+<Switch label="Medium" switchSize="md" defaultChecked />
+<Switch label="Large" switchSize="lg" defaultChecked />`}>
           <div className="flex flex-wrap items-center gap-4">
             <Switch label="Small" switchSize="sm" defaultChecked />
             <Switch label="Medium" switchSize="md" defaultChecked />
             <Switch label="Large" switchSize="lg" defaultChecked />
           </div>
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

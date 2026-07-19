@@ -1,6 +1,6 @@
 import { Timeline, TimelineItem } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 const items = [
   {
@@ -59,6 +59,7 @@ export function TimelineDocs() {
     tilt="left"
   />
 </Timeline>`}
+      customExamples
       props={
         [
           {
@@ -104,8 +105,9 @@ export function TimelineDocs() {
       }
     >
       <div className="flex flex-col gap-8">
-        <div>
-          <DemoLabel>Resume timeline</DemoLabel>
+        <ComponentDemoCard title="Resume timeline" code={`<Timeline variant="roomy">
+  {items.map((item) => <TimelineItem key={item.title} {...item} />)}
+</Timeline>`}>
           <div
             className="rounded-xl border-2 border-ink bg-paper-cream p-5 shadow-comic-sm sm:p-8"
             style={{
@@ -120,10 +122,12 @@ export function TimelineDocs() {
               ))}
             </Timeline>
           </div>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Compact solid line</DemoLabel>
+        <ComponentDemoCard title="Compact solid line" code={`<Timeline variant="compact" line="solid">
+  <TimelineItem period="Phase 01" title="Sketch" color="pink" />
+  <TimelineItem period="Phase 02" title="Ink" color="green" tilt="right" />
+</Timeline>`}>
           <Timeline variant="compact" line="solid">
             <TimelineItem
               period="Phase 01"
@@ -139,7 +143,7 @@ export function TimelineDocs() {
               tilt="right"
             />
           </Timeline>
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

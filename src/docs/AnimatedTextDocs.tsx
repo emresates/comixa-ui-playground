@@ -1,6 +1,6 @@
 import { ComicText, Highlight, LetterReveal, Typewriter } from "comixa-ui";
 import { DocPage } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 export function AnimatedTextDocs() {
   return (
@@ -51,6 +51,7 @@ export function AnimatedTextDemo() {
     </div>
   );
 }`}
+      customExamples
       props={[
         {
           name: "repeat",
@@ -106,8 +107,7 @@ export function AnimatedTextDemo() {
       ]}
     >
       <div className="flex flex-col gap-6">
-        <div>
-          <DemoLabel>LetterReveal - trigger on view</DemoLabel>
+        <ComponentDemoCard title="LetterReveal — trigger on view" code={`<LetterReveal as="h2" triggerOnView repeat={Infinity}>Boom Town</LetterReveal>`}>
           <LetterReveal
             as="h2"
             className="text-3xl"
@@ -116,10 +116,9 @@ export function AnimatedTextDemo() {
           >
             Boom Town
           </LetterReveal>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Typewriter - trigger on view</DemoLabel>
+        <ComponentDemoCard title="Typewriter — trigger on view" code={`<Typewriter speed={40} triggerOnView repeat={Infinity}>Typing with a comic caret...</Typewriter>`}>
           <Typewriter
             as="p"
             className="text-lg"
@@ -129,10 +128,11 @@ export function AnimatedTextDemo() {
           >
             Typing with a comic caret...
           </Typewriter>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>ComicText - effects trigger on view</DemoLabel>
+        <ComponentDemoCard title="ComicText — effects trigger on view" code={`<ComicText size="lg" effect="pop" tilt="left" triggerOnView>Kapow!</ComicText>
+<ComicText tone="red" effect="shake" triggerOnView>Danger</ComicText>
+<ComicText tone="blue" effect="wiggle" triggerOnView>Zap</ComicText>`}>
           <div className="flex flex-wrap items-end gap-4">
             <ComicText
               size="lg"
@@ -163,10 +163,10 @@ export function AnimatedTextDemo() {
               Zap
             </ComicText>
           </div>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Highlight - trigger on view</DemoLabel>
+        <ComponentDemoCard title="Highlight — trigger on view" code={`<Highlight tone="yellow" triggerOnView repeat={Infinity}>faster</Highlight>
+<Highlight tone="pink" triggerOnView repeat={Infinity}>comic energy</Highlight>`}>
           <p className="text-lg text-ink">
             Ship{" "}
             <Highlight tone="yellow" triggerOnView repeat={Infinity}>
@@ -178,10 +178,11 @@ export function AnimatedTextDemo() {
             </Highlight>
             .
           </p>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Scrollable trigger demo</DemoLabel>
+        <ComponentDemoCard title="Scrollable trigger demo" code={`<div className="h-64 overflow-y-auto">
+  <ComicText effect="pop" triggerOnView repeat={1}>This triggers down here!</ComicText>
+</div>`}>
           <div
             className="h-64 overflow-y-auto rounded-xl border-2 border-dashed border-ink bg-paper-cream p-5 shadow-comic-sm"
             style={{
@@ -208,7 +209,7 @@ export function AnimatedTextDemo() {
               </ComicText>
             </div>
           </div>
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

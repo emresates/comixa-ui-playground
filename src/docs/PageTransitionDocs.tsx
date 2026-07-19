@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, PageTransition } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 const variants = ["panel-swipe", "burst", "flip", "speed-lines"] as const;
 type TransitionVariant = (typeof variants)[number];
@@ -84,6 +84,7 @@ export function PageTransitionDocs() {
         exampleCode={`<PageTransition variant="panel-swipe" transitionKey={routeId}>
   <YourPage />
 </PageTransition>`}
+        customExamples
         props={
           [
             {
@@ -113,8 +114,9 @@ export function PageTransitionDocs() {
         }
       >
         <div className="flex flex-col gap-5">
-          <div>
-            <DemoLabel>Full page preview</DemoLabel>
+          <ComponentDemoCard title="Full page preview" code={`<Button onClick={() => playPreview("panel-swipe")}>
+  Open app preview
+</Button>`}>
             <div className="flex flex-wrap gap-3">
               {variants.map((variant) => (
                 <Button
@@ -127,7 +129,7 @@ export function PageTransitionDocs() {
                 </Button>
               ))}
             </div>
-          </div>
+          </ComponentDemoCard>
           <div className="flex flex-wrap gap-3">
             <Button size="sm" onClick={() => playPreview()}>
               Open app preview
@@ -142,29 +144,24 @@ export function PageTransitionDocs() {
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {variants.map((variant, index) => (
-              <button
+              <ComponentDemoCard
                 key={variant}
-                type="button"
-                className="block text-left"
-                onClick={() => playPreview(variant)}
+                title={variant}
+                code={`<PageTransition variant="${variant}" transitionKey={scene}>
+  <YourPage />
+</PageTransition>`}
               >
-                <DemoLabel>{variant}</DemoLabel>
-                <PageTransition
-                  variant={variant}
-                  transitionKey={`${variant}-${scene}`}
-                  className={
-                    index === scene % variants.length ? "bg-comic-yellow" : ""
-                  }
-                >
-                  <h3 className="font-comic text-2xl uppercase tracking-wide">
-                    Chapter {index + 1}
-                  </h3>
-                  <p className="mt-2 max-w-sm text-sm text-ink-muted">
-                    A route-sized panel with comic timing, hard borders, and a
-                    replayable key for navigation changes.
-                  </p>
-                </PageTransition>
-              </button>
+                <button type="button" className="block w-full text-left" onClick={() => playPreview(variant)}>
+                  <PageTransition
+                    variant={variant}
+                    transitionKey={`${variant}-${scene}`}
+                    className={index === scene % variants.length ? "bg-comic-yellow" : ""}
+                  >
+                    <h3 className="font-comic text-2xl uppercase tracking-wide">Chapter {index + 1}</h3>
+                    <p className="mt-2 max-w-sm text-sm text-ink-muted">A route-sized panel with comic timing and a replayable key.</p>
+                  </PageTransition>
+                </button>
+              </ComponentDemoCard>
             ))}
           </div>
         </div>

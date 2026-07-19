@@ -5,7 +5,7 @@ import {
   toast,
 } from "comixa-ui";
 import { DocPage } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 const TOAST_POSITIONS = [
   "top-left",
@@ -61,6 +61,7 @@ export function ToastDocs() {
       description="Short notifications. Wrap the app in ToastProvider, then call toast() with title, variant, position, duration, and closable."
       importCode={`import { ToastProvider, toast } from "comixa-ui";`}
       exampleCode={`toast({\n  title: "Pow!",\n  variant: "pop",\n  position: "top-center",\n  duration: 3500,\n  closable: true,\n});`}
+      customExamples
       props={[
         {
           name: "position",
@@ -94,17 +95,17 @@ export function ToastDocs() {
       ]}
     >
       <div className="flex flex-col gap-5">
-        <div>
-          <DemoLabel>Closable (X)</DemoLabel>
+        <ComponentDemoCard title="Closable (X)" code={`<Switch checked={closable} onCheckedChange={setClosable} />`}>
           <Switch
             label={closable ? "Show close button" : "Hide close button"}
             checked={closable}
             onCheckedChange={setClosable}
           />
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Duration</DemoLabel>
+        <ComponentDemoCard title="Duration" code={`{durations.map((item) => (
+  <Button onClick={() => setDuration(item.value)}>{item.label}</Button>
+))}`}>
           <div className="flex flex-wrap gap-2">
             {TOAST_DURATIONS.map((item) => (
               <Button
@@ -117,10 +118,11 @@ export function ToastDocs() {
               </Button>
             ))}
           </div>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Position</DemoLabel>
+        <ComponentDemoCard title="Position" code={`{positions.map((item) => (
+  <Button onClick={() => setPosition(item)}>{item}</Button>
+))}`}>
           <div className="flex flex-wrap gap-2">
             {TOAST_POSITIONS.map((item) => (
               <Button
@@ -133,10 +135,9 @@ export function ToastDocs() {
               </Button>
             ))}
           </div>
-        </div>
+        </ComponentDemoCard>
 
-        <div>
-          <DemoLabel>Variants — click to show toast</DemoLabel>
+        <ComponentDemoCard title="Variants — click to show toast" code={`toast({ title: "Pow!", variant: "pop", position, duration, closable });`}>
           <div className="flex flex-wrap gap-3">
             {TOAST_VARIANTS.map((item) => (
               <Button
@@ -148,7 +149,7 @@ export function ToastDocs() {
               </Button>
             ))}
           </div>
-        </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );

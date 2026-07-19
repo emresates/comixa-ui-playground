@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Card, CardContent, CardHeader, CardTitle, CursorFollow } from "comixa-ui";
 import { DocPage, type PropRow } from "./DocPage";
-import { DemoLabel } from "./shared";
+import { ComponentDemoCard } from "./shared";
 
 const variants = [
   "auto",
@@ -30,6 +30,7 @@ export function ComicCursorDocs() {
     </>
   );
 }`}
+      customExamples
       props={
         [
           {
@@ -91,8 +92,10 @@ export function ComicCursorDocs() {
         trailCount={6}
       />
       <div className="flex flex-col gap-5">
-        <div>
-          <DemoLabel>Controls</DemoLabel>
+        <ComponentDemoCard title="Controls" code={`<CursorFollow enabled={enabled} variant={variant} trailCount={6} />
+
+<Button onClick={() => setVariant("manga")}>manga</Button>
+<Button onClick={() => setEnabled((value) => !value)}>Toggle</Button>`}>
           <div className="flex flex-wrap gap-3">
             {variants.map((item) => (
               <Button
@@ -112,24 +115,15 @@ export function ComicCursorDocs() {
               {enabled ? "Disable" : "Enable"}
             </Button>
           </div>
-        </div>
-        <Card
-          data-comixa-cursor-zone
-          variant="pop"
-          padding="lg"
-        >
-          <CardHeader>
-            <CardTitle>Move your mouse</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="max-w-xl text-sm opacity-80">
-              The cursor follower starts when this page mounts and leaves a soft
-              low-opacity trail behind it. Hover this panel to see the theme
-              label.
-            </p>
-          </CardContent>
-        </Card>
-        <div className="grid gap-4 md:grid-cols-3">
+        </ComponentDemoCard>
+        <ComponentDemoCard title="Hover zones" code={`<Card data-comixa-cursor-zone variant="pop">
+  Move your mouse
+</Card>`}>
+          <Card data-comixa-cursor-zone variant="pop" padding="lg">
+            <CardHeader><CardTitle>Move your mouse</CardTitle></CardHeader>
+            <CardContent><p className="max-w-xl text-sm opacity-80">Hover this panel to see the theme label.</p></CardContent>
+          </Card>
+          <div className="grid gap-4 md:grid-cols-3">
           <Card
             data-comixa-cursor-zone
             variant="danger"
@@ -169,7 +163,8 @@ export function ComicCursorDocs() {
               </p>
             </CardContent>
           </Card>
-        </div>
+          </div>
+        </ComponentDemoCard>
       </div>
     </DocPage>
   );
