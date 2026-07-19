@@ -24,61 +24,61 @@ html[data-theme="light"] {
   --comixa-button-radius: 0.5rem;
   --comixa-button-border-width: 2px;
   --comixa-button-letter-spacing: 0.025em;
-  --comixa-default-bg: #FFD84D;
+  --comixa-default-bg: #ffd84d;
   --comixa-default-text: #111111;
-  --comixa-default-border: #1E1E1E;
-  --comixa-default-shadow: #1E1E1E;
-  --comixa-primary-bg: #4F9CF9;
-  --comixa-primary-text: #FFFFFF;
-  --comixa-primary-border: #1E1E1E;
-  --comixa-primary-shadow: #1E1E1E;
-  --comixa-success-bg: #4ADE80;
+  --comixa-default-border: #1e1e1e;
+  --comixa-default-shadow: #1e1e1e;
+  --comixa-primary-bg: #4f9cf9;
+  --comixa-primary-text: #ffffff;
+  --comixa-primary-border: #1e1e1e;
+  --comixa-primary-shadow: #1e1e1e;
+  --comixa-success-bg: #4ade80;
   --comixa-success-text: #111111;
-  --comixa-success-border: #1E1E1E;
-  --comixa-success-shadow: #1E1E1E;
-  --comixa-danger-bg: #FF5757;
-  --comixa-danger-text: #FFFFFF;
-  --comixa-danger-border: #1E1E1E;
-  --comixa-danger-shadow: #1E1E1E;
-  --comixa-warning-bg: #FFD84D;
+  --comixa-success-border: #1e1e1e;
+  --comixa-success-shadow: #1e1e1e;
+  --comixa-danger-bg: #ff5757;
+  --comixa-danger-text: #ffffff;
+  --comixa-danger-border: #1e1e1e;
+  --comixa-danger-shadow: #1e1e1e;
+  --comixa-warning-bg: #ffd84d;
   --comixa-warning-text: #111111;
-  --comixa-warning-border: #1E1E1E;
-  --comixa-warning-shadow: #1E1E1E;
-  --comixa-outline-bg: #FFFFFF;
+  --comixa-warning-border: #1e1e1e;
+  --comixa-warning-shadow: #1e1e1e;
+  --comixa-outline-bg: #ffffff;
   --comixa-outline-text: #111111;
-  --comixa-outline-border: #1E1E1E;
-  --comixa-outline-shadow: #1E1E1E;
+  --comixa-outline-border: #1e1e1e;
+  --comixa-outline-shadow: #1e1e1e;
   --comixa-ghost-bg: transparent;
   --comixa-ghost-text: #111111;
   --comixa-ghost-border: transparent;
   --comixa-ghost-shadow: transparent;
   --comixa-ribbon-font: "Bangers", "Comic Sans MS", cursive;
   --comixa-ribbon-radius: 0.375rem;
-  --comixa-ribbon-border: #1A1A1A;
-  --comixa-ribbon-shadow: 3px 3px 0 #1A1A1A;
+  --comixa-ribbon-border: #1a1a1a;
+  --comixa-ribbon-shadow: 3px 3px 0 #1a1a1a;
   --comixa-ribbon-letter-spacing: 0.025em;
   --comixa-ribbon-text-transform: uppercase;
-  --comixa-ribbon-banner-bg: #FFD84D;
+  --comixa-ribbon-banner-bg: #ffd84d;
   --comixa-ribbon-banner-text: #111111;
-  --comixa-ribbon-corner-bg: #FF5757;
-  --comixa-ribbon-corner-text: #FFFFFF;
-  --comixa-ribbon-ticket-bg: #FFF3D6;
+  --comixa-ribbon-corner-bg: #ff5757;
+  --comixa-ribbon-corner-text: #ffffff;
+  --comixa-ribbon-ticket-bg: #fff3d6;
   --comixa-ribbon-ticket-text: #111111;
-  --comixa-ribbon-burst-bg: #FF7AB6;
+  --comixa-ribbon-burst-bg: #ff7ab6;
   --comixa-ribbon-burst-text: #111111;
-  --comixa-field-bg: #FFFDF5;
-  --comixa-field-filled-bg: #FFF3D6;
+  --comixa-field-bg: #fffdf5;
+  --comixa-field-filled-bg: #fff3d6;
   --comixa-field-ghost-bg: transparent;
   --comixa-field-text: #111111;
-  --comixa-field-placeholder: #5C5C5C;
-  --comixa-field-border: #1E1E1E;
-  --comixa-field-shadow: #1E1E1E;
-  --comixa-field-shadow-value: 3px 3px 0 #1E1E1E;
-  --comixa-field-focus-shadow: 4px 4px 0 #1E1E1E;
-  --comixa-field-error-border: #FF5757;
-  --comixa-field-error-shadow: 4px 4px 0 #FF5757;
-  --comixa-field-success-border: #4ADE80;
-  --comixa-field-success-shadow: 4px 4px 0 #4ADE80;
+  --comixa-field-placeholder: #5c5c5c;
+  --comixa-field-border: #1e1e1e;
+  --comixa-field-shadow: #1e1e1e;
+  --comixa-field-shadow-value: 3px 3px 0 #1e1e1e;
+  --comixa-field-focus-shadow: 4px 4px 0 #1e1e1e;
+  --comixa-field-error-border: #ff5757;
+  --comixa-field-error-shadow: 4px 4px 0 #ff5757;
+  --comixa-field-success-border: #4ade80;
+  --comixa-field-success-shadow: 4px 4px 0 #4ade80;
   --comixa-field-radius-sm: 0.375rem;
   --comixa-field-radius: 0.5rem;
   --comixa-field-radius-lg: 0.75rem;
@@ -86,12 +86,12 @@ html[data-theme="light"] {
   --comixa-field-letter-spacing: 0;
   --comixa-select-error-bg: #fff3d6;
   --comixa-select-error-text: #111111;
-  --comixa-select-error-border: #FF5757;
-  --comixa-select-error-shadow: 4px 4px 0 #FF5757;
+  --comixa-select-error-border: #ff5757;
+  --comixa-select-error-shadow: 4px 4px 0 #ff5757;
   --comixa-select-success-bg: #f1fff6;
   --comixa-select-success-text: #111111;
-  --comixa-select-success-border: #4ADE80;
-  --comixa-select-success-shadow: 4px 4px 0 #4ADE80;
+  --comixa-select-success-border: #4ade80;
+  --comixa-select-success-shadow: 4px 4px 0 #4ade80;
   color-scheme: light;
 }
 
@@ -111,44 +111,48 @@ html[data-comixa-theme="retro"] {
   --pg-component-shadow: 3px 3px 0 #7a4d24;
   --pg-component-radius: 1rem;
   --pg-component-font: "Lilita One", "Comic Sans MS", cursive;
-  --pg-component-pattern: radial-gradient(circle at 1px 1px, rgba(91, 58, 31, 0.38) 1px, transparent 0);
+  --pg-component-pattern: radial-gradient(
+    circle at 1px 1px,
+    rgba(91, 58, 31, 0.38) 1px,
+    transparent 0
+  );
   --pg-component-pattern-size: 9px 9px;
   --comixa-button-font: "Lilita One", "Comic Sans MS", cursive;
   --comixa-button-radius: 0.85rem;
   --comixa-button-border-width: 2px;
   --comixa-button-letter-spacing: 0;
-  --comixa-default-bg: #D9A441;
-  --comixa-default-text: #3B2B22;
-  --comixa-default-border: #3B2B22;
-  --comixa-default-shadow: #3B2B22;
+  --comixa-default-bg: #d9a441;
+  --comixa-default-text: #3b2b22;
+  --comixa-default-border: #3b2b22;
+  --comixa-default-shadow: #3b2b22;
   --comixa-default-shadow-value: 2px 2px 0 #7a4d24;
-  --comixa-primary-bg: #6C8EBF;
-  --comixa-primary-text: #FFF8E8;
-  --comixa-primary-border: #3B2B22;
-  --comixa-primary-shadow: #3B2B22;
+  --comixa-primary-bg: #6c8ebf;
+  --comixa-primary-text: #fff8e8;
+  --comixa-primary-border: #3b2b22;
+  --comixa-primary-shadow: #3b2b22;
   --comixa-primary-shadow-value: 2px 2px 0 #7a4d24;
-  --comixa-success-bg: #7A9E5F;
-  --comixa-success-text: #FFF8E8;
-  --comixa-success-border: #3B2B22;
-  --comixa-success-shadow: #3B2B22;
+  --comixa-success-bg: #7a9e5f;
+  --comixa-success-text: #fff8e8;
+  --comixa-success-border: #3b2b22;
+  --comixa-success-shadow: #3b2b22;
   --comixa-success-shadow-value: 2px 2px 0 #7a4d24;
-  --comixa-danger-bg: #C66A4A;
-  --comixa-danger-text: #FFF8E8;
-  --comixa-danger-border: #3B2B22;
-  --comixa-danger-shadow: #3B2B22;
+  --comixa-danger-bg: #c66a4a;
+  --comixa-danger-text: #fff8e8;
+  --comixa-danger-border: #3b2b22;
+  --comixa-danger-shadow: #3b2b22;
   --comixa-danger-shadow-value: 2px 2px 0 #7a4d24;
-  --comixa-warning-bg: #D9A441;
-  --comixa-warning-text: #3B2B22;
-  --comixa-warning-border: #3B2B22;
-  --comixa-warning-shadow: #3B2B22;
+  --comixa-warning-bg: #d9a441;
+  --comixa-warning-text: #3b2b22;
+  --comixa-warning-border: #3b2b22;
+  --comixa-warning-shadow: #3b2b22;
   --comixa-warning-shadow-value: 2px 2px 0 #7a4d24;
-  --comixa-outline-bg: #F4E2B6;
-  --comixa-outline-text: #3B2B22;
-  --comixa-outline-border: #3B2B22;
-  --comixa-outline-shadow: #3B2B22;
+  --comixa-outline-bg: #f4e2b6;
+  --comixa-outline-text: #3b2b22;
+  --comixa-outline-border: #3b2b22;
+  --comixa-outline-shadow: #3b2b22;
   --comixa-outline-shadow-value: 1.5px 1.5px 0 #7a4d24;
   --comixa-ghost-bg: transparent;
-  --comixa-ghost-text: #3B2B22;
+  --comixa-ghost-text: #3b2b22;
   --comixa-ghost-border: transparent;
   --comixa-ghost-shadow: transparent;
   --comixa-ribbon-font: "Lilita One", "Comic Sans MS", cursive;
@@ -208,41 +212,45 @@ html[data-comixa-theme="pop-art"] {
   --pg-component-shadow: 7px 7px 0 #4d9fff;
   --pg-component-radius: 0.75rem;
   --pg-component-font: "Baloo 2", "Bangers", Impact, sans-serif;
-  --pg-component-pattern: radial-gradient(circle at 2px 2px, rgba(255, 229, 102, 0.9) 2px, transparent 0);
+  --pg-component-pattern: radial-gradient(
+    circle at 2px 2px,
+    rgba(255, 229, 102, 0.9) 2px,
+    transparent 0
+  );
   --pg-component-pattern-size: 12px 12px;
   --comixa-button-font: "Baloo 2", "Bangers", Impact, sans-serif;
   --comixa-button-radius: 0.55rem;
   --comixa-button-border-width: 2px;
   --comixa-button-letter-spacing: 0.025em;
-  --comixa-default-bg: #FFE14D;
+  --comixa-default-bg: #ffe14d;
   --comixa-default-text: #111111;
   --comixa-default-border: #111111;
-  --comixa-default-shadow: #FF4FA3;
+  --comixa-default-shadow: #ff4fa3;
   --comixa-default-shadow-value: 6px 6px 0 #ff4fa3;
-  --comixa-primary-bg: #3B82F6;
-  --comixa-primary-text: #FFFFFF;
+  --comixa-primary-bg: #3b82f6;
+  --comixa-primary-text: #ffffff;
   --comixa-primary-border: #111111;
-  --comixa-primary-shadow: #FFD400;
+  --comixa-primary-shadow: #ffd400;
   --comixa-primary-shadow-value: 6px 6px 0 #ffd400;
-  --comixa-success-bg: #22C55E;
+  --comixa-success-bg: #22c55e;
   --comixa-success-text: #111111;
   --comixa-success-border: #111111;
-  --comixa-success-shadow: #FFD400;
+  --comixa-success-shadow: #ffd400;
   --comixa-success-shadow-value: 6px 6px 0 #ffd400;
-  --comixa-danger-bg: #FF4B4B;
-  --comixa-danger-text: #FFFFFF;
+  --comixa-danger-bg: #ff4b4b;
+  --comixa-danger-text: #ffffff;
   --comixa-danger-border: #111111;
-  --comixa-danger-shadow: #FFD400;
+  --comixa-danger-shadow: #ffd400;
   --comixa-danger-shadow-value: 6px 6px 0 #ffd400;
-  --comixa-warning-bg: #FFE14D;
+  --comixa-warning-bg: #ffe14d;
   --comixa-warning-text: #111111;
   --comixa-warning-border: #111111;
-  --comixa-warning-shadow: #FF4FA3;
+  --comixa-warning-shadow: #ff4fa3;
   --comixa-warning-shadow-value: 6px 6px 0 #ff4fa3;
-  --comixa-outline-bg: #FFFFFF;
+  --comixa-outline-bg: #ffffff;
   --comixa-outline-text: #111111;
   --comixa-outline-border: #111111;
-  --comixa-outline-shadow: #FFD400;
+  --comixa-outline-shadow: #ffd400;
   --comixa-outline-shadow-value: 5px 5px 0 #ffd400;
   --comixa-ghost-bg: transparent;
   --comixa-ghost-text: #111111;
@@ -315,36 +323,50 @@ html[data-comixa-theme="manga"] {
   --pg-component-shadow: 7px 7px 0 #000000;
   --pg-component-radius: 0.35rem;
   --pg-component-font: "Antonio", Impact, sans-serif;
-  --pg-component-pattern: repeating-linear-gradient(-32deg, transparent 0, transparent 5px, rgba(0, 0, 0, 0.14) 5px, rgba(0, 0, 0, 0.14) 6px, transparent 6px, transparent 11px);
+  --pg-component-pattern: repeating-linear-gradient(
+    -32deg,
+    transparent 0,
+    transparent 5px,
+    rgba(0, 0, 0, 0.14) 5px,
+    rgba(0, 0, 0, 0.14) 6px,
+    transparent 6px,
+    transparent 11px
+  );
   --pg-component-pattern-size: auto;
   --comixa-button-font: "Antonio", Impact, sans-serif;
   --comixa-button-radius: 0.2rem;
   --comixa-button-border-width: 3px;
   --comixa-button-letter-spacing: 0;
-  --comixa-default-bg: #F7F7F7;
+  --comixa-default-bg: #f7f7f7;
   --comixa-default-text: #111111;
   --comixa-default-border: #111111;
   --comixa-default-shadow: #111111;
   --comixa-default-shadow-value: 6px 6px 0 #111111;
-  --comixa-default-pattern: repeating-linear-gradient(90deg, transparent 0, transparent 6px, rgba(0,0,0,0.34) 6px, rgba(0,0,0,0.34) 7px);
+  --comixa-default-pattern: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 6px,
+    rgba(0, 0, 0, 0.34) 6px,
+    rgba(0, 0, 0, 0.34) 7px
+  );
   --comixa-default-pattern-size: 12px 100%;
   --comixa-default-pattern-opacity: 0.42;
-  --comixa-primary-bg: #FFFFFF;
+  --comixa-primary-bg: #ffffff;
   --comixa-primary-text: #111111;
   --comixa-primary-border: #111111;
   --comixa-primary-shadow: #111111;
   --comixa-primary-shadow-value: 6px 6px 0 #111111;
-  --comixa-success-bg: #ECECEC;
+  --comixa-success-bg: #ececec;
   --comixa-success-text: #111111;
   --comixa-success-border: #111111;
   --comixa-success-shadow: #111111;
   --comixa-success-shadow-value: 6px 6px 0 #111111;
-  --comixa-danger-bg: #DDDDDD;
+  --comixa-danger-bg: #dddddd;
   --comixa-danger-text: #111111;
   --comixa-danger-border: #111111;
   --comixa-danger-shadow: #111111;
   --comixa-danger-shadow-value: 6px 6px 0 #111111;
-  --comixa-warning-bg: #F7F7F7;
+  --comixa-warning-bg: #f7f7f7;
   --comixa-warning-text: #111111;
   --comixa-warning-border: #111111;
   --comixa-warning-shadow: #111111;
@@ -364,16 +386,50 @@ html[data-comixa-theme="manga"] {
   --comixa-ghost-text: #111111;
   --comixa-ghost-border: transparent;
   --comixa-ghost-shadow: transparent;
-  --comixa-primary-pattern: repeating-linear-gradient(110deg, transparent 0, transparent 8px, rgba(0,0,0,0.34) 9px, transparent 10px);
+  --comixa-primary-pattern: repeating-linear-gradient(
+    110deg,
+    transparent 0,
+    transparent 8px,
+    rgba(0, 0, 0, 0.34) 9px,
+    transparent 10px
+  );
   --comixa-primary-pattern-size: 18px 100%;
   --comixa-primary-pattern-opacity: 0.52;
-  --comixa-success-pattern: radial-gradient(circle at 2px 2px, rgba(0,0,0,0.42) 1.4px, transparent 0);
+  --comixa-success-pattern: radial-gradient(
+    circle at 2px 2px,
+    rgba(0, 0, 0, 0.42) 1.4px,
+    transparent 0
+  );
   --comixa-success-pattern-size: 8px 8px;
   --comixa-success-pattern-opacity: 0.38;
-  --comixa-danger-pattern: repeating-linear-gradient(-35deg, transparent 0, transparent 5px, rgba(0,0,0,0.26) 5px, rgba(0,0,0,0.26) 6px, transparent 6px, transparent 11px), repeating-linear-gradient(35deg, transparent 0, transparent 5px, rgba(0,0,0,0.18) 5px, rgba(0,0,0,0.18) 6px, transparent 6px, transparent 11px);
+  --comixa-danger-pattern:
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0,
+      transparent 5px,
+      rgba(0, 0, 0, 0.26) 5px,
+      rgba(0, 0, 0, 0.26) 6px,
+      transparent 6px,
+      transparent 11px
+    ),
+    repeating-linear-gradient(
+      35deg,
+      transparent 0,
+      transparent 5px,
+      rgba(0, 0, 0, 0.18) 5px,
+      rgba(0, 0, 0, 0.18) 6px,
+      transparent 6px,
+      transparent 11px
+    );
   --comixa-danger-pattern-size: auto;
   --comixa-danger-pattern-opacity: 0.45;
-  --comixa-warning-pattern: repeating-linear-gradient(90deg, transparent 0, transparent 6px, rgba(0,0,0,0.34) 6px, rgba(0,0,0,0.34) 7px);
+  --comixa-warning-pattern: repeating-linear-gradient(
+    90deg,
+    transparent 0,
+    transparent 6px,
+    rgba(0, 0, 0, 0.34) 6px,
+    rgba(0, 0, 0, 0.34) 7px
+  );
   --comixa-warning-pattern-size: 12px 100%;
   --comixa-warning-pattern-opacity: 0.42;
   --comixa-ribbon-font: "Antonio", Impact, sans-serif;
@@ -433,45 +489,57 @@ html[data-comixa-theme="vintage"] {
   --pg-component-shadow: 2px 2px 0 #24304f;
   --pg-component-radius: 0.4rem;
   --pg-component-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --pg-component-pattern: radial-gradient(circle at 1px 1px, rgba(36, 48, 79, 0.18) 0.8px, transparent 0), repeating-linear-gradient(0deg, rgba(36, 48, 79, 0.07) 0, rgba(36, 48, 79, 0.07) 1px, transparent 1px, transparent 5px);
+  --pg-component-pattern:
+    radial-gradient(
+      circle at 1px 1px,
+      rgba(36, 48, 79, 0.18) 0.8px,
+      transparent 0
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(36, 48, 79, 0.07) 0,
+      rgba(36, 48, 79, 0.07) 1px,
+      transparent 1px,
+      transparent 5px
+    );
   --pg-component-pattern-size: 8px 8px, 100% 6px;
   --comixa-button-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --comixa-button-radius: 0.4rem;
   --comixa-button-border-width: 1px;
   --comixa-button-font-weight: 700;
   --comixa-button-letter-spacing: 0.04em;
-  --comixa-default-bg: #E5C37A;
-  --comixa-default-text: #4A3A2A;
-  --comixa-default-border: #4A3A2A;
-  --comixa-default-shadow: #4A3A2A;
+  --comixa-default-bg: #e5c37a;
+  --comixa-default-text: #4a3a2a;
+  --comixa-default-border: #4a3a2a;
+  --comixa-default-shadow: #4a3a2a;
   --comixa-default-shadow-value: 1.5px 1.5px 0 #4a3a2a;
-  --comixa-primary-bg: #D7C2A5;
-  --comixa-primary-text: #7B2D26;
-  --comixa-primary-border: #4A3A2A;
-  --comixa-primary-shadow: #4A3A2A;
+  --comixa-primary-bg: #d7c2a5;
+  --comixa-primary-text: #7b2d26;
+  --comixa-primary-border: #4a3a2a;
+  --comixa-primary-shadow: #4a3a2a;
   --comixa-primary-shadow-value: 1.5px 1.5px 0 #4a3a2a;
-  --comixa-success-bg: #BFC8A6;
-  --comixa-success-text: #4A3A2A;
-  --comixa-success-border: #4A3A2A;
-  --comixa-success-shadow: #4A3A2A;
+  --comixa-success-bg: #bfc8a6;
+  --comixa-success-text: #4a3a2a;
+  --comixa-success-border: #4a3a2a;
+  --comixa-success-shadow: #4a3a2a;
   --comixa-success-shadow-value: 1.5px 1.5px 0 #4a3a2a;
-  --comixa-danger-bg: #C9997B;
-  --comixa-danger-text: #4A3A2A;
-  --comixa-danger-border: #4A3A2A;
-  --comixa-danger-shadow: #4A3A2A;
+  --comixa-danger-bg: #c9997b;
+  --comixa-danger-text: #4a3a2a;
+  --comixa-danger-border: #4a3a2a;
+  --comixa-danger-shadow: #4a3a2a;
   --comixa-danger-shadow-value: 1.5px 1.5px 0 #4a3a2a;
-  --comixa-warning-bg: #E5C37A;
-  --comixa-warning-text: #4A3A2A;
-  --comixa-warning-border: #4A3A2A;
-  --comixa-warning-shadow: #4A3A2A;
+  --comixa-warning-bg: #e5c37a;
+  --comixa-warning-text: #4a3a2a;
+  --comixa-warning-border: #4a3a2a;
+  --comixa-warning-shadow: #4a3a2a;
   --comixa-warning-shadow-value: 1.5px 1.5px 0 #4a3a2a;
-  --comixa-outline-bg: #F7EED8;
-  --comixa-outline-text: #7B2D26;
-  --comixa-outline-border: #4A3A2A;
-  --comixa-outline-shadow: #4A3A2A;
+  --comixa-outline-bg: #f7eed8;
+  --comixa-outline-text: #7b2d26;
+  --comixa-outline-border: #4a3a2a;
+  --comixa-outline-shadow: #4a3a2a;
   --comixa-outline-shadow-value: 1px 1px 0 #4a3a2a;
   --comixa-ghost-bg: transparent;
-  --comixa-ghost-text: #7B2D26;
+  --comixa-ghost-text: #7b2d26;
   --comixa-ghost-border: transparent;
   --comixa-ghost-shadow: transparent;
   --comixa-ribbon-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
@@ -591,7 +659,11 @@ body {
   --comixa-button-text: #111111;
   --comixa-button-border: #1e1e1e;
   --comixa-button-shadow-value: 4px 4px 0 #1e1e1e;
-  --comixa-button-pattern: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.5) 1.5px, transparent 0);
+  --comixa-button-pattern: radial-gradient(
+    circle at 2px 2px,
+    rgba(255, 255, 255, 0.5) 1.5px,
+    transparent 0
+  );
   --comixa-button-pattern-size: 10px 10px;
   --comixa-button-pattern-opacity: 0.35;
   --theme-option-tilt: -1deg;
@@ -603,7 +675,11 @@ body {
   --comixa-button-text: #2b1d13;
   --comixa-button-border: #5b3a1f;
   --comixa-button-shadow-value: 2px 2px 0 #7a4d24;
-  --comixa-button-pattern: radial-gradient(circle at 1px 1px, rgba(91,58,31,0.42) 1px, transparent 0);
+  --comixa-button-pattern: radial-gradient(
+    circle at 1px 1px,
+    rgba(91, 58, 31, 0.42) 1px,
+    transparent 0
+  );
   --comixa-button-pattern-size: 8px 8px;
   --comixa-button-pattern-opacity: 0.32;
   --theme-option-tilt: 0deg;
@@ -615,7 +691,11 @@ body {
   --comixa-button-text: #ffffff;
   --comixa-button-border: #111111;
   --comixa-button-shadow-value: 4px 4px 0 #ffe14d;
-  --comixa-button-pattern: radial-gradient(circle at 2px 2px, rgba(255,225,77,0.95) 1.8px, transparent 0);
+  --comixa-button-pattern: radial-gradient(
+    circle at 2px 2px,
+    rgba(255, 225, 77, 0.95) 1.8px,
+    transparent 0
+  );
   --comixa-button-pattern-size: 10px 10px;
   --comixa-button-pattern-opacity: 0.34;
   --theme-option-tilt: -1deg;
@@ -628,7 +708,15 @@ body {
   --comixa-button-text: #111111;
   --comixa-button-border: #111111;
   --comixa-button-shadow-value: 4px 4px 0 #111111;
-  --comixa-button-pattern: repeating-linear-gradient(-32deg, transparent 0, transparent 5px, rgba(0,0,0,0.26) 5px, rgba(0,0,0,0.26) 6px, transparent 6px, transparent 11px);
+  --comixa-button-pattern: repeating-linear-gradient(
+    -32deg,
+    transparent 0,
+    transparent 5px,
+    rgba(0, 0, 0, 0.26) 5px,
+    rgba(0, 0, 0, 0.26) 6px,
+    transparent 6px,
+    transparent 11px
+  );
   --comixa-button-pattern-size: auto;
   --comixa-button-pattern-opacity: 0.42;
   --theme-option-tilt: -1deg;
@@ -639,7 +727,19 @@ body {
   --comixa-button-text: #7b2d26;
   --comixa-button-border: #4a3a2a;
   --comixa-button-shadow-value: 1.5px 1.5px 0 #4a3a2a;
-  --comixa-button-pattern: radial-gradient(circle at 1px 1px, rgba(36,48,79,0.2) 0.75px, transparent 0), repeating-linear-gradient(0deg, rgba(36,48,79,0.07) 0, rgba(36,48,79,0.07) 1px, transparent 1px, transparent 5px);
+  --comixa-button-pattern:
+    radial-gradient(
+      circle at 1px 1px,
+      rgba(36, 48, 79, 0.2) 0.75px,
+      transparent 0
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(36, 48, 79, 0.07) 0,
+      rgba(36, 48, 79, 0.07) 1px,
+      transparent 1px,
+      transparent 5px
+    );
   --comixa-button-pattern-size: 8px 8px, 100% 6px;
   --comixa-button-pattern-opacity: 0.32;
   min-width: 5.8rem;
@@ -664,7 +764,9 @@ html[data-comixa-theme]:not([data-comixa-theme="light"]) .pg-nav-item-active {
   border-radius: var(--pg-component-radius);
 }
 
-html[data-comixa-theme]:not([data-comixa-theme="light"]) main select:not(.theme-option) {
+html[data-comixa-theme]:not([data-comixa-theme="light"])
+  main
+  select:not(.theme-option) {
   background-color: var(--pg-component-bg);
   color: var(--pg-component-fg);
   border-color: var(--pg-border);
@@ -673,17 +775,23 @@ html[data-comixa-theme]:not([data-comixa-theme="light"]) main select:not(.theme-
   font-family: var(--pg-component-font);
 }
 
-html[data-comixa-theme]:not([data-comixa-theme="light"]) main select:not(.theme-option)::before {
+html[data-comixa-theme]:not([data-comixa-theme="light"])
+  main
+  select:not(.theme-option)::before {
   background-image: var(--pg-component-pattern);
   background-size: var(--pg-component-pattern-size);
 }
 
-html[data-comixa-theme]:not([data-comixa-theme="light"]) main :is(article, section, div, li)[class*="border-ink"] {
+html[data-comixa-theme]:not([data-comixa-theme="light"])
+  main
+  :is(article, section, div, li)[class*="border-ink"] {
   border-color: var(--pg-border);
   box-shadow: var(--pg-component-shadow);
 }
 
-html[data-comixa-theme]:not([data-comixa-theme="light"]) main :is(h1, h2, h3, h4, .font-comic) {
+html[data-comixa-theme]:not([data-comixa-theme="light"])
+  main
+  :is(h1, h2, h3, h4, .font-comic) {
   color: var(--pg-fg);
 }
 
@@ -705,7 +813,9 @@ html[data-comixa-theme] main [data-comixa-sound-badge-variant="boom"] {
   color: #ffffff !important;
 }
 
-html[data-comixa-theme="manga"] main :is([data-comixa-input], [data-comixa-textarea], select):not(.theme-option) {
+html[data-comixa-theme="manga"]
+  main
+  :is([data-comixa-input], [data-comixa-textarea], select):not(.theme-option) {
   border-width: 4px;
 }
 
@@ -713,11 +823,13 @@ html[data-comixa-theme="manga"] main [data-comixa-ribbon-variant="corner"] {
   color: #ffffff !important;
 }
 
-html[data-comixa-theme="manga"] main :is(
-  [data-comixa-button-variant="success"],
-  [data-comixa-button-variant="danger"],
-  [data-comixa-button-variant="warning"]
-)::after {
+html[data-comixa-theme="manga"]
+  main
+  :is(
+    [data-comixa-button-variant="success"],
+    [data-comixa-button-variant="danger"],
+    [data-comixa-button-variant="warning"]
+  )::after {
   position: relative;
   z-index: 10;
   display: inline-flex;
@@ -727,17 +839,23 @@ html[data-comixa-theme="manga"] main :is(
   line-height: 1;
 }
 
-html[data-comixa-theme="manga"] main [data-comixa-button-variant="success"]::after {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-button-variant="success"]::after {
   content: "✨";
   font-size: 0.92em;
 }
 
-html[data-comixa-theme="manga"] main [data-comixa-button-variant="danger"]::after {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-button-variant="danger"]::after {
   content: "💢";
   font-size: 0.95em;
 }
 
-html[data-comixa-theme="manga"] main [data-comixa-button-variant="warning"]::after {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-button-variant="warning"]::after {
   content: "!!!";
   font-family: "Antonio", Impact, sans-serif;
   font-size: 0.9em;
@@ -746,26 +864,38 @@ html[data-comixa-theme="manga"] main [data-comixa-button-variant="warning"]::aft
   transform: rotate(-4deg);
 }
 
-html[data-comixa-theme="manga"] main :is([data-comixa-input], [data-comixa-textarea]) {
+html[data-comixa-theme="manga"]
+  main
+  :is([data-comixa-input], [data-comixa-textarea]) {
   background-position: right 0.75rem center;
   background-repeat: no-repeat;
   background-size: 1.25rem 1.25rem;
 }
 
-html[data-comixa-theme="manga"] main [data-comixa-input][data-comixa-field-state="success"],
-html[data-comixa-theme="manga"] main [data-comixa-textarea][data-comixa-field-state="success"] {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-input][data-comixa-field-state="success"],
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-textarea][data-comixa-field-state="success"] {
   padding-right: 2.75rem;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='19'%3E%E2%9C%A8%3C/text%3E%3C/svg%3E");
 }
 
-html[data-comixa-theme="manga"] main [data-comixa-input][data-comixa-field-state="error"],
-html[data-comixa-theme="manga"] main [data-comixa-textarea][data-comixa-field-state="error"] {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-input][data-comixa-field-state="error"],
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-textarea][data-comixa-field-state="error"] {
   padding-right: 2.75rem;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='16' y='23' text-anchor='middle' font-size='19'%3E%F0%9F%92%A2%3C/text%3E%3C/svg%3E");
 }
 
 html[data-comixa-theme="manga"] main [data-comixa-select-trigger]::after,
-html[data-comixa-theme="manga"] main [data-comixa-switch][data-state="checked"]::after {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-switch][data-state="checked"]::after {
   position: relative;
   z-index: 10;
   display: inline-flex;
@@ -775,48 +905,88 @@ html[data-comixa-theme="manga"] main [data-comixa-switch][data-state="checked"]:
   line-height: 1;
 }
 
-html[data-comixa-theme="manga"] main [data-comixa-select-trigger][data-comixa-select-state="success"]::after {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-select-trigger][data-comixa-select-state="success"]::after {
   content: "✨";
   font-size: 0.92em;
 }
 
-html[data-comixa-theme="manga"] main [data-comixa-select-trigger][data-comixa-select-state="error"]::after {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-select-trigger][data-comixa-select-state="error"]::after {
   content: "💢";
   font-size: 0.95em;
 }
 
-html[data-comixa-theme="manga"] main [data-comixa-checkbox-variant="success"]:checked,
-html[data-comixa-theme="manga"] main [data-comixa-switch-variant="success"][data-state="checked"] {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-checkbox-variant="success"]:checked,
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-switch-variant="success"][data-state="checked"] {
   background:
-    radial-gradient(circle at 2px 2px, rgba(0, 0, 0, 0.45) 1.4px, transparent 0),
+    radial-gradient(
+      circle at 2px 2px,
+      rgba(0, 0, 0, 0.45) 1.4px,
+      transparent 0
+    ),
     #ececec !important;
-  background-size: 8px 8px, auto !important;
+  background-size:
+    8px 8px,
+    auto !important;
 }
 
-html[data-comixa-theme="manga"] main [data-comixa-checkbox-variant="danger"]:checked,
-html[data-comixa-theme="manga"] main [data-comixa-switch-variant="danger"][data-state="checked"] {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-checkbox-variant="danger"]:checked,
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-switch-variant="danger"][data-state="checked"] {
   background:
-    repeating-linear-gradient(-35deg, transparent 0, transparent 5px, rgba(0, 0, 0, 0.28) 5px, rgba(0, 0, 0, 0.28) 6px, transparent 6px, transparent 11px),
+    repeating-linear-gradient(
+      -35deg,
+      transparent 0,
+      transparent 5px,
+      rgba(0, 0, 0, 0.28) 5px,
+      rgba(0, 0, 0, 0.28) 6px,
+      transparent 6px,
+      transparent 11px
+    ),
     #dddddd !important;
 }
 
-html[data-comixa-theme="manga"] main [data-comixa-checkbox-variant="default"]:checked,
-html[data-comixa-theme="manga"] main [data-comixa-switch-variant="default"][data-state="checked"] {
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-checkbox-variant="default"]:checked,
+html[data-comixa-theme="manga"]
+  main
+  [data-comixa-switch-variant="default"][data-state="checked"] {
   background:
-    repeating-linear-gradient(90deg, transparent 0, transparent 6px, rgba(0, 0, 0, 0.34) 6px, rgba(0, 0, 0, 0.34) 7px),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 6px,
+      rgba(0, 0, 0, 0.34) 6px,
+      rgba(0, 0, 0, 0.34) 7px
+    ),
     #f7f7f7 !important;
-  background-size: 12px 100%, auto !important;
+  background-size:
+    12px 100%,
+    auto !important;
 }
 
-html[data-comixa-theme="pop-art"] main :is(button, [data-comixa-input], [data-comixa-textarea], select):not(.theme-option) {
+html[data-comixa-theme="pop-art"]
+  main
+  :is(button, [data-comixa-input], [data-comixa-textarea], select):not(
+    .theme-option
+  ) {
   text-shadow: 1px 1px 0 #1a1a1a;
 }
 
-html[data-comixa-theme="pop-art"] main :is(
-  [data-comixa-badge],
-  [data-comixa-sticker],
-  [data-comixa-sound-badge]
-) {
+html[data-comixa-theme="pop-art"]
+  main
+  :is([data-comixa-badge], [data-comixa-sticker], [data-comixa-sound-badge]) {
   letter-spacing: 0.055em;
   text-transform: none;
 }
@@ -1142,7 +1312,10 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
   inset: 0;
   display: grid;
   place-items: center;
-  font: 48px Bangers, Impact, sans-serif;
+  font:
+    48px Bangers,
+    Impact,
+    sans-serif;
   color: white;
   -webkit-text-stroke: 2px #111;
 }
@@ -1216,14 +1389,21 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
 }
 
 .comic-grid {
-  background-image: radial-gradient(rgba(17, 17, 17, 0.18) 1px, transparent 1px);
+  background-image: radial-gradient(
+    rgba(17, 17, 17, 0.18) 1px,
+    transparent 1px
+  );
   background-size: 12px 12px;
 }
 
 .paper-noise {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)),
-    repeating-linear-gradient(0deg, transparent 0 3px, rgba(0, 0, 0, 0.018) 3px 4px);
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 3px,
+      rgba(0, 0, 0, 0.018) 3px 4px
+    );
 }
 
 .article-copy h2 {
