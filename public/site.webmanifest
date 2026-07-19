@@ -1,0 +1,17 @@
+{
+  "name": "Comixa UI — Comic React Component Library",
+  "short_name": "Comixa UI",
+  "description": "Comic-inspired React components, themes, examples, and documentation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf5",
+  "theme_color": "#ffd84d",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

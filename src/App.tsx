@@ -3,6 +3,7 @@ import { Badge, Button, ComixaProvider, ToastProvider } from "comixa-ui";
 import { NAV } from "./docs/nav";
 import { NavSearch } from "./docs/NavSearch";
 import { renderDocsPage } from "./docs/pages";
+import { updateSeo } from "./seo";
 
 const PLAYGROUND_THEMES = [
   { id: "light", label: "Comic" },
@@ -96,10 +97,7 @@ function Playground() {
   }, []);
 
   useEffect(() => {
-    const label = NAV.flatMap((group) => group.items).find(
-      (item) => item.id === active
-    )?.label;
-    document.title = label ? `${label} · Comixa` : "Comixa";
+    updateSeo(active, window.location.pathname);
   }, [active]);
 
   const page = useMemo(() => renderDocsPage(active, navigate), [active, navigate]);
