@@ -1065,6 +1065,8 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
 .example-theme-card > .example-theme-panel {
   border-width: 3px;
   color: #111;
+  font-family: var(--example-body-font, "Comic Neue", ui-rounded, system-ui, sans-serif);
+  text-shadow: none;
 }
 
 .example-theme-panel > div {
@@ -1073,7 +1075,52 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
   flex-direction: column;
 }
 
+.example-theme-card .font-comic,
+.example-theme-card h2,
+.example-theme-card [data-comixa-sticker] {
+  font-family: var(--example-title-font, "Bangers", "Comic Sans MS", cursive);
+}
+
+.example-theme-card [data-comixa-sticker] {
+  letter-spacing: var(--example-title-spacing, 0.025em);
+  text-transform: uppercase;
+  text-shadow: none;
+}
+
+.example-theme-card[data-example-theme="default"] {
+  --example-title-font: "Bangers", "Comic Sans MS", cursive;
+  --example-body-font: "Comic Neue", ui-rounded, system-ui, sans-serif;
+  --example-title-spacing: 0.025em;
+}
+
+.example-theme-card[data-example-theme="pop-art"] {
+  --example-title-font: "Baloo 2", "Bangers", Impact, sans-serif;
+  --example-body-font: "Baloo 2", ui-rounded, system-ui, sans-serif;
+  --example-title-spacing: 0.055em;
+}
+
+.example-theme-card[data-example-theme="manga"] {
+  --example-title-font: "Antonio", Impact, sans-serif;
+  --example-body-font: "Comic Neue", Arial, sans-serif;
+  --example-title-spacing: 0;
+}
+
+.example-theme-card[data-example-theme="retro"] {
+  --example-title-font: "Lilita One", "Comic Sans MS", cursive;
+  --example-body-font: "Comic Neue", ui-rounded, system-ui, sans-serif;
+  --example-title-spacing: 0;
+}
+
+.example-theme-card[data-example-theme="vintage"] {
+  --example-title-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --example-body-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --example-title-spacing: 0.035em;
+}
+
 .example-theme-card[data-example-theme="default"] > .example-theme-panel {
+  --example-title-font: "Bangers", "Comic Sans MS", cursive;
+  --example-body-font: "Comic Neue", ui-rounded, system-ui, sans-serif;
+  --example-title-spacing: 0.025em;
   background-color: #fff8e7;
   background-image: radial-gradient(circle at 1px 1px, rgba(17, 17, 17, 0.14) 1px, transparent 0);
   background-size: 11px 11px;
@@ -1081,6 +1128,9 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
 }
 
 .example-theme-card[data-example-theme="pop-art"] > .example-theme-panel {
+  --example-title-font: "Baloo 2", "Bangers", Impact, sans-serif;
+  --example-body-font: "Baloo 2", ui-rounded, system-ui, sans-serif;
+  --example-title-spacing: 0.055em;
   background-color: #ffe14d;
   background-image: radial-gradient(circle, rgba(255, 79, 163, 0.62) 1.7px, transparent 1.8px);
   background-size: 12px 12px;
@@ -1088,6 +1138,9 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
 }
 
 .example-theme-card[data-example-theme="manga"] > .example-theme-panel {
+  --example-title-font: "Antonio", Impact, sans-serif;
+  --example-body-font: "Comic Neue", Arial, sans-serif;
+  --example-title-spacing: 0;
   border-radius: 0.15rem;
   border-width: 4px;
   background-color: #fff;
@@ -1097,6 +1150,9 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
 }
 
 .example-theme-card[data-example-theme="retro"] > .example-theme-panel {
+  --example-title-font: "Lilita One", "Comic Sans MS", cursive;
+  --example-body-font: "Comic Neue", ui-rounded, system-ui, sans-serif;
+  --example-title-spacing: 0;
   border-color: #5b3a1f;
   border-radius: 0.9rem;
   background-color: #e8c98f;
@@ -1106,6 +1162,9 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
 }
 
 .example-theme-card[data-example-theme="vintage"] > .example-theme-panel {
+  --example-title-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --example-body-font: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --example-title-spacing: 0.035em;
   border-color: #4a3a2a;
   border-radius: 0.25rem;
   background-color: #f1e1bd;
