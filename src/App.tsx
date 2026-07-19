@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Badge, Button, ComixaProvider, ToastProvider } from "comixa-ui";
 import { NAV } from "./docs/nav";
 import { NavSearch } from "./docs/NavSearch";
@@ -14,6 +14,30 @@ const PLAYGROUND_THEMES = [
 
 type PlaygroundTheme = (typeof PLAYGROUND_THEMES)[number]["id"];
 type ProviderTheme = "default" | "retro" | "pop-art" | "manga" | "vintage";
+
+const COMPONENT_IDS = new Set(
+  NAV.flatMap((group) => group.items.map((item) => item.id)).filter(
+    (id) => id !== "overview" && id !== "examples"
+  )
+);
+
+function pageFromPath(pathname: string) {
+  if (pathname === "/examples" || pathname === "/examples/") return "examples";
+
+  const match = pathname.match(/^\/components\/([^/]+)\/?$/);
+  if (match) {
+    const id = decodeURIComponent(match[1]);
+    if (COMPONENT_IDS.has(id)) return id;
+  }
+
+  return "overview";
+}
+
+function pathForPage(id: string) {
+  if (id === "overview") return "/";
+  if (id === "examples") return "/examples";
+  return `/components/${encodeURIComponent(id)}`;
+}
 
 function isPlaygroundTheme(value: string | null): value is PlaygroundTheme {
   return PLAYGROUND_THEMES.some((theme) => theme.id === value);
@@ -51,12 +75,34 @@ function useTheme() {
 }
 
 function Playground() {
-  const [active, setActive] = useState("overview");
+  const [active, setActive] = useState(() => pageFromPath(window.location.pathname));
   const [mobileNav, setMobileNav] = useState(false);
   const { theme, setTheme } = useTheme();
   const providerTheme: ProviderTheme = theme === "light" ? "default" : theme;
 
-  const page = useMemo(() => renderDocsPage(active, setActive), [active]);
+  const navigate = useCallback((id: string) => {
+    const path = pathForPage(id);
+    if (window.location.pathname !== path) {
+      window.history.pushState({ page: id }, "", path);
+    }
+    setActive(id);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
+  useEffect(() => {
+    const handlePopState = () => setActive(pageFromPath(window.location.pathname));
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
+  useEffect(() => {
+    const label = NAV.flatMap((group) => group.items).find(
+      (item) => item.id === active
+    )?.label;
+    document.title = label ? `${label} · Comixa` : "Comixa";
+  }, [active]);
+
+  const page = useMemo(() => renderDocsPage(active, navigate), [active, navigate]);
 
   return (
     <ComixaProvider theme={providerTheme}>
@@ -103,7 +149,7 @@ function Playground() {
                         <button
                           type="button"
                           onClick={() => {
-                            setActive(item.id);
+                            navigate(item.id);
                             setMobileNav(false);
                           }}
                           className={
@@ -144,7 +190,7 @@ function Playground() {
             </Badge>
             <NavSearch
               onSelect={(id) => {
-                setActive(id);
+                navigate(id);
                 setMobileNav(false);
               }}
             />
