@@ -1056,6 +1056,110 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
   text-shadow: 5px 5px 0 #171717;
 }
 
+/* Themed example gallery */
+.example-preview-dialog[data-comixa-dialog-panel] {
+  animation: none !important;
+  transform: none !important;
+}
+
+.example-theme-card > .example-theme-panel {
+  border-width: 3px;
+  color: #111;
+}
+
+.example-theme-panel > div {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.example-theme-card[data-example-theme="default"] > .example-theme-panel {
+  background-color: #fff8e7;
+  background-image: radial-gradient(circle at 1px 1px, rgba(17, 17, 17, 0.14) 1px, transparent 0);
+  background-size: 11px 11px;
+  box-shadow: 7px 7px 0 #1a1a1a;
+}
+
+.example-theme-card[data-example-theme="pop-art"] > .example-theme-panel {
+  background-color: #ffe14d;
+  background-image: radial-gradient(circle, rgba(255, 79, 163, 0.62) 1.7px, transparent 1.8px);
+  background-size: 12px 12px;
+  box-shadow: 8px 8px 0 #3b82f6;
+}
+
+.example-theme-card[data-example-theme="manga"] > .example-theme-panel {
+  border-radius: 0.15rem;
+  border-width: 4px;
+  background-color: #fff;
+  background-image: repeating-linear-gradient(-32deg, transparent 0 7px, rgba(0, 0, 0, 0.13) 7px 8px);
+  box-shadow: 8px 8px 0 #111;
+  filter: grayscale(1);
+}
+
+.example-theme-card[data-example-theme="retro"] > .example-theme-panel {
+  border-color: #5b3a1f;
+  border-radius: 0.9rem;
+  background-color: #e8c98f;
+  background-image: radial-gradient(circle at 20% 15%, rgba(91, 58, 31, 0.13), transparent 36%), repeating-linear-gradient(0deg, rgba(91, 58, 31, 0.07) 0 1px, transparent 1px 5px);
+  box-shadow: 5px 5px 0 #7a4d24;
+  color: #352319;
+}
+
+.example-theme-card[data-example-theme="vintage"] > .example-theme-panel {
+  border-color: #4a3a2a;
+  border-radius: 0.25rem;
+  background-color: #f1e1bd;
+  background-image: radial-gradient(circle at 15% 10%, rgba(123, 45, 38, 0.12), transparent 38%), repeating-linear-gradient(90deg, rgba(36, 48, 79, 0.055) 0 1px, transparent 1px 8px);
+  box-shadow: 4px 4px 0 #4a3a2a;
+  color: #30271e;
+}
+
+.example-theme-icon {
+  border: 2px solid currentColor;
+  border-radius: 0.75rem;
+  background: var(--comixa-primary-bg, #ffd84d);
+  color: var(--comixa-primary-text, #111);
+  box-shadow: var(--comixa-primary-shadow-value, 4px 4px 0 #111);
+}
+
+.example-theme-card[data-example-theme="manga"] .example-theme-icon {
+  border-width: 3px;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 5px 5px 0 #111;
+}
+
+.example-random-cursor {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  display: grid;
+  width: 5rem;
+  height: 3.5rem;
+  place-items: center;
+  pointer-events: none;
+  clip-path: polygon(50% 0%, 61% 24%, 85% 9%, 78% 36%, 100% 50%, 76% 61%, 88% 88%, 60% 76%, 50% 100%, 38% 76%, 12% 90%, 23% 62%, 0 50%, 24% 37%, 12% 10%, 39% 24%);
+  border: 0;
+  background: #ffe14d;
+  color: #111;
+  font-family: "Bangers", "Comic Sans MS", cursive;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  filter: drop-shadow(3px 3px 0 #111);
+  will-change: transform;
+}
+
+@media (pointer: coarse) {
+  .example-theme-card {
+    cursor: pointer;
+  }
+
+  .example-random-cursor {
+    display: none;
+  }
+}
+
 .marquee-track {
   width: max-content;
   animation: portfolio-drift 24s linear infinite;

@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import {
   Avatar,
   Badge,
@@ -6,6 +6,11 @@ import {
   ComicPanel,
   ComicReveal,
   ComixaProvider,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
   FAQ,
   FAQItem,
   Feature,
@@ -25,9 +30,12 @@ import {
   SpeechBubble,
   Stat,
   Stats,
+  Sticker,
   Testimonial,
   Testimonials,
   Typewriter,
+  ThemeScope,
+  type ComixaThemeName,
   type GalleryItem,
 } from "comixa-ui";
 import {
@@ -334,41 +342,61 @@ function LandingExample() {
 function ExamplePreview({
   title,
   description,
-  accent,
   theme,
+  themeId,
   icon,
   onOpen,
+  onCursorEnter,
+  onCursorMove,
+  onCursorLeave,
 }: {
   title: string;
   description: string;
-  accent: string;
   theme: string;
+  themeId: ComixaThemeName;
   icon: ReactNode;
   onOpen: () => void;
+  onCursorEnter: (x: number, y: number) => void;
+  onCursorMove: (x: number, y: number) => void;
+  onCursorLeave: () => void;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onOpen}
-      className="group pg-surface pg-border flex min-h-64 flex-col rounded-xl border-2 p-5 text-left shadow-comic transition hover:-translate-y-1"
-    >
-      <p className="pg-fg-muted mb-3 font-comic text-xs uppercase tracking-widest">
-        Theme: {theme}
-      </p>
-      <div className="mb-5 grid h-16 w-16 place-items-center rounded-xl border-2 border-ink bg-comic-yellow text-ink shadow-comic-sm transition-transform group-hover:rotate-3 group-hover:scale-105">
-        {icon}
-      </div>
-      <div className="flex flex-1 flex-col">
-        <Badge variant="yellow">{accent}</Badge>
-        <h2 className="pg-fg mt-3 font-comic text-3xl uppercase tracking-wide">
-          {title}
-        </h2>
-        <p className="pg-fg-muted mt-1 max-w-md text-sm">{description}</p>
-        <p className="mt-auto pt-5 font-comic text-sm uppercase tracking-wide text-ink group-hover:underline">
-          Open preview
-        </p>
-      </div>
-    </button>
+    <ThemeScope theme={themeId} className="h-full">
+      <button
+        type="button"
+        data-example-theme={themeId}
+        onClick={onOpen}
+        onPointerEnter={(event) => onCursorEnter(event.clientX, event.clientY)}
+        onPointerMove={(event) => onCursorMove(event.clientX, event.clientY)}
+        onPointerLeave={onCursorLeave}
+        className="example-theme-card group relative flex h-full min-h-72 w-full cursor-none flex-col overflow-hidden text-left transition hover:-translate-y-1"
+      >
+        <div className="absolute right-2 top-2 z-20 max-w-[45%]">
+          <Sticker variant="yellow" size="sm" shape="ticket" tilt="right">
+            {theme}
+          </Sticker>
+        </div>
+        <ComicPanel
+          variant="default"
+          shadow="lg"
+          halftone={themeId === "pop-art" || themeId === "manga"}
+          className="example-theme-panel flex h-full min-h-72 w-full flex-col p-5"
+        >
+          <div className="example-theme-icon mb-5 grid h-16 w-16 place-items-center transition-transform group-hover:rotate-3 group-hover:scale-105">
+            {icon}
+          </div>
+          <div className="flex flex-1 flex-col">
+            <h2 className="font-comic text-3xl uppercase tracking-wide">
+              {title}
+            </h2>
+            <p className="mt-1 max-w-md text-sm opacity-75">{description}</p>
+            <p className="mt-auto pt-5 font-comic text-sm uppercase tracking-wide group-hover:underline">
+              Open preview
+            </p>
+          </div>
+        </ComicPanel>
+      </button>
+    </ThemeScope>
   );
 }
 
@@ -415,7 +443,33 @@ type ExampleId = keyof typeof EXAMPLES;
 
 export function ExamplesPage() {
   const [open, setOpen] = useState<ExampleId | null>(null);
+  const [cursor, setCursor] = useState({
+    visible: false,
+    label: "OPEN",
+    x: 0,
+    y: 0,
+  });
+  const cursorRef = useRef<HTMLDivElement>(null);
   const active = open ? EXAMPLES[open] : null;
+  const cursorWords = ["OPEN", "VIEW", "PLAY", "READ"] as const;
+  const moveCursor = (x: number, y: number) => {
+    if (cursorRef.current) {
+      cursorRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    }
+  };
+  const cursorProps = {
+    onCursorEnter: (x: number, y: number) => {
+      moveCursor(x, y);
+      setCursor({
+        visible: true,
+        label: cursorWords[Math.floor(Math.random() * cursorWords.length)],
+        x,
+        y,
+      });
+    },
+    onCursorMove: moveCursor,
+    onCursorLeave: () => setCursor((value) => ({ ...value, visible: false })),
+  };
 
   return (
     <article className="flex flex-col gap-6">
@@ -433,97 +487,118 @@ export function ExamplesPage() {
         <ExamplePreview
           title="CoverForge landing"
           description="A full SaaS-style landing page with hero, proof, gallery, pricing, and FAQ."
-          accent="Landing page"
           theme="Comic"
+          themeId="default"
           icon={<BoltIcon className="h-8 w-8" />}
           onOpen={() => setOpen("landing")}
+          {...cursorProps}
         />
         <ExamplePreview
           title="LaunchBoard dashboard"
           description="Responsive SaaS analytics dashboard with KPIs, revenue chart, customer table, and activity feed."
-          accent="Dashboard"
           theme="Vintage"
+          themeId="vintage"
           icon={<LayoutDashboard className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("dashboard")}
+          {...cursorProps}
         />
         <ExamplePreview
           title="InkShift ebook"
           description="eBook sales page with hero cover, chapter grid, author profile, reviews, pricing, and free chapter preview."
-          accent="eBook site"
           theme="Pop Art"
+          themeId="pop-art"
           icon={<BookOpen className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("ebook")}
+          {...cursorProps}
         />
         <ExamplePreview
           title="Developer portfolio"
           description="Frontend developer portfolio with hero, project grid, skills, experience timeline, testimonials, and contact form."
-          accent="Portfolio"
           theme="Comic"
+          themeId="default"
           icon={<Code2 className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("portfolio")}
+          {...cursorProps}
         />
         <ExamplePreview
           title="Panel Press blog"
           description="Comic-inspired developer blog with featured story, category filters, search, newsletter signup, and article pages."
-          accent="Blog"
           theme="Manga"
+          themeId="manga"
           icon={<Newspaper className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("blog")}
+          {...cursorProps}
         />
         <ExamplePreview
           title="LaunchZap landing"
           description="SaaS launch workspace landing page with hero, features, workflow, pricing, FAQ, and demo dialog."
-          accent="SaaS landing"
           theme="Manga"
+          themeId="manga"
           icon={<Rocket className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("launchzap")}
+          {...cursorProps}
         />
         <ExamplePreview
           title="FM 79 retro radio"
           description="Retro radio landing page with schedule cards, dusty record archive, tape club CTA, and live toast actions."
-          accent="Retro project"
           theme="Retro"
+          themeId="retro"
           icon={<RadioTower className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("retrofm")}
+          {...cursorProps}
         />
         <ExamplePreview
           title="POP//DROP experience"
           description="Pop art culture magazine and print drop page with loud panels, kinetic cards, cursor modes, and shop section."
-          accent="Pop Art project"
           theme="Pop Art"
+          themeId="pop-art"
           icon={<Palette className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("popart")}
+          {...cursorProps}
         />
         <ExamplePreview
           title="The Gilded Ledger"
           description="Vintage collection landing page with artifact illustrations, selected lots, journal cards, and salon invitation CTA."
-          accent="Vintage project"
           theme="Vintage"
+          themeId="vintage"
           icon={<Gem className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("ledger")}
+          {...cursorProps}
         />
       </div>
 
-      {active ? (
-        <div className="fixed inset-0 z-50 bg-ink/80 p-3 md:p-6">
-          <div className="mx-auto flex h-full max-w-7xl flex-col overflow-hidden rounded-xl border-4 border-ink bg-paper shadow-[12px_12px_0_0_#1A1A1A]">
-            <div className="flex shrink-0 items-center gap-3 border-b-4 border-ink bg-comic-yellow px-4 py-3">
-              <p className="font-comic text-2xl uppercase tracking-wide">
-                {active.title}
-              </p>
-              <Button
-                size="sm"
-                variant="outline"
-                className="ml-auto bg-paper"
-                onClick={() => setOpen(null)}
-              >
-                Close
-              </Button>
-            </div>
-            <div className="min-h-0 flex-1 overflow-y-auto bg-paper-cream p-0 md:p-0">
-              {active.content}
-            </div>
+      <Dialog
+        open={Boolean(active)}
+        onOpenChange={(nextOpen) => !nextOpen && setOpen(null)}
+      >
+        <DialogContent
+          variant="panel"
+          effect="none"
+          showClose
+          className="example-preview-dialog !flex !h-[calc(100dvh-2rem)] !w-[calc(100vw-2rem)] !max-w-7xl !flex-col !overflow-hidden !p-0"
+        >
+          <DialogHeader className="shrink-0 border-b-4 border-ink bg-comic-yellow px-5 py-4 pr-14">
+            <DialogTitle>{active?.title ?? "Comixa example"}</DialogTitle>
+            <DialogDescription>
+              Full-page preview built with Comixa components.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="min-h-0 flex-1 overflow-y-auto bg-paper-cream">
+            {active?.content}
           </div>
+        </DialogContent>
+      </Dialog>
+
+      {cursor.visible ? (
+        <div
+          ref={cursorRef}
+          className="example-random-cursor"
+          style={{
+            transform: `translate3d(${cursor.x + 16}px, ${cursor.y + 16}px, 0)`,
+          }}
+          aria-hidden="true"
+        >
+          {cursor.label}
         </div>
       ) : null}
     </article>
