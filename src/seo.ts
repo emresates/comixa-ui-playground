@@ -34,10 +34,19 @@ function upsertCanonical(url: string) {
 
 export function updateSeo(pageId: string, pathname: string) {
   const component = componentById.get(pageId);
-  const docsPage = docsById.get(pageId);
+  const docsPage = docsById.get(pageId as (typeof DOCS_ITEMS)[number]["id"]);
   const isExamples = pageId === "examples";
   const isDocs = pageId === "overview";
-  const title = component
+  const isNotFound = pageId === "404";
+  const isBlog = pageId === "blog";
+  const isPlayground = pageId === "playground";
+  const title = isNotFound
+    ? "404 — Comixa UI"
+    : isBlog
+      ? "Comixa UI Blog"
+    : isPlayground
+      ? "Comixa UI Playground"
+    : component
     ? `Comixa ${component.label} Component — React UI Docs`
     : docsPage
       ? `${docsPage.label} — Comixa UI Documentation`
@@ -46,7 +55,13 @@ export function updateSeo(pageId: string, pathname: string) {
       : isDocs
         ? "Comixa UI Documentation — React Components"
         : "Comixa UI — Comic React Component Library";
-  const description = component
+  const description = isNotFound
+    ? "Page not found."
+    : isBlog
+      ? "Articles, guides, and updates from Comixa UI."
+    : isPlayground
+      ? "Experiment with Comixa UI components and themes."
+    : component
     ? `Explore the Comixa ${component.label} React component. ${component.blurb} View examples, usage code, imports, and props.`
     : docsPage
       ? `Learn about ${docsPage.label} in Comixa UI documentation.`
@@ -59,6 +74,12 @@ export function updateSeo(pageId: string, pathname: string) {
 
   document.title = title;
   upsertCanonical(canonicalUrl);
+  upsertMeta('meta[name="robots"]', {
+    name: "robots",
+    content: isNotFound
+      ? "noindex, nofollow"
+      : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+  });
   upsertMeta('meta[name="description"]', { name: "description", content: description });
   upsertMeta('meta[property="og:title"]', { property: "og:title", content: title });
   upsertMeta('meta[property="og:description"]', {

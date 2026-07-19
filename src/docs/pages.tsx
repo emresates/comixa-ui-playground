@@ -37,13 +37,30 @@ import { DocsPlaceholder } from "./DocsPlaceholder";
 import { DOCS_ITEMS } from "./nav";
 import { GettingStartedDocs } from "./GettingStartedDocs";
 import { InstallationDocs } from "./InstallationDocs";
+import { ThemingDocs } from "./ThemingDocs";
+import { ComixaProviderDocs } from "./ComixaProviderDocs";
+import { CustomizationDocs } from "./CustomizationDocs";
+import { AnimationsDocs } from "./AnimationsDocs";
+import { BestPracticesDocs } from "./BestPracticesDocs";
+import { GeneralFAQDocs } from "./GeneralFAQDocs";
+import { DeploymentDocs } from "./DeploymentDocs";
+import { UpcomingPage } from "./UpcomingPage";
 
 export function renderDocsPage(
   active: string,
-  onNavigate: (id: string) => void
+  onNavigate: (id: string) => void,
 ): ReactNode {
+  if (active === "blog") return <UpcomingPage title="Blog" />;
+  if (active === "playground") return <UpcomingPage title="Playground" />;
   if (active === "docs-getting-started") return <GettingStartedDocs />;
   if (active === "docs-installation") return <InstallationDocs />;
+  if (active === "docs-theming") return <ThemingDocs />;
+  if (active === "docs-comixa-provider") return <ComixaProviderDocs />;
+  if (active === "docs-customization") return <CustomizationDocs />;
+  if (active === "docs-animations") return <AnimationsDocs />;
+  if (active === "docs-best-practices") return <BestPracticesDocs />;
+  if (active === "docs-faq") return <GeneralFAQDocs />;
+  if (active === "docs-deployment") return <DeploymentDocs />;
 
   const docsItem = DOCS_ITEMS.find((item) => item.id === active);
   if (docsItem) return <DocsPlaceholder title={docsItem.label} />;

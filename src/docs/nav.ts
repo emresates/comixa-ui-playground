@@ -17,15 +17,15 @@ export const DOCS_ITEMS = [
 
 export const NAV: NavGroup[] = [
   {
-    label: "Start",
-    items: [
-      { id: "overview", label: "Overview" },
-      { id: "examples", label: "Examples" },
-    ],
-  },
-  {
     label: "Docs",
     items: [...DOCS_ITEMS],
+  },
+  {
+    label: "Start",
+    items: [
+      { id: "components", label: "Overview" },
+      { id: "examples", label: "Examples" },
+    ],
   },
   {
     label: "Actions",

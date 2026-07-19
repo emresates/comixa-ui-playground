@@ -21,19 +21,19 @@ export function Navbar() {
         <a href="/components" data-cursor="COMP." data-cursor-shape="burst">
           Components
         </a>
-        <a href="#themes" data-cursor="THEMES" data-cursor-shape="diamond">
+        <a href="/docs/theming" data-cursor="THEMES" data-cursor-shape="diamond">
           Themes
         </a>
-        <a href="#examples" data-cursor="EXAMP." data-cursor-shape="square">
+        <a href="/examples" data-cursor="EXAMP." data-cursor-shape="square">
           Examples
         </a>
-        <a href="/docs" data-cursor="DOCS" data-cursor-shape="burst">
+        <a href="/docs/getting-started" data-cursor="DOCS" data-cursor-shape="burst">
           Docs
         </a>
-        <a href="#blog" data-cursor="BLOG" data-cursor-shape="diamond">
+        <a href="/blog" data-cursor="BLOG" data-cursor-shape="diamond">
           Blog
         </a>
-        <a href="/examples" data-cursor="PLAY" data-cursor-shape="square">
+        <a href="/playground" data-cursor="PLAY" data-cursor-shape="square">
           Playground
         </a>
       </div>

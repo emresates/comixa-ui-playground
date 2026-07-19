@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Badge, Button, ComixaProvider, ToastProvider } from "comixa-ui";
+import { Button, ComixaProvider, ToastProvider } from "comixa-ui";
 import { DOCS_ITEMS, NAV } from "./docs/nav";
 import { NavSearch } from "./docs/NavSearch";
 import { renderDocsPage } from "./docs/pages";
 import { updateSeo } from "./seo";
 import { LandingPage } from "./landing/LandingPage";
+import NotFoundPage from "./not-found";
 
 const PLAYGROUND_THEMES = [
   { id: "comic", label: "Comic" },
@@ -26,28 +27,45 @@ const DOCS_IDS = new Set(DOCS_ITEMS.map((item) => item.id));
 
 function pageFromPath(pathname: string) {
   if (pathname === "/" || pathname === "") return "landing";
-  if (pathname === "/docs" || pathname === "/docs/") return "overview";
+  if (pathname === "/404" || pathname === "/404/") return "404";
+  if (pathname === "/docs" || pathname === "/docs/") return "docs";
   if (pathname === "/examples" || pathname === "/examples/") return "examples";
+  if (pathname === "/blog" || pathname === "/blog/") return "blog";
+  if (pathname === "/playground" || pathname === "/playground/") return "playground";
+  if (pathname === "/components" || pathname === "/components/") {
+    return "components";
+  }
+  if (
+    pathname === "/docs/getting-started" ||
+    pathname === "/docs/getting-started/"
+  )
+    return "docs-getting-started";
 
   const docsMatch = pathname.match(/^\/docs\/([^/]+)\/?$/);
   if (docsMatch) {
     const id = `docs-${decodeURIComponent(docsMatch[1])}`;
     if (DOCS_IDS.has(id as (typeof DOCS_ITEMS)[number]["id"])) return id;
+    return "404";
   }
 
   const match = pathname.match(/^\/components\/([^/]+)\/?$/);
   if (match) {
     const id = decodeURIComponent(match[1]);
     if (COMPONENT_IDS.has(id)) return id;
+    return "404";
   }
 
-  return "overview";
+  return "404";
 }
 
 function pathForPage(id: string) {
   if (id === "landing") return "/";
-  if (id === "overview") return "/docs";
+  if (id === "404") return "/404";
+  if (id === "components") return "/components";
   if (id === "examples") return "/examples";
+  if (id === "blog") return "/blog";
+  if (id === "playground") return "/playground";
+  if (id === "docs") return "/docs";
   if (id.startsWith("docs-")) {
     return `/docs/${encodeURIComponent(id.slice(5))}`;
   }
@@ -132,6 +150,10 @@ function Playground() {
     return <LandingPage />;
   }
 
+  if (active === "404") {
+    return <NotFoundPage />;
+  }
+
   return (
     <ComixaProvider {...(providerTheme ? { theme: providerTheme } : {})}>
       <div className="flex h-full min-h-0 overflow-hidden">
@@ -144,18 +166,17 @@ function Playground() {
         >
           <a
             href="/"
-            className="pg-border flex shrink-0 items-center gap-3 border-b-2 px-4 py-4"
+            className="pg-border flex shrink-0 items-center gap-3 border-b-2 px-4 py-1"
           >
             <img
               src="/logo.png"
               alt="Comixa"
-              className="h-14 w-14 shrink-0 rounded-lg border-2 border-ink object-cover shadow-comic-sm"
+              className="h-20 w-20 object-cover "
             />
             <div className="min-w-0">
-              <p className="pg-fg font-comic text-2xl uppercase tracking-wide">
-                Comixa
+              <p className="pg-fg font-comic text-3xl uppercase tracking-wide">
+                Comixa UI
               </p>
-              <p className="pg-fg-muted text-sm">Component docs</p>
             </div>
             <Button
               size="sm"
@@ -177,20 +198,18 @@ function Playground() {
                     const selected = active === item.id;
                     return (
                       <li key={item.id}>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            navigate(item.id);
-                            setMobileNav(false);
-                          }}
-                          className={
-                            selected
-                              ? "pg-nav-item-active w-full rounded-lg border-2 border-ink bg-comic-yellow px-3 py-2 text-left font-comic text-sm uppercase tracking-wide text-ink shadow-comic-sm"
-                              : "pg-nav-item pg-fg w-full rounded-lg px-3 py-2 text-left font-body text-sm hover:bg-black/5"
-                          }
-                        >
-                          {item.label}
-                        </button>
+                        <a href={pathForPage(item.id)}>
+                          <button
+                            type="button"
+                            className={
+                              selected
+                                ? "pg-nav-item-active w-full rounded-lg border-2 border-ink bg-comic-yellow px-3 py-2 text-left font-comic text-sm uppercase tracking-wide text-ink shadow-comic-sm"
+                                : "pg-nav-item pg-fg w-full rounded-lg px-3 py-2 text-left font-body text-sm hover:bg-black/5"
+                            }
+                          >
+                            {item.label}
+                          </button>
+                        </a>
                       </li>
                     );
                   })}
@@ -225,7 +244,7 @@ function Playground() {
                 Components
               </a>
               <a
-                href="#themes"
+                href="/docs/theming"
                 data-cursor="THEMES"
                 data-cursor-shape="diamond"
               >
@@ -238,13 +257,21 @@ function Playground() {
               >
                 Examples
               </a>
-              <a href="/docs" data-cursor="DOCS" data-cursor-shape="burst">
+              <a
+                href="/docs/getting-started"
+                data-cursor="DOCS"
+                data-cursor-shape="burst"
+              >
                 Docs
               </a>
-              <a href="#blog" data-cursor="BLOG" data-cursor-shape="diamond">
+              <a href="/blog" data-cursor="BLOG" data-cursor-shape="diamond">
                 Blog
               </a>
-              <a href="/examples" data-cursor="PLAY" data-cursor-shape="square">
+              <a
+                href="/playground"
+                data-cursor="PLAY"
+                data-cursor-shape="square"
+              >
                 Playground
               </a>
             </div>

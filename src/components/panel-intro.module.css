@@ -1,0 +1,43 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #111;
+}
+
+.left,
+.right {
+  position: absolute;
+  top: 0;
+  width: 52%;
+  height: 100%;
+  border: 10px solid #111;
+  background:
+    radial-gradient(circle, rgba(17, 17, 17, 0.28) 1.6px, transparent 1.8px) 0
+      0 / 13px 13px,
+    #ffd42a;
+}
+
+.left {
+  left: 0;
+}
+.right {
+  right: 0;
+}
+
+.word {
+  position: relative;
+  z-index: 2;
+  border: 8px solid #111;
+  padding: 24px 42px;
+  background: #ff3e79;
+  color: white;
+  box-shadow: 14px 14px 0 #111;
+  font-size: clamp(54px, 15vw, 190px);
+  font-weight: 1000;
+  line-height: 0.82;
+  letter-spacing: -0.08em;
+}
