@@ -25,7 +25,15 @@ html[data-theme="light"] {
   --comixa-button-border-width: 2px;
   --comixa-button-letter-spacing: 0.025em;
   --comixa-default-bg: #ffd84d;
+  --comixa-default-bg: #ffd84d;
   --comixa-default-text: #111111;
+  --comixa-default-border: #1e1e1e;
+  --comixa-default-shadow: #1e1e1e;
+  --comixa-primary-bg: #4f9cf9;
+  --comixa-primary-text: #ffffff;
+  --comixa-primary-border: #1e1e1e;
+  --comixa-primary-shadow: #1e1e1e;
+  --comixa-success-bg: #4ade80;
   --comixa-default-border: #1e1e1e;
   --comixa-default-shadow: #1e1e1e;
   --comixa-primary-bg: #4f9cf9;

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Button, ComixaProvider, ToastProvider } from "comixa-ui";
+import { Analytics } from "@vercel/analytics/react";
 import { DOCS_ITEMS, NAV } from "./docs/nav";
 import { NavSearch } from "./docs/NavSearch";
 import { renderDocsPage } from "./docs/pages";
@@ -320,6 +321,7 @@ export default function App() {
   return (
     <ToastProvider position="bottom-right">
       <Playground />
+      <Analytics />
     </ToastProvider>
   );
 }
