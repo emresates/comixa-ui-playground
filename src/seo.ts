@@ -1,4 +1,4 @@
-import { COMPONENT_BLURBS } from "./docs/nav";
+import { COMPONENT_BLURBS, DOCS_ITEMS } from "./docs/nav";
 
 const DEFAULT_SITE_URL = "https://comixa-ui.vercel.app";
 
@@ -11,6 +11,7 @@ const DEFAULT_DESCRIPTION =
   "Comixa UI is a comic-inspired React component library with expressive Tailwind CSS components, themes, examples, and accessible UI documentation.";
 
 const componentById = new Map(COMPONENT_BLURBS.map((item) => [item.id, item]));
+const docsById = new Map(DOCS_ITEMS.map((item) => [item.id, item]));
 
 function upsertMeta(selector: string, attributes: Record<string, string>) {
   let element = document.head.querySelector<HTMLMetaElement>(selector);
@@ -33,17 +34,27 @@ function upsertCanonical(url: string) {
 
 export function updateSeo(pageId: string, pathname: string) {
   const component = componentById.get(pageId);
+  const docsPage = docsById.get(pageId);
   const isExamples = pageId === "examples";
+  const isDocs = pageId === "overview";
   const title = component
     ? `Comixa ${component.label} Component — React UI Docs`
+    : docsPage
+      ? `${docsPage.label} — Comixa UI Documentation`
     : isExamples
       ? "Comixa UI Examples — React Component Designs"
-      : "Comixa UI — Comic React Component Library";
+      : isDocs
+        ? "Comixa UI Documentation — React Components"
+        : "Comixa UI — Comic React Component Library";
   const description = component
     ? `Explore the Comixa ${component.label} React component. ${component.blurb} View examples, usage code, imports, and props.`
+    : docsPage
+      ? `Learn about ${docsPage.label} in Comixa UI documentation.`
     : isExamples
       ? "Explore full-page React designs and interface examples built with Comixa UI comic components and themes."
-      : DEFAULT_DESCRIPTION;
+      : isDocs
+        ? "Browse Comixa UI React component documentation, interactive examples, props, themes, and copy-ready usage code."
+        : DEFAULT_DESCRIPTION;
   const canonicalUrl = `${SITE_URL}${pathname === "/" ? "" : pathname}`;
 
   document.title = title;

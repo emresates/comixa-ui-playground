@@ -113,11 +113,9 @@ export function NavSearch({ onSelect }: NavSearchProps) {
           }
         }}
       />
-      {!query && (
-        <kbd className="pg-fg-muted pointer-events-none absolute right-2.5 top-1/2 hidden -translate-y-1/2 rounded border border-ink/20 px-1.5 py-0.5 font-mono text-[10px] md:inline">
-          {shortcutHint}
-        </kbd>
-      )}
+      <kbd className="pg-fg-muted pointer-events-none absolute right-2.5 top-1/2 hidden -translate-y-1/2 rounded border border-ink/20 px-1.5 py-0.5 font-mono text-[10px] md:inline">
+        {shortcutHint}
+      </kbd>
 
       {open && (
         <ul

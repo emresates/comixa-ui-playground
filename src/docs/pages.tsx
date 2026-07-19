@@ -33,11 +33,21 @@ import { RibbonDocs } from "./RibbonDocs";
 import { ComicRevealDocs } from "./ComicRevealDocs";
 import { ComicCursorDocs } from "./ComicCursorDocs";
 import { FeaturesDocs } from "./FeaturesDocs";
+import { DocsPlaceholder } from "./DocsPlaceholder";
+import { DOCS_ITEMS } from "./nav";
+import { GettingStartedDocs } from "./GettingStartedDocs";
+import { InstallationDocs } from "./InstallationDocs";
 
 export function renderDocsPage(
   active: string,
   onNavigate: (id: string) => void
 ): ReactNode {
+  if (active === "docs-getting-started") return <GettingStartedDocs />;
+  if (active === "docs-installation") return <InstallationDocs />;
+
+  const docsItem = DOCS_ITEMS.find((item) => item.id === active);
+  if (docsItem) return <DocsPlaceholder title={docsItem.label} />;
+
   switch (active) {
     case "examples":
       return <ExamplesPage />;

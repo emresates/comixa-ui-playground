@@ -586,7 +586,7 @@ body {
   outline-offset: 2px;
 }
 
-.theme-option[data-theme-option="light"] {
+.theme-option[data-theme-option="comic"] {
   --comixa-button-bg: #ffd84d;
   --comixa-button-text: #111111;
   --comixa-button-border: #1e1e1e;
@@ -650,13 +650,13 @@ body {
   font-size: 0.95rem;
 }
 
-html[data-comixa-theme]:not([data-comixa-theme="light"]) .pg-surface,
-html[data-comixa-theme]:not([data-comixa-theme="light"]) .pg-chrome {
+html[data-comixa-theme]:not([data-comixa-theme="comic"]) .pg-surface,
+html[data-comixa-theme]:not([data-comixa-theme="comic"]) .pg-chrome {
   background-image: var(--pg-component-pattern);
   background-size: var(--pg-component-pattern-size);
 }
 
-html[data-comixa-theme]:not([data-comixa-theme="light"]) .pg-nav-item-active {
+html[data-comixa-theme]:not([data-comixa-theme="comic"]) .pg-nav-item-active {
   background: var(--pg-component-bg);
   color: var(--pg-component-fg);
   border-color: var(--pg-border);
@@ -664,7 +664,7 @@ html[data-comixa-theme]:not([data-comixa-theme="light"]) .pg-nav-item-active {
   border-radius: var(--pg-component-radius);
 }
 
-html[data-comixa-theme]:not([data-comixa-theme="light"]) main select:not(.theme-option) {
+html[data-comixa-theme]:not([data-comixa-theme="comic"]) main select:not(.theme-option) {
   background-color: var(--pg-component-bg);
   color: var(--pg-component-fg);
   border-color: var(--pg-border);
@@ -673,17 +673,17 @@ html[data-comixa-theme]:not([data-comixa-theme="light"]) main select:not(.theme-
   font-family: var(--pg-component-font);
 }
 
-html[data-comixa-theme]:not([data-comixa-theme="light"]) main select:not(.theme-option)::before {
+html[data-comixa-theme]:not([data-comixa-theme="comic"]) main select:not(.theme-option)::before {
   background-image: var(--pg-component-pattern);
   background-size: var(--pg-component-pattern-size);
 }
 
-html[data-comixa-theme]:not([data-comixa-theme="light"]) main :is(article, section, div, li)[class*="border-ink"] {
+html[data-comixa-theme]:not([data-comixa-theme="comic"]) main :is(article, section, div, li)[class*="border-ink"] {
   border-color: var(--pg-border);
   box-shadow: var(--pg-component-shadow);
 }
 
-html[data-comixa-theme]:not([data-comixa-theme="light"]) main :is(h1, h2, h3, h4, .font-comic) {
+html[data-comixa-theme]:not([data-comixa-theme="comic"]) main :is(h1, h2, h3, h4, .font-comic) {
   color: var(--pg-fg);
 }
 
@@ -1087,7 +1087,7 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
   text-shadow: none;
 }
 
-.example-theme-card[data-example-theme="default"] {
+.example-theme-card[data-example-theme="comic"] {
   --example-title-font: "Bangers", "Comic Sans MS", cursive;
   --example-body-font: "Comic Neue", ui-rounded, system-ui, sans-serif;
   --example-title-spacing: 0.025em;
@@ -1117,7 +1117,7 @@ html[data-comixa-theme="pop-art"] main [data-comixa-ribbon] {
   --example-title-spacing: 0.035em;
 }
 
-.example-theme-card[data-example-theme="default"] > .example-theme-panel {
+.example-theme-card[data-example-theme="comic"] > .example-theme-panel {
   --example-title-font: "Bangers", "Comic Sans MS", cursive;
   --example-body-font: "Comic Neue", ui-rounded, system-ui, sans-serif;
   --example-title-spacing: 0.025em;

@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Badge, Button, ComixaProvider, ToastProvider } from "comixa-ui";
-import { NAV } from "./docs/nav";
+import { DOCS_ITEMS, NAV } from "./docs/nav";
 import { NavSearch } from "./docs/NavSearch";
 import { renderDocsPage } from "./docs/pages";
 import { updateSeo } from "./seo";
+import { LandingPage } from "./landing/LandingPage";
 
 const PLAYGROUND_THEMES = [
-  { id: "light", label: "Comic" },
+  { id: "comic", label: "Comic" },
   { id: "retro", label: "Retro" },
   { id: "pop-art", label: "Pop Art" },
   { id: "manga", label: "Manga" },
@@ -14,16 +15,25 @@ const PLAYGROUND_THEMES = [
 ] as const;
 
 type PlaygroundTheme = (typeof PLAYGROUND_THEMES)[number]["id"];
-type ProviderTheme = "default" | "retro" | "pop-art" | "manga" | "vintage";
+type ProviderTheme = "retro" | "pop-art" | "manga" | "vintage";
 
 const COMPONENT_IDS = new Set(
   NAV.flatMap((group) => group.items.map((item) => item.id)).filter(
-    (id) => id !== "overview" && id !== "examples"
-  )
+    (id) => id !== "overview" && id !== "examples" && !id.startsWith("docs-"),
+  ),
 );
+const DOCS_IDS = new Set(DOCS_ITEMS.map((item) => item.id));
 
 function pageFromPath(pathname: string) {
+  if (pathname === "/" || pathname === "") return "landing";
+  if (pathname === "/docs" || pathname === "/docs/") return "overview";
   if (pathname === "/examples" || pathname === "/examples/") return "examples";
+
+  const docsMatch = pathname.match(/^\/docs\/([^/]+)\/?$/);
+  if (docsMatch) {
+    const id = `docs-${decodeURIComponent(docsMatch[1])}`;
+    if (DOCS_IDS.has(id as (typeof DOCS_ITEMS)[number]["id"])) return id;
+  }
 
   const match = pathname.match(/^\/components\/([^/]+)\/?$/);
   if (match) {
@@ -35,8 +45,12 @@ function pageFromPath(pathname: string) {
 }
 
 function pathForPage(id: string) {
-  if (id === "overview") return "/";
+  if (id === "landing") return "/";
+  if (id === "overview") return "/docs";
   if (id === "examples") return "/examples";
+  if (id.startsWith("docs-")) {
+    return `/docs/${encodeURIComponent(id.slice(5))}`;
+  }
   return `/components/${encodeURIComponent(id)}`;
 }
 
@@ -57,7 +71,7 @@ function applyTheme(theme: PlaygroundTheme) {
 
 function useTheme() {
   const [theme, setTheme] = useState<PlaygroundTheme>(() => {
-    if (typeof document === "undefined") return "light";
+    if (typeof document === "undefined") return "comic";
     try {
       const stored = localStorage.getItem("comixa-playground-theme");
       if (isPlaygroundTheme(stored)) return stored;
@@ -65,21 +79,29 @@ function useTheme() {
       /* ignore */
     }
     const current = document.documentElement.getAttribute("data-comixa-theme");
-    return isPlaygroundTheme(current) ? current : "light";
+    return isPlaygroundTheme(current) ? current : "comic";
   });
-
-  useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
 
   return { theme, setTheme };
 }
 
 function Playground() {
-  const [active, setActive] = useState(() => pageFromPath(window.location.pathname));
+  const [active, setActive] = useState(() =>
+    pageFromPath(window.location.pathname),
+  );
   const [mobileNav, setMobileNav] = useState(false);
   const { theme, setTheme } = useTheme();
-  const providerTheme: ProviderTheme = theme === "light" ? "default" : theme;
+  const providerTheme: ProviderTheme | undefined =
+    theme === "comic" ? undefined : theme;
+
+  useEffect(() => {
+    if (active === "landing") {
+      document.documentElement.setAttribute("data-theme", "light");
+      document.documentElement.setAttribute("data-comixa-theme", "comic");
+      return;
+    }
+    applyTheme(theme);
+  }, [active, theme]);
 
   const navigate = useCallback((id: string) => {
     const path = pathForPage(id);
@@ -91,7 +113,8 @@ function Playground() {
   }, []);
 
   useEffect(() => {
-    const handlePopState = () => setActive(pageFromPath(window.location.pathname));
+    const handlePopState = () =>
+      setActive(pageFromPath(window.location.pathname));
     window.addEventListener("popstate", handlePopState);
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
@@ -100,10 +123,17 @@ function Playground() {
     updateSeo(active, window.location.pathname);
   }, [active]);
 
-  const page = useMemo(() => renderDocsPage(active, navigate), [active, navigate]);
+  const page = useMemo(
+    () => renderDocsPage(active, navigate),
+    [active, navigate],
+  );
+
+  if (active === "landing") {
+    return <LandingPage />;
+  }
 
   return (
-    <ComixaProvider theme={providerTheme}>
+    <ComixaProvider {...(providerTheme ? { theme: providerTheme } : {})}>
       <div className="flex h-full min-h-0 overflow-hidden">
         <div
           className={
@@ -112,7 +142,10 @@ function Playground() {
               : "pg-chrome pg-border hidden h-full w-64 min-h-0 shrink-0 flex-col border-r-2 md:flex"
           }
         >
-          <div className="pg-border flex shrink-0 items-center gap-3 border-b-2 px-4 py-4">
+          <a
+            href="/"
+            className="pg-border flex shrink-0 items-center gap-3 border-b-2 px-4 py-4"
+          >
             <img
               src="/logo.png"
               alt="Comixa"
@@ -132,7 +165,7 @@ function Playground() {
             >
               Close
             </Button>
-          </div>
+          </a>
           <nav className="pg-hide-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-4">
             {NAV.map((group) => (
               <div key={group.label} className="mb-4">
@@ -183,16 +216,46 @@ function Playground() {
             >
               Menu
             </Button>
-            <Badge variant="yellow" className="hidden sm:inline-flex">
-              Playground
-            </Badge>
-            <NavSearch
-              onSelect={(id) => {
-                navigate(id);
-                setMobileNav(false);
-              }}
-            />
+            <div className="nav-links">
+              <a
+                href="/components"
+                data-cursor="COMP."
+                data-cursor-shape="burst"
+              >
+                Components
+              </a>
+              <a
+                href="#themes"
+                data-cursor="THEMES"
+                data-cursor-shape="diamond"
+              >
+                Themes
+              </a>
+              <a
+                href="/examples"
+                data-cursor="EXAMP."
+                data-cursor-shape="square"
+              >
+                Examples
+              </a>
+              <a href="/docs" data-cursor="DOCS" data-cursor-shape="burst">
+                Docs
+              </a>
+              <a href="#blog" data-cursor="BLOG" data-cursor-shape="diamond">
+                Blog
+              </a>
+              <a href="/examples" data-cursor="PLAY" data-cursor-shape="square">
+                Playground
+              </a>
+            </div>
+
             <div className="pg-theme-picker ml-auto flex shrink-0 items-center gap-1 pg-hide-scrollbar">
+              <NavSearch
+                onSelect={(id) => {
+                  navigate(id);
+                  setMobileNav(false);
+                }}
+              />
               {PLAYGROUND_THEMES.map((item) => (
                 <Button
                   key={item.id}

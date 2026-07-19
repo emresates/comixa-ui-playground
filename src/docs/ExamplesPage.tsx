@@ -154,7 +154,7 @@ function CoverHero() {
 
 function LandingExample() {
   return (
-    <ComixaProvider theme="default">
+    <ComixaProvider>
       <section className="overflow-hidden rounded-xl border-4 border-ink bg-paper shadow-comic-lg">
         <Navbar
           variant="pop"
@@ -488,7 +488,7 @@ export function ExamplesPage() {
           title="CoverForge landing"
           description="A full SaaS-style landing page with hero, proof, gallery, pricing, and FAQ."
           theme="Comic"
-          themeId="default"
+          themeId="comic"
           icon={<BoltIcon className="h-8 w-8" />}
           onOpen={() => setOpen("landing")}
           {...cursorProps}
@@ -515,7 +515,7 @@ export function ExamplesPage() {
           title="Developer portfolio"
           description="Frontend developer portfolio with hero, project grid, skills, experience timeline, testimonials, and contact form."
           theme="Comic"
-          themeId="default"
+          themeId="comic"
           icon={<Code2 className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("portfolio")}
           {...cursorProps}

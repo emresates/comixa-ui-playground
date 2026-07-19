@@ -168,7 +168,7 @@ export function DeveloperPortfolio() {
   };
 
   return (
-    <ComixaProvider theme="default">
+    <ComixaProvider>
       <ToastProvider position="top-right" duration={4200}>
         <PageTransition variant="panel-swipe" padding="none">
           <main className="site-shell bg-paper text-ink">
