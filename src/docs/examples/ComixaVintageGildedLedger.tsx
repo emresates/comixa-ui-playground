@@ -544,7 +544,7 @@ export function ComixaVintageGildedLedger() {
                   <h1 className="display-title mt-3 text-6xl leading-[.86] sm:text-6xl">
                     THE ART
                     <br />
-                    OF <Highlight tone="yellow" triggerOnView repeat={1}>REMEMBERING</Highlight>
+                    OF <Highlight tone="yellow" triggerOnView repeat={1} className="text-7xl">REMEMBERING</Highlight>
                   </h1>
                   <p className="max-w-2xl text-lg leading-8 text-[#5d4b39]">
                     A digital cabinet of curiosities for collectors, romantics and readers

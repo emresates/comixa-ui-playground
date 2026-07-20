@@ -560,15 +560,24 @@
   gap: 26px;
 }
 .example-card {
+  appearance: none;
+  width: 100%;
   border: 3px solid var(--ink);
   background: #f8e4bd;
   box-shadow: 8px 8px 0 var(--ink);
   padding: 20px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
   transition: 0.35s;
 }
 .example-card:hover {
   transform: translateY(-10px) rotate(-1deg);
   box-shadow: 14px 16px 0 var(--ink);
+}
+.example-card:focus-visible {
+  outline: 5px solid #fff8df;
+  outline-offset: -9px;
 }
 .example-meta {
   display: flex;
@@ -644,6 +653,16 @@
 }
 .example-copy span {
   font-weight: 700;
+}
+.landing-example-dialog[data-comixa-dialog-panel] {
+  border-width: 4px;
+  box-shadow: 12px 12px 0 #17120e;
+}
+.landing-example-dialog-header {
+  color: #17120e;
+}
+.landing-example-dialog-body {
+  overscroll-behavior: contain;
 }
 .install-panel {
   display: grid;

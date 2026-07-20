@@ -7,6 +7,7 @@ import { renderDocsPage } from "./docs/pages";
 import { updateSeo } from "./seo";
 import { LandingPage } from "./landing/LandingPage";
 import NotFoundPage from "./not-found";
+import { Menu } from "lucide-react";
 
 const PLAYGROUND_THEMES = [
   { id: "comic", label: "Comic" },
@@ -32,7 +33,8 @@ function pageFromPath(pathname: string) {
   if (pathname === "/docs" || pathname === "/docs/") return "docs";
   if (pathname === "/examples" || pathname === "/examples/") return "examples";
   if (pathname === "/blog" || pathname === "/blog/") return "blog";
-  if (pathname === "/playground" || pathname === "/playground/") return "playground";
+  if (pathname === "/playground" || pathname === "/playground/")
+    return "playground";
   if (pathname === "/components" || pathname === "/components/") {
     return "components";
   }
@@ -165,29 +167,35 @@ function Playground() {
               : "pg-chrome pg-border hidden h-full w-64 min-h-0 shrink-0 flex-col border-r-2 md:flex"
           }
         >
-          <a
-            href="/"
-            className="pg-border flex shrink-0 items-center gap-3 border-b-2 px-4 py-1"
-          >
-            <img
-              src="/logo.png"
-              alt="Comixa"
-              className="h-20 w-20 object-cover "
-            />
-            <div className="min-w-0">
-              <p className="pg-fg font-comic text-3xl uppercase tracking-wide">
-                Comixa UI
-              </p>
-            </div>
+          <div className="flex items-center justify-between border-b-2 px-4 py-1 pg-border">
+            <a
+              href="/"
+              className="flex shrink-0 items-center gap-3"
+            >
+              <img
+                src="/logo.png"
+                alt="Comixa"
+                className="h-20 w-20 object-cover "
+              />
+              <div className="min-w-0">
+                <p className="pg-fg font-comic text-3xl uppercase tracking-wide">
+                  Comixa UI
+                </p>
+              </div>
+            </a>
             <Button
               size="sm"
               variant="outline"
               className="ml-auto md:hidden"
-              onClick={() => setMobileNav(false)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setMobileNav(false);
+              }}
             >
               Close
             </Button>
-          </a>
+          </div>
+
           <nav className="pg-hide-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-4">
             {NAV.map((group) => (
               <div key={group.label} className="mb-4">
@@ -231,10 +239,10 @@ function Playground() {
             <Button
               size="sm"
               variant="outline"
-              className="md:hidden"
+              className="md:hidden !px-0"
               onClick={() => setMobileNav(true)}
             >
-              Menu
+              <Menu size={24} />
             </Button>
             <div className="nav-links">
               <a
