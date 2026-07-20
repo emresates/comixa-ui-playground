@@ -630,6 +630,41 @@ body {
   border-color: var(--pg-border);
 }
 
+.pg-navbar-brand {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--pg-fg);
+  text-decoration: none;
+}
+
+.pg-navbar-brand img {
+  width: 2.65rem;
+  height: 2.65rem;
+  object-fit: cover;
+  transition: transform 180ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.pg-navbar-brand span {
+  font-family: "Bangers", Impact, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+.pg-navbar-brand:hover img {
+  transform: rotate(-5deg) scale(1.06);
+}
+
+@media (max-width: 1280px) {
+  .pg-navbar-brand span { display: none; }
+}
+
+@media (max-width: 680px) {
+  .pg-navbar-brand img { width: 2.2rem; height: 2.2rem; }
+}
+
 .pg-theme-picker {
   gap: 0.55rem;
 }

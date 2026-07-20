@@ -160,44 +160,78 @@ function Playground() {
 
   return (
     <ComixaProvider {...(providerTheme ? { theme: providerTheme } : {})}>
-      <div className="flex h-full min-h-0 overflow-hidden">
-        {!isPlayground ? <div
-          className={
-            mobileNav
-              ? "pg-chrome pg-border flex h-full w-full min-h-0 shrink-0 flex-col border-r-2 md:w-64"
-              : "pg-chrome pg-border hidden h-full w-64 min-h-0 shrink-0 flex-col border-r-2 md:flex"
-          }
-        >
-          <div className="flex items-center justify-between border-b-2 px-4 py-1 pg-border">
-            <a
-              href="/"
-              className="flex shrink-0 items-center gap-3"
-            >
-              <img
-                src="/logo.png"
-                alt="Comixa"
-                className="h-20 w-20 object-cover "
-              />
-              <div className="min-w-0">
-                <p className="pg-fg font-comic text-3xl uppercase tracking-wide">
-                  Comixa UI
-                </p>
-              </div>
-            </a>
+      <div className="flex h-full min-h-0 flex-col overflow-hidden">
+        <header className="pg-chrome pg-border flex shrink-0 items-center gap-2 border-b-2 px-4 py-3 backdrop-blur md:gap-3 md:px-8">
+          {!isPlayground ? (
             <Button
               size="sm"
               variant="outline"
-              className="ml-auto md:hidden"
-              onClick={(e) => {
-                e.stopPropagation();
-                setMobileNav(false);
-              }}
+              className="md:hidden !px-0"
+              onClick={() => setMobileNav(true)}
             >
-              Close
+              <Menu size={24} />
             </Button>
+          ) : null}
+          <a href="/" className="pg-navbar-brand" aria-label="Comixa UI home">
+            <img src="/logo.png" alt="" />
+            <span>Comixa UI</span>
+          </a>
+          <div className="nav-links">
+            <a href="/components" data-cursor="COMP." data-cursor-shape="burst">Components</a>
+            <a href="/docs/theming" data-cursor="THEMES" data-cursor-shape="diamond">Themes</a>
+            <a href="/examples" data-cursor="EXAMP." data-cursor-shape="square">Examples</a>
+            <a href="/docs/getting-started" data-cursor="DOCS" data-cursor-shape="burst">Docs</a>
+            <a href="/blog" data-cursor="BLOG" data-cursor-shape="diamond">Blog</a>
+            <a href="/playground" data-cursor="PLAY" data-cursor-shape="square">Playground</a>
           </div>
 
-          <nav className="pg-hide-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-4">
+          <div className="pg-theme-picker ml-auto flex shrink-0 items-center gap-1 pg-hide-scrollbar">
+            <NavSearch
+              onSelect={(id) => {
+                navigate(id);
+                setMobileNav(false);
+              }}
+            />
+            {PLAYGROUND_THEMES.map((item) => (
+              <Button
+                key={item.id}
+                size="sm"
+                variant="primary"
+                className="theme-option shrink-0"
+                data-theme-option={item.id}
+                aria-pressed={theme === item.id}
+                onClick={() => setTheme(item.id)}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </div>
+        </header>
+
+        <div className="flex min-h-0 flex-1 overflow-hidden">
+          {!isPlayground ? <div
+            className={
+              mobileNav
+                ? "pg-chrome pg-border flex h-full w-full min-h-0 shrink-0 flex-col border-r-2 md:w-64"
+                : "pg-chrome pg-border hidden h-full w-64 min-h-0 shrink-0 flex-col border-r-2 md:flex"
+            }
+          >
+            <div className="hidden items-center justify-between border-b-2 px-4 py-3 pg-border max-md:flex">
+              <strong className="pg-fg font-comic text-lg uppercase tracking-wide">Navigation</strong>
+              <Button
+                size="sm"
+                variant="outline"
+                className="ml-auto"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setMobileNav(false);
+                }}
+              >
+                Close
+              </Button>
+            </div>
+
+            <nav className="pg-hide-scrollbar min-h-0 flex-1 overflow-y-auto overscroll-contain px-3 py-4">
             {NAV.map((group) => (
               <div key={group.label} className="mb-4">
                 <p className="pg-fg-muted mb-2 px-2 font-comic text-xs uppercase tracking-wide">
@@ -226,112 +260,38 @@ function Playground() {
                 </ul>
               </div>
             ))}
-          </nav>
-        </div> : null}
+            </nav>
+          </div> : null}
 
-        <div
-          className={
-            isPlayground
-              ? "flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden"
-              : mobileNav
-              ? "hidden min-h-0 min-w-0 flex-1 flex-col overflow-hidden md:flex"
-              : "flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden"
-          }
-        >
-          <header className="pg-chrome pg-border flex shrink-0 items-center gap-2 border-b-2 px-4 py-3 backdrop-blur md:gap-3 md:px-8">
-            {!isPlayground ? (
-              <Button
-                size="sm"
-                variant="outline"
-                className="md:hidden !px-0"
-                onClick={() => setMobileNav(true)}
-              >
-                <Menu size={24} />
-              </Button>
-            ) : null}
-            <div className="nav-links">
-              <a
-                href="/components"
-                data-cursor="COMP."
-                data-cursor-shape="burst"
-              >
-                Components
-              </a>
-              <a
-                href="/docs/theming"
-                data-cursor="THEMES"
-                data-cursor-shape="diamond"
-              >
-                Themes
-              </a>
-              <a
-                href="/examples"
-                data-cursor="EXAMP."
-                data-cursor-shape="square"
-              >
-                Examples
-              </a>
-              <a
-                href="/docs/getting-started"
-                data-cursor="DOCS"
-                data-cursor-shape="burst"
-              >
-                Docs
-              </a>
-              <a href="/blog" data-cursor="BLOG" data-cursor-shape="diamond">
-                Blog
-              </a>
-              <a
-                href="/playground"
-                data-cursor="PLAY"
-                data-cursor-shape="square"
-              >
-                Playground
-              </a>
-            </div>
-
-            <div className="pg-theme-picker ml-auto flex shrink-0 items-center gap-1 pg-hide-scrollbar">
-              <NavSearch
-                onSelect={(id) => {
-                  navigate(id);
-                  setMobileNav(false);
-                }}
-              />
-              {PLAYGROUND_THEMES.map((item) => (
-                <Button
-                  key={item.id}
-                  size="sm"
-                  variant="primary"
-                  className="theme-option shrink-0"
-                  data-theme-option={item.id}
-                  aria-pressed={theme === item.id}
-                  onClick={() => setTheme(item.id)}
-                >
-                  {item.label}
-                </Button>
-              ))}
-            </div>
-          </header>
-
-          <main
+          <div
             className={
-              active === "playground"
-                ? "min-h-0 flex-1 overflow-hidden"
-                : "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-8 md:px-8 md:py-10"
+              isPlayground
+                ? "flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden"
+                : mobileNav
+                ? "hidden min-h-0 min-w-0 flex-1 flex-col overflow-hidden md:flex"
+                : "flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden"
             }
           >
-            <div
+            <main
               className={
                 active === "playground"
-                  ? "h-full min-h-0 w-full"
-                  : active === "examples"
-                  ? "mx-auto max-w-6xl"
-                  : "mx-auto max-w-3xl"
+                  ? "min-h-0 flex-1 overflow-hidden"
+                  : "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-8 md:px-8 md:py-10"
               }
             >
-              {page}
-            </div>
-          </main>
+              <div
+                className={
+                  active === "playground"
+                    ? "h-full min-h-0 w-full"
+                    : active === "examples"
+                    ? "mx-auto max-w-6xl"
+                    : "mx-auto max-w-3xl"
+                }
+              >
+                {page}
+              </div>
+            </main>
+          </div>
         </div>
       </div>
     </ComixaProvider>
