@@ -39,9 +39,12 @@ export function updateSeo(pageId: string, pathname: string) {
   const isDocs = pageId === "overview";
   const isNotFound = pageId === "404";
   const isBlog = pageId === "blog";
+  const isBlogArticle = pageId === "blog-article";
   const isPlayground = pageId === "playground";
   const title = isNotFound
     ? "404 — Comixa UI"
+    : isBlogArticle
+      ? "How to Build a Comic Website in React with Comixa UI"
     : isBlog
       ? "Comixa UI Blog"
     : isPlayground
@@ -57,6 +60,8 @@ export function updateSeo(pageId: string, pathname: string) {
         : "Comixa UI — Comic React Component Library";
   const description = isNotFound
     ? "Page not found."
+    : isBlogArticle
+      ? "Learn how to build a responsive comic website in React with Comixa UI. Add comic sections, bold themes, animations, halftone patterns, and reusable components."
     : isBlog
       ? "Articles, guides, and updates from Comixa UI."
     : isPlayground

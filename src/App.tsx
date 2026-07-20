@@ -33,6 +33,10 @@ function pageFromPath(pathname: string) {
   if (pathname === "/docs" || pathname === "/docs/") return "docs";
   if (pathname === "/examples" || pathname === "/examples/") return "examples";
   if (pathname === "/blog" || pathname === "/blog/") return "blog";
+  if (
+    pathname === "/blog/how-to-build-a-comic-website-in-react-with-comixa-ui" ||
+    pathname === "/blog/how-to-build-a-comic-website-in-react-with-comixa-ui/"
+  ) return "blog-article";
   if (pathname === "/playground" || pathname === "/playground/")
     return "playground";
   if (pathname === "/components" || pathname === "/components/") {
@@ -67,6 +71,7 @@ function pathForPage(id: string) {
   if (id === "components") return "/components";
   if (id === "examples") return "/examples";
   if (id === "blog") return "/blog";
+  if (id === "blog-article") return "/blog/how-to-build-a-comic-website-in-react-with-comixa-ui";
   if (id === "playground") return "/playground";
   if (id === "docs") return "/docs";
   if (id.startsWith("docs-")) {
@@ -115,6 +120,7 @@ function Playground() {
   const providerTheme: ProviderTheme | undefined =
     theme === "comic" ? undefined : theme;
   const isPlayground = active === "playground";
+  const isWidePage = isPlayground || active === "blog" || active === "blog-article";
 
   useEffect(() => {
     if (active === "landing") {
@@ -162,7 +168,7 @@ function Playground() {
     <ComixaProvider {...(providerTheme ? { theme: providerTheme } : {})}>
       <div className="flex h-full min-h-0 flex-col overflow-hidden">
         <header className="pg-chrome pg-border flex shrink-0 items-center gap-2 border-b-2 px-4 py-3 backdrop-blur md:gap-3 md:px-8">
-          {!isPlayground ? (
+          {!isWidePage ? (
             <Button
               size="sm"
               variant="outline"
@@ -209,7 +215,7 @@ function Playground() {
         </header>
 
         <div className="flex min-h-0 flex-1 overflow-hidden">
-          {!isPlayground ? <div
+          {!isWidePage ? <div
             className={
               mobileNav
                 ? "pg-chrome pg-border flex h-full w-full min-h-0 shrink-0 flex-col border-r-2 md:w-64"
@@ -276,12 +282,14 @@ function Playground() {
               className={
                 active === "playground"
                   ? "min-h-0 flex-1 overflow-hidden"
+                  : active === "blog" || active === "blog-article"
+                  ? "min-h-0 flex-1 overflow-y-auto overscroll-contain p-0"
                   : "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-8 md:px-8 md:py-10"
               }
             >
               <div
                 className={
-                  active === "playground"
+                  isWidePage
                     ? "h-full min-h-0 w-full"
                     : active === "examples"
                     ? "mx-auto max-w-6xl"

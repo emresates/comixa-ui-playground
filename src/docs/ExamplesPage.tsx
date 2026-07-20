@@ -45,6 +45,7 @@ import {
   LayoutDashboard,
   Newspaper,
   Palette,
+  PenTool,
   RadioTower,
   Rocket,
 } from "lucide-react";
@@ -56,6 +57,7 @@ import { InkShiftEbookLanding } from "./examples/InkShiftEbookLanding";
 import { LaunchBoardDashboard } from "./examples/LaunchBoardDashboard";
 import { LaunchZapLanding } from "./examples/LaunchZapLanding";
 import { PanelPressBlog } from "./examples/PanelPressBlog";
+import { SignalInkBlog } from "./examples/SignalInkBlog";
 import { BoltIcon, PlusIcon } from "./shared";
 
 const galleryItems: GalleryItem[] = [
@@ -437,6 +439,10 @@ const EXAMPLES = {
     title: "The Gilded Ledger",
     content: <ComixaVintageGildedLedger />,
   },
+  signalink: {
+    title: "Signal & Ink blog",
+    content: <SignalInkBlog />,
+  },
 } as const;
 
 type ExampleId = keyof typeof EXAMPLES;
@@ -563,6 +569,15 @@ export function ExamplesPage() {
           themeId="vintage"
           icon={<Gem className="h-8 w-8" strokeWidth={2.5} />}
           onOpen={() => setOpen("ledger")}
+          {...cursorProps}
+        />
+        <ExamplePreview
+          title="Signal & Ink blog"
+          description="Editorial blog homepage with featured story, filters, search, popular posts, and newsletter signup."
+          theme="Retro"
+          themeId="retro"
+          icon={<PenTool className="h-8 w-8" strokeWidth={2.5} />}
+          onOpen={() => setOpen("signalink")}
           {...cursorProps}
         />
       </div>

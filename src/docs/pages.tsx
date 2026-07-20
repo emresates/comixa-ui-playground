@@ -47,6 +47,8 @@ import { DeploymentDocs } from "./DeploymentDocs";
 import { UpcomingPage } from "./UpcomingPage";
 import { ComicGeneratorSkeleton } from "./playground/ComicGeneratorSkeleton";
 import { ComicGeneratorErrorBoundary } from "./playground/ComicGeneratorErrorBoundary";
+import { BlogPage } from "../blog/BlogPage";
+import { BlogArticlePage } from "../blog/BlogArticlePage";
 
 const ComicGeneratorPage = lazy(() =>
   import("./playground/ComicGeneratorPage").then((module) => ({
@@ -58,7 +60,8 @@ export function renderDocsPage(
   active: string,
   onNavigate: (id: string) => void,
 ): ReactNode {
-  if (active === "blog") return <UpcomingPage title="Blog" />;
+  if (active === "blog") return <BlogPage />;
+  if (active === "blog-article") return <BlogArticlePage />;
   if (active === "playground") {
     return (
       <ComicGeneratorErrorBoundary>
