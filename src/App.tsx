@@ -114,6 +114,7 @@ function Playground() {
   const { theme, setTheme } = useTheme();
   const providerTheme: ProviderTheme | undefined =
     theme === "comic" ? undefined : theme;
+  const isPlayground = active === "playground";
 
   useEffect(() => {
     if (active === "landing") {
@@ -160,7 +161,7 @@ function Playground() {
   return (
     <ComixaProvider {...(providerTheme ? { theme: providerTheme } : {})}>
       <div className="flex h-full min-h-0 overflow-hidden">
-        <div
+        {!isPlayground ? <div
           className={
             mobileNav
               ? "pg-chrome pg-border flex h-full w-full min-h-0 shrink-0 flex-col border-r-2 md:w-64"
@@ -226,24 +227,28 @@ function Playground() {
               </div>
             ))}
           </nav>
-        </div>
+        </div> : null}
 
         <div
           className={
-            mobileNav
+            isPlayground
+              ? "flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden"
+              : mobileNav
               ? "hidden min-h-0 min-w-0 flex-1 flex-col overflow-hidden md:flex"
               : "flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden"
           }
         >
           <header className="pg-chrome pg-border flex shrink-0 items-center gap-2 border-b-2 px-4 py-3 backdrop-blur md:gap-3 md:px-8">
-            <Button
-              size="sm"
-              variant="outline"
-              className="md:hidden !px-0"
-              onClick={() => setMobileNav(true)}
-            >
-              <Menu size={24} />
-            </Button>
+            {!isPlayground ? (
+              <Button
+                size="sm"
+                variant="outline"
+                className="md:hidden !px-0"
+                onClick={() => setMobileNav(true)}
+              >
+                <Menu size={24} />
+              </Button>
+            ) : null}
             <div className="nav-links">
               <a
                 href="/components"
@@ -308,10 +313,18 @@ function Playground() {
             </div>
           </header>
 
-          <main className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-8 md:px-8 md:py-10">
+          <main
+            className={
+              active === "playground"
+                ? "min-h-0 flex-1 overflow-hidden"
+                : "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-8 md:px-8 md:py-10"
+            }
+          >
             <div
               className={
-                active === "examples"
+                active === "playground"
+                  ? "h-full min-h-0 w-full"
+                  : active === "examples"
                   ? "mx-auto max-w-6xl"
                   : "mx-auto max-w-3xl"
               }

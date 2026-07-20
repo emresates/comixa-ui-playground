@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { lazy, Suspense, type ReactNode } from "react";
 import { Overview } from "./Overview";
 import { ExamplesPage } from "./ExamplesPage";
 import { ButtonDocs } from "./ButtonDocs";
@@ -45,13 +45,29 @@ import { BestPracticesDocs } from "./BestPracticesDocs";
 import { GeneralFAQDocs } from "./GeneralFAQDocs";
 import { DeploymentDocs } from "./DeploymentDocs";
 import { UpcomingPage } from "./UpcomingPage";
+import { ComicGeneratorSkeleton } from "./playground/ComicGeneratorSkeleton";
+import { ComicGeneratorErrorBoundary } from "./playground/ComicGeneratorErrorBoundary";
+
+const ComicGeneratorPage = lazy(() =>
+  import("./playground/ComicGeneratorPage").then((module) => ({
+    default: module.ComicGeneratorPage,
+  })),
+);
 
 export function renderDocsPage(
   active: string,
   onNavigate: (id: string) => void,
 ): ReactNode {
   if (active === "blog") return <UpcomingPage title="Blog" />;
-  if (active === "playground") return <UpcomingPage title="Playground" />;
+  if (active === "playground") {
+    return (
+      <ComicGeneratorErrorBoundary>
+        <Suspense fallback={<ComicGeneratorSkeleton />}>
+          <ComicGeneratorPage />
+        </Suspense>
+      </ComicGeneratorErrorBoundary>
+    );
+  }
   if (active === "docs-getting-started") return <GettingStartedDocs />;
   if (active === "docs-installation") return <InstallationDocs />;
   if (active === "docs-theming") return <ThemingDocs />;
