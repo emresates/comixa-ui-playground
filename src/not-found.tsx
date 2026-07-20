@@ -30,7 +30,7 @@ const themeLabels: Record<ThemeName, string> = {
 
 export default function NotFound() {
   const reducedMotion = useReducedMotion();
-  const [theme, setTheme] = useState<ThemeName>("pop-art");
+  const [theme, setTheme] = useState<ThemeName>("retro");
   const [introDone, setIntroDone] = useState(false);
   const [impactWord, setImpactWord] =
     useState<(typeof IMPACT_WORDS)[number]>("ZAP!");
