@@ -10,17 +10,14 @@ export function Footer() {
       </div>
       <div className="footer-main">
         <div>
-          <div className="brand">
-            <span className="brand-mark">C</span>
-            <span>COMIXA UI</span>
-          </div>
+          <img src="/logo.png" alt="Comixa UI" width={200} height={200} />
           <p>Character-first components for React.</p>
         </div>
         <div className="footer-links">
-          <a href="#components">Components</a>
-          <a href="#themes">Themes</a>
-          <a href="#examples">Examples</a>
-          <a href="#install">Documentation</a>
+          <a href="/components">Components</a>
+          <a href="/docs/theming">Themes</a>
+          <a href="/examples">Examples</a>
+          <a href="/docs/getting-started">Documentation</a>
         </div>
       </div>
       <div className="footer-bottom">
