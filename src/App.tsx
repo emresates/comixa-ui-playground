@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button, ComixaProvider, ToastProvider } from "comixa-ui";
 import { Analytics } from "@vercel/analytics/react";
 import { DOCS_ITEMS, NAV } from "./docs/nav";
@@ -116,6 +116,7 @@ function Playground() {
     pageFromPath(window.location.pathname),
   );
   const [mobileNav, setMobileNav] = useState(false);
+  const contentScrollRef = useRef<HTMLElement>(null);
   const { theme, setTheme } = useTheme();
   const providerTheme: ProviderTheme | undefined =
     theme === "comic" ? undefined : theme;
@@ -137,7 +138,7 @@ function Playground() {
       window.history.pushState({ page: id }, "", path);
     }
     setActive(id);
-    window.scrollTo({ top: 0, behavior: "instant" });
+    contentScrollRef.current?.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
   useEffect(() => {
@@ -248,18 +249,21 @@ function Playground() {
                     const selected = active === item.id;
                     return (
                       <li key={item.id}>
-                        <a href={pathForPage(item.id)}>
-                          <button
-                            type="button"
-                            className={
-                              selected
-                                ? "pg-nav-item-active w-full rounded-lg border-2 border-ink bg-comic-yellow px-3 py-2 text-left font-comic text-sm uppercase tracking-wide text-ink shadow-comic-sm"
-                                : "pg-nav-item pg-fg w-full rounded-lg px-3 py-2 text-left font-body text-sm hover:bg-black/5"
-                            }
-                          >
-                            {item.label}
-                          </button>
-                        </a>
+                        <button
+                          type="button"
+                          className={
+                            selected
+                              ? "pg-nav-item-active w-full rounded-lg border-2 border-ink bg-comic-yellow px-3 py-2 text-left font-comic text-sm uppercase tracking-wide text-ink shadow-comic-sm"
+                              : "pg-nav-item pg-fg w-full rounded-lg px-3 py-2 text-left font-body text-sm hover:bg-black/5"
+                          }
+                          aria-current={selected ? "page" : undefined}
+                          onClick={() => {
+                            navigate(item.id);
+                            setMobileNav(false);
+                          }}
+                        >
+                          {item.label}
+                        </button>
                       </li>
                     );
                   })}
@@ -279,6 +283,7 @@ function Playground() {
             }
           >
             <main
+              ref={contentScrollRef}
               className={
                 active === "playground"
                   ? "min-h-0 flex-1 overflow-hidden"
