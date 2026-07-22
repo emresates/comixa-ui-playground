@@ -37,6 +37,14 @@ function pageFromPath(pathname: string) {
     pathname === "/blog/how-to-build-a-comic-website-in-react-with-comixa-ui" ||
     pathname === "/blog/how-to-build-a-comic-website-in-react-with-comixa-ui/"
   ) return "blog-article";
+  if (
+    pathname === "/blog/react-hero-section-best-practices" ||
+    pathname === "/blog/react-hero-section-best-practices/"
+  ) return "blog-react-hero";
+  if (
+    pathname === "/blog/css-vs-react-ui-components" ||
+    pathname === "/blog/css-vs-react-ui-components/"
+  ) return "blog-css-vs-react";
   if (pathname === "/playground" || pathname === "/playground/")
     return "playground";
   if (pathname === "/components" || pathname === "/components/") {
@@ -72,6 +80,8 @@ function pathForPage(id: string) {
   if (id === "examples") return "/examples";
   if (id === "blog") return "/blog";
   if (id === "blog-article") return "/blog/how-to-build-a-comic-website-in-react-with-comixa-ui";
+  if (id === "blog-react-hero") return "/blog/react-hero-section-best-practices";
+  if (id === "blog-css-vs-react") return "/blog/css-vs-react-ui-components";
   if (id === "playground") return "/playground";
   if (id === "docs") return "/docs";
   if (id.startsWith("docs-")) {
@@ -121,7 +131,8 @@ function Playground() {
   const providerTheme: ProviderTheme | undefined =
     theme === "comic" ? undefined : theme;
   const isPlayground = active === "playground";
-  const isWidePage = isPlayground || active === "blog" || active === "blog-article";
+  const isBlogPage = active === "blog" || active.startsWith("blog-");
+  const isWidePage = isPlayground || isBlogPage;
 
   useEffect(() => {
     if (active === "landing") {
@@ -287,7 +298,7 @@ function Playground() {
               className={
                 active === "playground"
                   ? "min-h-0 flex-1 overflow-hidden"
-                  : active === "blog" || active === "blog-article"
+                  : isBlogPage
                   ? "min-h-0 flex-1 overflow-y-auto overscroll-contain p-0"
                   : "min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-8 md:px-8 md:py-10"
               }

@@ -49,6 +49,8 @@ import { ComicGeneratorSkeleton } from "./playground/ComicGeneratorSkeleton";
 import { ComicGeneratorErrorBoundary } from "./playground/ComicGeneratorErrorBoundary";
 import { BlogPage } from "../blog/BlogPage";
 import { BlogArticlePage } from "../blog/BlogArticlePage";
+import { ReactHeroSectionBestPractices } from "../blog/ReactHeroSectionBestPractices";
+import { CssVsReactUiComponents } from "../blog/CssVsReactUiComponents";
 
 const ComicGeneratorPage = lazy(() =>
   import("./playground/ComicGeneratorPage").then((module) => ({
@@ -62,6 +64,8 @@ export function renderDocsPage(
 ): ReactNode {
   if (active === "blog") return <BlogPage />;
   if (active === "blog-article") return <BlogArticlePage />;
+  if (active === "blog-react-hero") return <ReactHeroSectionBestPractices />;
+  if (active === "blog-css-vs-react") return <CssVsReactUiComponents />;
   if (active === "playground") {
     return (
       <ComicGeneratorErrorBoundary>

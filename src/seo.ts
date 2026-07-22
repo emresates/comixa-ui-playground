@@ -39,11 +39,18 @@ export function updateSeo(pageId: string, pathname: string) {
   const isDocs = pageId === "overview";
   const isNotFound = pageId === "404";
   const isBlog = pageId === "blog";
-  const isBlogArticle = pageId === "blog-article";
+  const isReactHeroArticle = pageId === "blog-react-hero";
+  const isCssVsReactArticle = pageId === "blog-css-vs-react";
+  const isBlogArticle =
+    pageId === "blog-article" || isReactHeroArticle || isCssVsReactArticle;
   const isPlayground = pageId === "playground";
   const title = isNotFound
     ? "404 — Comixa UI"
-    : isBlogArticle
+    : isCssVsReactArticle
+      ? "CSS vs React UI Components: Which Should You Choose?"
+    : isReactHeroArticle
+      ? "React Hero Section Best Practices (2026)"
+    : pageId === "blog-article"
       ? "How to Build a Comic Website in React with Comixa UI"
     : isBlog
       ? "Comixa UI Blog"
@@ -60,7 +67,11 @@ export function updateSeo(pageId: string, pathname: string) {
         : "Comixa UI — Comic React Component Library";
   const description = isNotFound
     ? "Page not found."
-    : isBlogArticle
+    : isCssVsReactArticle
+      ? "Should you build every UI component with CSS or use a React UI library? Learn the pros, cons, and when each approach makes sense."
+    : isReactHeroArticle
+      ? "Learn how to design a high-converting React hero section with better headlines, CTAs, layout, accessibility, and responsive design."
+    : pageId === "blog-article"
       ? "Learn how to build a responsive comic website in React with Comixa UI. Add comic sections, bold themes, animations, halftone patterns, and reusable components."
     : isBlog
       ? "Articles, guides, and updates from Comixa UI."
@@ -86,6 +97,18 @@ export function updateSeo(pageId: string, pathname: string) {
       : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
   });
   upsertMeta('meta[name="description"]', { name: "description", content: description });
+  upsertMeta('meta[name="keywords"]', {
+    name: "keywords",
+    content: isCssVsReactArticle
+      ? "React UI components, CSS components, React component library, React UI library, reusable React components, frontend components"
+      : isReactHeroArticle
+        ? "react hero section, hero section react, landing page hero, react landing page, hero section best practices"
+        : "Comixa, Comixa UI, React component library, comic UI, Tailwind CSS components, React UI kit, comic components",
+  });
+  upsertMeta('meta[property="og:type"]', {
+    property: "og:type",
+    content: isBlogArticle ? "article" : "website",
+  });
   upsertMeta('meta[property="og:title"]', { property: "og:title", content: title });
   upsertMeta('meta[property="og:description"]', {
     property: "og:description",
